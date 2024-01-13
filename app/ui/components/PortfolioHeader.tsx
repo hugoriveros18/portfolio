@@ -20,7 +20,6 @@ export default function PortfolioHeader() {
 
     const handleHeaderVisibility = () => {
       const scrollY = window.pageYOffset;
-      console.log('scrollY', scrollY)
       const makeHeaderVisible = scrollY < lastScrollY;
   
       if(isHeaderVisible !== makeHeaderVisible) {

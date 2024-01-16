@@ -1,3 +1,4 @@
+import SocialMedia from "./ui/components/SocialMedia";
 import AboutMe from "./ui/main-sections/AboutMe";
 import Contact from "./ui/main-sections/Contact";
 import Experience from "./ui/main-sections/Experience";
@@ -32,7 +33,7 @@ export default function Home() {
       <div id="contact">
         <Contact />
       </div>
-
+      
     </main>
   )
 }

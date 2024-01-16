@@ -16,40 +16,40 @@ body {
   animation-delay: 200ms;
 }
 .block-fade-in-down-1 {
-  animation-delay: 400ms;
+  animation-delay: 300ms;
 }
 .block-fade-in-down-2 {
-  animation-delay: 600ms;
+  animation-delay: 400ms;
 }
 .block-fade-in-down-3 {
-  animation-delay: 800ms;
+  animation-delay: 500ms;
 }
 .block-fade-in-down-4 {
-  animation-delay: 1000ms;
+  animation-delay: 600ms;
 }
 
 .block-fade-in {
   animation: fade-in 0.5s ease-in-out forwards;
 }
 .block-fade-in-200 {
-  animation-delay: 1400ms;
+  animation-delay: 800ms;
 }
 .block-fade-in-300 {
-  animation-delay: 1500ms;
+  animation-delay: 900ms;
 }
 .block-fade-in-400 {
-  animation-delay: 1600ms;
+  animation-delay: 1000ms;
 }
 .block-fade-in-500 {
-  animation-delay: 1700ms;
+  animation-delay: 1100ms;
 }
 .block-fade-in-600 {
-  animation-delay: 1800ms;
+  animation-delay: 1200ms;
 }
 
 
 .block-fade-in-fixed {
-  animation: fade-in-section 1s 2s forwards;
+  animation: fade-in-section 1s 1400ms forwards;
 }
 
 .block-fade-in-section {
@@ -203,3 +203,26 @@ body {
     opacity: 1;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .block-fade-in-200 {
+    animation-delay: 400ms;
+  }
+  .block-fade-in-300 {
+    animation-delay: 500ms;
+  }
+  .block-fade-in-400 {
+    animation-delay: 600ms;
+  }
+  .block-fade-in-500 {
+    animation-delay: 700ms;
+  }
+  .block-fade-in-600 {
+    animation-delay: 800ms;
+  }
+  .email-text {
+    writing-mode: unset;
+  }
+}
+
+

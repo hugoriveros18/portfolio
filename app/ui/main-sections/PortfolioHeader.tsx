@@ -3,17 +3,16 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react"
-import { menuItems } from "../utils/menuItems";
-import MenuItem from "./MenuItem";
-import ActionButton from "./ActionButton";
 import Link from "next/link";
+import MenuDesktop from "../components/MenuDesktop";
+import MenuMobile from "../components/MenuMobile";
 
 export default function PortfolioHeader() {
 
   // STATES
   const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(true);
   const [isCurrentScrollZero, setIsCurrentScrollZero] = useState<boolean>(true);
-  console.log('isCurrentScrollZero', isCurrentScrollZero)
+
   // EFFECTS
   useEffect(() => {
     let lastScrollY = window.pageYOffset;
@@ -27,10 +26,8 @@ export default function PortfolioHeader() {
       }
 
       if(scrollY === 0) {
-        console.log('entro')
         setIsCurrentScrollZero(true);
       } else {
-        console.log('entro2')
         setIsCurrentScrollZero(false);
       }
       lastScrollY = scrollY;
@@ -44,7 +41,7 @@ export default function PortfolioHeader() {
   // JSX
   return (
     <div 
-      className={`fixed top-0 left-0 flex justify-between items-center w-full px-12 py-4 z-30 bg-firstColor bg-opacity-[0.85] transition-all duration-300 backdrop-blur-[10px] ${isHeaderVisible ? 'translate-y-0' : 'translate-y-[-100%]'} ${(isHeaderVisible && !isCurrentScrollZero) ? 'header-box-shadow' : undefined}`}
+      className={`fixed top-0 left-0 flex justify-between items-center w-full sm:min-h-[92px] px-12 sm:pl-5 sm:pr-2 py-4 z-30 bg-firstColor bg-opacity-[0.85] transition-all duration-300 backdrop-blur-[10px] ${isHeaderVisible ? 'translate-y-0' : 'translate-y-[-100%]'} ${(isHeaderVisible && !isCurrentScrollZero) ? 'header-box-shadow' : undefined}`}
     >
 
       <div className="flex">
@@ -60,32 +57,8 @@ export default function PortfolioHeader() {
         </Link>
       </div>
 
-      <div className="flex gap-3">
-        <ul className="flex">
-          {
-            menuItems.map((item, index) => {
-              return (
-                <MenuItem
-                  key={item.sectionNumber}
-                  sectionNumber={item.sectionNumber}
-                  title={item.title}
-                  slug={item.slug}
-                  delay={index}
-                />
-              )
-            })
-          }
-        </ul>
-        <div className="block-fade-in-down block-fade-in-down-4 opacity-0">
-          <ActionButton
-            text="Resume"
-            slug="/files/cv-hugo-riveros.pdf"
-            variation="secondary"
-            openNewTab
-          />
-        </div>
-      </div>
-
+      <MenuDesktop />
+      <MenuMobile />
     </div>
   )
 }

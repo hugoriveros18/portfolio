@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import PortfolioHeader from './ui/components/PortfolioHeader'
+import PortfolioHeader from './ui/main-sections/PortfolioHeader'
 import Email from './ui/components/Email'
 import './globals.css'
 import SocialMedia from './ui/components/SocialMedia'
@@ -21,9 +21,9 @@ export default function RootLayout({
     <html lang="en" style={{ scrollBehavior: 'smooth' }}>
       <body className={`${monserrat.className} bg-firstColor`}>
         <PortfolioHeader />
-        <Email />
-        <SocialMedia />
         {children}
+        <SocialMedia />
+        <Email />
       </body>
     </html>
   )

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Montserrat } from 'next/font/google'
+import { Onest } from 'next/font/google'
 import PortfolioHeader from './ui/main-sections/PortfolioHeader'
 import Email from './ui/components/Email'
 import './globals.css'
 import SocialMedia from './ui/components/SocialMedia'
 
-const monserrat = Montserrat({ subsets: ['latin'] })
+const onest = Onest({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Hugo Riveros | Software Developer',
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" style={{ scrollBehavior: 'smooth' }}>
-      <body className={`${monserrat.className} bg-firstColor`}>
+      <body className={`${onest.className} bg-firstColor`}>
         <PortfolioHeader />
         {children}
         <SocialMedia />

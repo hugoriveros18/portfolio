@@ -85,7 +85,7 @@ export default function AboutMe() {
                             alt="Profile picture"
                             width={300}
                             height={300}
-                            className="relative w-full rounded-2xl"
+                            className="relative w-full rounded-2xl object-cover"
                         />
                     </div>
                 </div>

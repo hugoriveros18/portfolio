@@ -28,7 +28,7 @@ export default function Contact() {
         >
             <div className="w-full flex items-center justify-center gap-1 mt-3 mb-3 sm:mb-0">
                 <span className={`text-fourthColor text-base`}>
-                    0.4
+                    04.
                 </span>
                 <h2 className="text-base text-fourthColor">
                     Want to share a coffee?
@@ -41,7 +41,7 @@ export default function Contact() {
             </div>
             <div className="w-full flex justify-center">
                 <p className="m-0 text-lg sm:text-base text-center text-sixthColor">
-                    I am open to new opportunities and connect with great people. If you have any questions, proposals or just want to say hello; I will do my best to respond as soon as I can.
+                    {`Currently I'm not open to new opportunities but I love to connect with great people. If you have any questions or just want to say hello; I will do my best to respond as soon as I can.`}
                 </p>
             </div>
             <div className="flex justify-center mt-6">

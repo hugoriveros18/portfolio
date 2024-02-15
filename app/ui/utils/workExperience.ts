@@ -20,7 +20,7 @@ export const workExperience = [
         company: 'Teleperformance',
         webSite: 'https://www.teleperformance.com/en-us/locations/colombia-site/colombia/',
         rolePosition: 'Bilingual Agent',
-        period: 'Mar 2021 - July 2022',
+        period: 'Mar 2021 - July 2021',
         functions: [
             "Customer service in Walmart's North American campaign through written and voice channels.",
             "Problem resolution in the pickup and delivery departments by following defined processes with the goal to provide great purchasing experience to clients.",

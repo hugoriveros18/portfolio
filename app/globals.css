@@ -225,4 +225,41 @@ body {
   }
 }
 
+.project-description {
+  background-color: rgba(21, 40, 77, 1);
+  box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+}
+
+.project-image {
+  position: relative;
+  cursor: pointer;
+  height: 100%;
+}
+
+.project-image:hover::before {
+  background-color: rgba(21, 40, 77, 0.1);
+}
+
+.project-image::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0px;
+  z-index: 3;
+  background-color: rgba(21, 40, 77, 0.5);
+  transition: all 0.3s linear;
+}
+
+@media screen and (max-width: 640px) {
+  .project-description {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .project-image::before {
+    background-color: rgba(21, 40, 77, 0.95);
+  }
+}
+
 

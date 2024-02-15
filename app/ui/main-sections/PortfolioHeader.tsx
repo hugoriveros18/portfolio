@@ -40,7 +40,7 @@ export default function PortfolioHeader() {
 
   // JSX
   return (
-    <div 
+    <header 
       className={`fixed top-0 left-0 flex justify-between items-center w-full sm:min-h-[92px] px-12 sm:pl-5 sm:pr-2 py-4 z-30 bg-firstColor bg-opacity-[0.85] transition-all duration-300 backdrop-blur-[10px] ${isHeaderVisible ? 'translate-y-0' : 'translate-y-[-100%]'} ${(isHeaderVisible && !isCurrentScrollZero) ? 'header-box-shadow' : undefined}`}
     >
 
@@ -59,6 +59,6 @@ export default function PortfolioHeader() {
 
       <MenuDesktop />
       <MenuMobile />
-    </div>
+    </header>
   )
 }

@@ -12,7 +12,7 @@ export default function WelcomeScreen() {
         </div>
         {/* NAME */}
         <div className="w-full block-fade-in block-fade-in-300 opacity-0">
-            <h1 className="text-fourthColor text-[80px] lg:text-[70px] md:text-[60px] sm:text-[50px] font-bold mb-1">
+            <h1 className="text-fourthColor text-[80px] lg:text-[70px] md:text-[60px] sm:text-[50px] sm:max-w-[300px] font-bold mb-1">
                 Hugo Riveros F.
             </h1>
         </div>

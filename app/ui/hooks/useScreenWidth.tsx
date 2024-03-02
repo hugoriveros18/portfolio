@@ -11,11 +11,11 @@ export default function useScreenWidth() {
     // MEMO
     const updateWindowSizeValue = () => {
         const windowWidth = window.innerWidth
-        if(windowWidth <= 639) {
+        if(windowWidth <= 640) {
             setDevice('phone')
-        } else if (windowWidth > 639 && windowWidth <= 1023) {
+        } else if (windowWidth > 640 && windowWidth <= 1024) {
             setDevice('tablet')
-        } else if (windowWidth > 1023) {
+        } else if (windowWidth > 1024) {
             setDevice('desktop')
         } else {
             setDevice('desktop')

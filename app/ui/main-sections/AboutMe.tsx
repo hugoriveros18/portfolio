@@ -56,7 +56,7 @@ export default function AboutMe() {
                         Hi! My name is Hugo and I love creating software that <span className="text-thirdColor font-bold">positively impacts {`people's`} lives</span>. Since I started learning web development back in 2021 {`I'm`} constantly amazed by the impact of technology around the world, {`that's`} one of the reasons why I love my profession.
                     </p>
                     <p className="text-base text-fifthColor mt-3">
-                        {`I'm`} passionate frontend developer committed to creating high quality applications focused on results and happy customers. Currently {`I'm`} part of {companyLink('ITGlobers', 'https://www.itglobers.com/')}, a leading software agency in Latin America focused in ecommerce, where I provide support and custom developments to large companies like {companyLink('Panamericana', 'https://www.panamericana.com.co/')} and {companyLink('Whitebird', 'https://www.whitebird.ca/')}.
+                        {`I'm`} passionate frontend developer committed to creating high quality applications focused on results and happy customers. Currently {`I'm`} part of {companyLink('ITGlobers', 'https://www.itglobers.com/')}, a leading software agency in Latin America focused in ecommerce, where I provide support and custom developments to large companies like {companyLink('Cencosud', 'https://www.cencosud.com/')}, {companyLink('Panamericana', 'https://www.panamericana.com.co/')} and {companyLink('Whitebird', 'https://www.whitebird.ca/')}.
                     </p>
                     <p className="text-base text-fifthColor mt-3">
                         {`This are some of the technologies I've been working with recently:`}

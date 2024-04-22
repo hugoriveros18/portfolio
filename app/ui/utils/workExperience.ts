@@ -13,7 +13,7 @@ export const workExperience = [
             "Well understanding of technologies used on a daily basis.",
             "Comprehension, design and implementation of requirements.",
             "Development of tasks before agreed deadlines.",
-            "To be continue..."
+            "Among other..."
         ]
     },
     {

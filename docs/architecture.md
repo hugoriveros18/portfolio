@@ -8,7 +8,7 @@ languages. It does not require a custom API, database, authentication, secrets o
 1. `next.config.ts` redirects `/` to `/en`, regardless of browser language.
 2. `app/[locale]/layout.tsx` validates the locale, sets `html lang`, loads Onest
    and initializes appearance before the first paint.
-3. `app/[locale]/page.tsx` loads the localized content and renders four sections.
+3. `app/[locale]/page.tsx` loads the localized content and renders five sections.
 4. Downloads point to the matching language's files in `public/files/`.
 5. The language switch navigates to the other URL, preserving the section fragment.
 
@@ -18,14 +18,13 @@ The `params` APIs are awaited as required by Next.js 16.
 
 ## Section order
 
-The current editorial layout uses Hero → Experience → About → Contact.
-The hero introduces Hugo and his work at a general level. Experience follows to
-prioritize professional evidence for the current recruiting goal. About then adds
-personal context, the engineering approach, capabilities, education and languages.
-
-This is an editorial choice for this portfolio, not a universal usability rule.
-An About-first sequence would emphasize the personal story before the career.
-Keep navigation consistent with the actual document order if it changes.
+The current editorial layout uses Hero → About → Experience → Contributions → Contact.
+The hero introduces Hugo and his work at a general level and links to About as
+the next section. About gives personal context, the engineering approach,
+capabilities, education and languages before the longer career and contribution
+content. Experience presents the roles; Contributions explains selected work,
+its decisions and team value in more depth. Desktop and mobile navigation follow
+the same document order in both languages.
 
 ## Responsibilities
 
@@ -37,22 +36,30 @@ Keep navigation consistent with the actual document order if it changes.
 | `app/globals.css` | Palette, typography, layout, breakpoints and motion. |
 | `app/icon.svg` | Vector site identity. |
 | `app/robots.ts`, `app/sitemap.ts` | Indexing resources and language alternatives. |
-| `components/sections/` | Server-rendered Hero, Experience, About and Contact. |
+| `components/sections/` | Server-rendered Hero, About, Experience, Contributions and Contact. |
 | `components/layout/` | Interactive header and footer. |
 | `components/theme/` | Light/dark control and preference synchronization. |
 | `components/ui/` | Icons, social links and section introductions. |
 | `content/en.ts`, `content/es.ts` | Localized copy following a shared contract. |
 | `content/types.ts` | Content contract; TypeScript detects missing fields. |
 | `content/career.ts` | Shared companies, links, dates and role titles. |
+| `content/contributions/` | Shared case identifiers, reusable contract and bilingual public case records. |
 | `lib/profile.ts` | Identity, contact, public address and CV paths by locale. |
 | `lib/theme.ts` | Storage key and pre-paint initialization script. |
 | `tests/portfolio.spec.ts` | Real browser user-flow verification. |
+| `.agents/skills/add-contribution/` | Repository skill that follows the documented contribution standard. |
 
 ## Server and client boundaries
 
 Professional content is delivered as HTML. Its visibility does not depend on
 JavaScript observing scroll. Full content dictionaries are not sent to the client;
 the header receives only its labels.
+
+Contributions are rendered from typed records, with optional generic stage/node
+diagrams. The first three entries in the shared editorial order are featured;
+additional entries remain accessible through native disclosures. Context and
+validation use native `details/summary` without client-side state. Neither case
+reading nor expanding detail requires JavaScript. Supporting links are optional.
 
 `Header` is a client component so it can close mobile navigation with Escape or
 after following a section, and preserve the fragment when switching languages.

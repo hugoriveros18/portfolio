@@ -31,12 +31,20 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
 - **Role → contribution:** complete storefront delivery and reusable components
   belong to the ITGlobers Mid-level role. The Frontend Developer entry describes
   development, maintenance and feature improvements.
+- **Contribution → full solution:** Yunex presents investigation, automated
+  knowledge-update proposals and post-deployment monitoring as visible capabilities.
+  The outcome describes team value. Context, decisions, evaluation and the incident
+  example expand with native controls and remain usable without JavaScript.
+  Case anchors remain valid when switching languages.
 - **Education → learning:** Platzi describes continuing self-directed learning
   with a start date and a localized present/current label.
 - **Control → appearance:** switching, reloading and navigating between languages
   preserves the theme. The control also works with blocked storage.
 - **Navigation → section:** switching languages preserves the fragment. Following
   a section closes mobile navigation; Escape returns focus to its control.
+  Reading order is Hero → About → Experience → Contributions → Contact; desktop
+  and mobile menus use About → Experience → Contributions → Contact. The hero's
+  next-section link points to About in both languages.
 - **Link → document:** downloads use the selected language's PDF and filename.
   Served bytes match the repository file and use the correct PDF content type.
 - **Metadata → resource:** canonical URLs and language alternatives match the
@@ -50,7 +58,7 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
 
 `tests/portfolio.spec.ts` covers default-language routing, localized profiles,
 actual downloads and byte checks, metadata/sharing images, theme persistence,
-language changes, unavailable storage, JavaScript-disabled navigation, mobile
+language changes, contribution capabilities and detail reading, unavailable storage, JavaScript-disabled navigation, mobile
 navigation, keyboard access, reduced motion, responsive widths and invalid routes.
 The mobile-menu case is intentionally skipped in the desktop project and runs
 in the mobile project.

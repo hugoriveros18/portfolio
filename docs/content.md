@@ -42,7 +42,8 @@ approach rather than duplicating the implementation details.
 3. Maintain company names, URLs, ISO dates, official role titles and common
    technologies in `content/career.ts`. Translate visible period labels in each
    dictionary while keeping them aligned with the shared dates.
-4. Keep `experience`, `about` and `contact` section anchors stable across languages.
+4. Keep `experience`, `contributions`, `about` and `contact` section anchors stable
+   across languages, along with each `contribution-<id>` anchor.
 5. Translate navigation, accessible names, metadata and alternative text as well.
 
 Official role titles remain in English, as in the CVs. Technology/product names
@@ -80,11 +81,23 @@ appearance.
 
 ## Experience and case studies
 
-Contributions are summarized within work experience. The site does not expose
-case study pages or a personal-project section. Publish a case or project only
+Contributions have concise references within experience and a dedicated editorial
+section with reusable stories, optional diagrams and expandable detail. The site
+does not expose separate case pages or a personal-project section. Publish a case or project only
 when there is sufficient completed work and supporting information to explain its
 problem, context, individual contribution, collaboration, decisions, validation
 and outcome. Diagrams should explain an actual decision.
+
+The [contribution workflow](contributions/README.md) defines intake, editorial
+rules, bilingual data entry, presentation and verification for every case.
+Public records live in `content/contributions/en.ts` and `es.ts`.
+
+The [Yunex contribution notes](contributions/yunex.md) organize the owner's
+firsthand account, decisions, validation, evidence limits and conceptual diagrams.
+These working notes are not rendered by the website. Supporting artifacts are
+optional: add suitable links when available and omit generic public notices about
+missing evidence. Keep every substantial capability visible and describe the value
+to users, the team or the business without inventing numerical results.
 
 ## Verifying content
 

@@ -17,8 +17,9 @@ export function Header({
   const menu = useRef<HTMLDetailsElement>(null)
   const otherLocale = locale === 'en' ? 'es' : 'en'
   const items = [
-    { href: '#experience', label: text.experience },
     { href: '#about', label: text.about },
+    { href: '#experience', label: text.experience },
+    { href: '#contributions', label: text.contributions },
     { href: '#contact', label: text.contact },
   ]
 

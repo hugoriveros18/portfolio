@@ -1,5 +1,6 @@
 import type { PortfolioContent } from './types'
 import { companies, roles } from './career'
+import { contributionsEn } from './contributions/en'
 
 export const en: PortfolioContent = {
   metadata: {
@@ -10,6 +11,7 @@ export const en: PortfolioContent = {
   navigation: {
     label: 'Main navigation',
     experience: 'Experience',
+    contributions: 'Contributions',
     about: 'About',
     contact: 'Contact',
     resume: 'Download CV',
@@ -30,7 +32,7 @@ export const en: PortfolioContent = {
     description:
       'I turn product needs into thoughtful solutions, with a focus on usability, performance and maintainability.',
     contact: "Let's talk",
-    experience: 'Explore my experience',
+    about: 'Get to know me',
     portraitAlt:
       'Hugo Riveros smiling with his arms crossed, wearing a black shirt.',
     portraitCaption: 'A curious mind. A considered approach.',
@@ -56,8 +58,8 @@ export const en: PortfolioContent = {
               'Built an Apple Pay and Google Pay experience that opens the native wallet flow directly from VTEX checkout, removing an intermediate screen.',
               'Strengthened connector error handling and introduced a 20-second response deadline to mitigate failures that contribute to VTEX Contingency Mode activation.',
               'Developed, maintained and published the WooCommerce payment plugin, including addressing feedback from the WordPress Plugin Directory review.',
-              'Created Yunex, a Yuno–VTEX assistant combining technical knowledge, source code and Datadog logs to investigate incidents, answer technical questions and review changes.',
-              'Built post-deployment monitoring and automated knowledge-base updates with Claude skills and scheduled routines, with daily Slack notifications. Used Claude Code and agent teams for research, planning, implementation and documentation.',
+              'Created Yunex to share integration knowledge, support incident investigations and automate knowledge-update proposals and post-deployment reports. Explore the contribution below.',
+              'Used Claude Code and agent teams for research, planning, implementation and documentation.',
               'Built reusable tools for payment-flow visualization and documentation, expanded public plugin documentation and internal knowledge, and validated changes through testing, code review, and staging and production checks.',
             ],
           },
@@ -94,6 +96,18 @@ export const en: PortfolioContent = {
         ],
       },
     ],
+  },
+  contributions: {
+    eyebrow: 'From a problem to a shared capability',
+    title: 'Contributions, in depth.',
+    introduction:
+      'The context, decisions and team value behind work I have taken ownership of.',
+    impactLabel: 'Value for the team',
+    capabilitiesLabel: 'What the solution made possible',
+    detailsLabel: 'Context, decisions and validation',
+    moreLabel: 'More contributions',
+    referencesLabel: 'Supporting material',
+    entries: contributionsEn,
   },
   about: {
     eyebrow: 'The person behind the work',

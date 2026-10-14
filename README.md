@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hugo Riveros · Professional portfolio
 
-## Getting Started
+Hugo Felipe Riveros Fajardo's professional portfolio. Hugo is a Frontend Software
+Engineer based in Bogotá, Colombia, actively looking for new opportunities.
+The site presents his experience, approach to engineering, capabilities, education
+and contact information.
 
-First, run the development server:
+**Live portfolio:** [hugoriverosdev.vercel.app](https://hugoriverosdev.vercel.app/)
+
+The portfolio supports **English and Spanish**, with English as the default,
+an editorial graphite/terracotta design, light and dark appearance, and a matching
+CV download for each language. Contributions are summarized within work experience;
+the About section adds personal context, capabilities, education and languages.
+
+## Local development
+
+Requirements: Node.js 24 and npm 11. The repository includes `.nvmrc` and
+`package-lock.json`.
 
 ```bash
+nvm use
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [English](http://localhost:3000/en) or [Spanish](http://localhost:3000/es).
+The root always redirects to `/en`. Switching languages preserves the current
+section; appearance persists across navigation and reloads. Without an explicit
+appearance preference, the site follows the operating system.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+No environment variables, credentials or external services are needed to run the
+site. The first installation/build needs network access for dependencies and the
+Google Fonts source; Next.js then serves the font itself.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Commands
 
-## Learn More
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Development server using Next.js and Turbopack. |
+| `npm run lint` | ESLint with Next.js and accessibility rules. |
+| `npm run typecheck` | Route type generation and strict TypeScript checks. |
+| `npm run build` | Production build and static generation of `/en` and `/es`. |
+| `npm start` | Production server; requires an existing build. |
+| `npm run test:e2e` | Playwright user flows for desktop and emulated mobile. |
 
-To learn more about Next.js, take a look at the following resources:
+## Validation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run lint
+npm run typecheck
+npm run build
+npx playwright install chromium
+npm run test:e2e
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+If browser system libraries are missing on Linux, run
+`npx playwright install --with-deps chromium`.
 
-## Deploy on Vercel
+Playwright starts the production server at `127.0.0.1:3100` and stops it afterward.
+Locally, it can reuse an existing server on that port. After changing source code,
+rebuild and restart any existing production server before testing to avoid checking
+an older version.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Tests use Chromium on desktop and emulated mobile. They cover the default language,
+profile, actual CV downloads, metadata and sharing images, language/appearance
+switching, blocked storage, JavaScript-disabled browsing, mobile navigation,
+keyboard access, reduced motion and widths from 320 to 1440 px. The mobile-menu
+case is intentionally skipped in the desktop project. Reports and failure traces
+are written to Git-ignored directories.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Structure
+
+```text
+app/
+  [locale]/          HTML document, page and Open Graph image per language
+  globals.css        visual system and responsive styles
+  icon.svg           site identity
+  robots.ts          indexing instructions
+  sitemap.ts         public URLs and language alternatives
+components/
+  layout/            header and footer
+  sections/          introduction, experience, about and contact
+  theme/             appearance control
+  ui/                shared interface elements
+content/
+  en.ts, es.ts       localized copy
+  career.ts          shared professional facts
+  types.ts           content contract
+lib/                 locale, profile and initial-theme helpers
+public/
+  files/             English and Spanish CVs
+  images/            original portrait
+tests/               browser user flows
+docs/                architecture, content, tooling and verification guidance
+```
+
+## Updating information
+
+- Copy: `content/en.ts` and `content/es.ts`.
+- Companies, ISO dates and official role titles: `content/career.ts`.
+- Contact details, social links, public domain and CV paths: `lib/profile.ts`.
+- CVs: `public/files/hugo-riveros-cv-en.pdf` and `hugo-riveros-cv-es.pdf`.
+- Portrait: `public/images/hugo-riveros.png`; CSS framing in `app/globals.css`.
+- Palette and layout: CSS variables and component styles in `app/globals.css`.
+
+Write documentation and internal project information in English. Preserve Spanish
+where it serves the localized portfolio, CV or related test expectations.
+Do not publish unverified metrics or achievements. Keep both languages consistent
+and follow the [content maintenance guide](docs/content.md).
+
+## Documentation
+
+- [Agent instructions](AGENTS.md): the single entry point for project conventions
+  and the current structure.
+- [Architecture](docs/architecture.md): routes, components, appearance and hosting.
+- [Content](docs/content.md): translations, CVs, photography and sources.
+- [Tooling](docs/tooling.md): dependencies, compatibility and maintenance.
+- [Verification](docs/verification.md): checks, expected behavior and coverage.
+
+The project uses App Router and the standard Next.js hosting workflow. If the
+public domain changes, update `siteUrl` in `lib/profile.ts` for canonical URLs,
+language alternatives, robots and sitemap.

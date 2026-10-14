@@ -9,8 +9,10 @@ and contact information.
 
 The portfolio supports **English and Spanish**, with English as the default,
 an editorial graphite/terracotta design, light and dark appearance, and a matching
-CV download for each language. Contributions are summarized within work experience;
+CV download for each language. Contributions have concise references in experience
+and a dedicated editorial section with optional diagrams and expandable context;
 the About section adds personal context, capabilities, education and languages.
+The reading order is Hero → About → Experience → Contributions → Contact.
 
 ## Local development
 
@@ -79,12 +81,13 @@ app/
   sitemap.ts         public URLs and language alternatives
 components/
   layout/            header and footer
-  sections/          introduction, experience, about and contact
+  sections/          introduction, about, experience, contributions and contact
   theme/             appearance control
   ui/                shared interface elements
 content/
   en.ts, es.ts       localized copy
   career.ts          shared professional facts
+  contributions/     shared case contract, order and bilingual case records
   types.ts           content contract
 lib/                 locale, profile and initial-theme helpers
 public/
@@ -92,12 +95,14 @@ public/
   images/            original portrait
 tests/               browser user flows
 docs/                architecture, content, tooling and verification guidance
+.agents/skills/      repository-scoped contribution authoring skill
 ```
 
 ## Updating information
 
 - Copy: `content/en.ts` and `content/es.ts`.
 - Companies, ISO dates and official role titles: `content/career.ts`.
+- Contributions: `content/contributions/`; follow `docs/contributions/README.md`.
 - Contact details, social links, public domain and CV paths: `lib/profile.ts`.
 - CVs: `public/files/hugo-riveros-cv-en.pdf` and `hugo-riveros-cv-es.pdf`.
 - Portrait: `public/images/hugo-riveros.png`; CSS framing in `app/globals.css`.
@@ -108,12 +113,18 @@ where it serves the localized portfolio, CV or related test expectations.
 Do not publish unverified metrics or achievements. Keep both languages consistent
 and follow the [content maintenance guide](docs/content.md).
 
+Use `$add-contribution` in Codex to add or refine a professional contribution.
+The [repository skill](.agents/skills/add-contribution/SKILL.md) gathers missing
+context, organizes the complete case and follows the documented bilingual
+presentation standard. It respects content-review stages requested in the session.
+
 ## Documentation
 
 - [Agent instructions](AGENTS.md): the single entry point for project conventions
   and the current structure.
 - [Architecture](docs/architecture.md): routes, components, appearance and hosting.
 - [Content](docs/content.md): translations, CVs, photography and sources.
+- [Contributions](docs/contributions/README.md): adding cases, editorial standard and verification.
 - [Tooling](docs/tooling.md): dependencies, compatibility and maintenance.
 - [Verification](docs/verification.md): checks, expected behavior and coverage.
 

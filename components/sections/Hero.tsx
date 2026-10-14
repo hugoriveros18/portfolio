@@ -21,8 +21,8 @@ export function Hero({ text }: { text: PortfolioContent['hero'] }) {
             {text.contact}
             <Icon name="arrow-up-right" />
           </a>
-          <a className="text-link" href="#experience">
-            {text.experience}
+          <a className="text-link" href="#about">
+            {text.about}
             <Icon name="arrow-down" />
           </a>
         </div>

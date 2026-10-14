@@ -558,6 +558,211 @@ svg {
 .about {
   border-top: 1px solid var(--line);
 }
+.contribution-story {
+  padding-block: 36px;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 110px;
+}
+.contribution-story + .contribution-story {
+  margin-top: 38px;
+}
+.contribution-feature {
+  display: grid;
+  gap: 42px;
+  align-items: start;
+}
+.contribution-feature.has-diagram {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+}
+.contribution-overview h3 {
+  max-width: 700px;
+  margin-block: 14px 20px;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+}
+.contribution-summary {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.contribution-ownership {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+.contribution-impact {
+  margin-top: 26px;
+  border-left: 3px solid var(--accent);
+  padding-left: 18px;
+}
+.contribution-impact > p + p {
+  margin-top: 9px;
+  font-size: 0.88rem;
+}
+.contribution-diagram {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface);
+}
+.contribution-diagram > .eyebrow {
+  font-size: 0.58rem;
+  color: var(--muted);
+}
+.diagram-stages {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0;
+}
+.diagram-stage + .diagram-stage::before {
+  content: '';
+  display: block;
+  height: 23px;
+  width: 1px;
+  background: var(--line);
+  margin-inline: auto;
+}
+.diagram-nodes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.diagram-node {
+  padding: 14px 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.76rem;
+  overflow-wrap: anywhere;
+}
+.diagram-node:only-child {
+  grid-column: 1 / -1;
+}
+.diagram-node small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+.diagram-stage-emphasized .diagram-node {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-size: 1.2rem;
+  font-weight: 550;
+}
+.diagram-stage-emphasized small {
+  color: var(--accent);
+  font-weight: 400;
+}
+.contribution-diagram figcaption {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+.contribution-capabilities {
+  margin-top: 36px;
+}
+.capability-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 14px;
+}
+.capability-list > li {
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+}
+.capability-list h4 {
+  font-size: 1.08rem;
+}
+.capability-list p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+.contribution-details {
+  margin-top: 34px;
+}
+.contribution-details > .eyebrow {
+  margin-bottom: 14px;
+}
+.contribution-details details,
+.additional-contributions > details {
+  border-block-start: 1px solid var(--line);
+}
+.contribution-details details:last-child,
+.additional-contributions > details:last-child {
+  border-block-end: 1px solid var(--line);
+}
+.contribution-details summary,
+.additional-contributions > details > summary {
+  padding: 17px 2px;
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+.contribution-details details[open] > summary {
+  color: var(--text);
+}
+.contribution-detail-copy {
+  max-width: 850px;
+  padding: 0 2px 24px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.contribution-detail-copy p + p {
+  margin-top: 14px;
+}
+.contribution-references,
+.additional-contributions {
+  margin-top: 30px;
+}
+.contribution-references ul {
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+.contribution-references a {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+.additional-contributions > h3 {
+  margin-bottom: 18px;
+}
+.additional-contributions .contribution-story {
+  border-top: 0;
+  padding-top: 16px;
+}
+@media (max-width: 900px) {
+  .contribution-feature.has-diagram {
+    grid-template-columns: 1fr;
+  }
+  .contribution-diagram {
+    max-width: 620px;
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .contribution-story {
+    padding-block: 24px;
+  }
+  .contribution-feature {
+    gap: 28px;
+  }
+  .contribution-overview h3 {
+    font-size: 2rem;
+  }
+  .contribution-diagram {
+    padding: 18px;
+  }
+  .diagram-node {
+    padding: 13px 8px;
+  }
+  .capability-list {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
 .about .section-intro {
   grid-template-columns: 1fr;
 }

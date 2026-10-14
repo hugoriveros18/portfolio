@@ -69,6 +69,34 @@ for (const locale of ['en', 'es'] as const) {
     expect(errors).toEqual([])
   })
 
+  test(`${locale}: contributions explain the complete solution and support deeper reading`, async ({
+    page,
+  }) => {
+    await page.goto(`/${locale}#contribution-yunex`)
+    const contribution = page.locator('#contribution-yunex')
+    await expect(contribution).toBeVisible()
+    await expect(contribution.locator('.capability-list > li')).toHaveCount(3)
+    for (const name of locale === 'en'
+      ? ['Answers and incident investigation', 'Automated knowledge maintenance', 'Post-deployment monitoring']
+      : ['Consultas e investigación de incidentes', 'Mantenimiento automático del conocimiento', 'Monitoreo posterior al despliegue']) {
+      await expect(contribution.getByRole('heading', { name })).toBeVisible()
+    }
+    await expect(contribution.locator('.contribution-impact')).toContainText(
+      locale === 'en' ? 'Value for the team' : 'Valor para el equipo',
+    )
+    const incident = contribution.locator('details').last()
+    await expect(incident.locator('.contribution-detail-copy')).not.toBeVisible()
+    await incident.locator('summary').focus()
+    await page.keyboard.press('Enter')
+    await expect(incident.locator('.contribution-detail-copy')).toBeVisible()
+    await expect(incident).toContainText('VTEX')
+    await page.getByRole('link', {
+      name: locale === 'en' ? 'Leer en español' : 'Read in English',
+    }).click()
+    await expect(page).toHaveURL(new RegExp(`/${locale === 'en' ? 'es' : 'en'}#contribution-yunex$`))
+    await expect(page.locator('#contribution-yunex')).toBeVisible()
+  })
+
   test(`${locale}: metadata and sharing image match the selected language`, async ({
     page,
     request,
@@ -151,6 +179,11 @@ test('both languages remain readable and navigable without JavaScript', async ({
     await page.goto(`/${locale}`)
     await expect(page.locator('#hero-heading')).toBeVisible()
     await expect(page.locator('#experience-heading')).toBeVisible()
+    await expect(page.locator('#contributions-heading')).toBeVisible()
+    const incident = page.locator('#contribution-yunex-incident')
+    await incident.locator('summary').click()
+    await expect(incident.locator('.contribution-detail-copy')).toBeVisible()
+    await expect(incident).toContainText('VTEX')
     await expect(page.locator('#about-heading')).toBeVisible()
     await expect(page.locator('#contact-heading')).toBeVisible()
     const menu = page.locator('.mobile-navigation')

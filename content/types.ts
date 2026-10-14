@@ -1,8 +1,11 @@
+import type { ContributionsContent } from './contributions/types'
+
 export interface PortfolioContent {
   metadata: { title: string; description: string }
   navigation: {
     label: string
     experience: string
+    contributions: string
     about: string
     contact: string
     resume: string
@@ -21,7 +24,7 @@ export interface PortfolioContent {
     introduction: string
     description: string
     contact: string
-    experience: string
+    about: string
     portraitAlt: string
     portraitCaption: string
   }
@@ -46,6 +49,7 @@ export interface PortfolioContent {
       technologies: string[]
     }[]
   }
+  contributions: ContributionsContent
   about: {
     eyebrow: string
     title: string

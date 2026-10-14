@@ -1,5 +1,6 @@
 import type { PortfolioContent } from './types'
 import { companies, roles } from './career'
+import { contributionsEs } from './contributions/es'
 
 export const es: PortfolioContent = {
   metadata: {
@@ -10,6 +11,7 @@ export const es: PortfolioContent = {
   navigation: {
     label: 'Navegación principal',
     experience: 'Experiencia',
+    contributions: 'Contribuciones',
     about: 'Sobre mí',
     contact: 'Contacto',
     resume: 'Descargar CV',
@@ -30,7 +32,7 @@ export const es: PortfolioContent = {
     description:
       'Transformo las necesidades de un producto en soluciones bien pensadas, con atención a la usabilidad, el rendimiento y la mantenibilidad.',
     contact: 'Conversemos',
-    experience: 'Conoce mi experiencia',
+    about: 'Conoce más sobre mí',
     portraitAlt:
       'Hugo Riveros sonriendo con los brazos cruzados y una camiseta negra.',
     portraitCaption: 'Curiosidad para explorar. Criterio para construir.',
@@ -56,8 +58,8 @@ export const es: PortfolioContent = {
               'Desarrollé una experiencia de Apple Pay y Google Pay que abre el flujo nativo de la wallet directamente desde el checkout de VTEX, eliminando una pantalla intermedia.',
               'Reforcé el manejo de errores del conector e incorporé un límite de respuesta de 20 segundos para mitigar fallos que contribuyen a activar el modo de contingencia de VTEX.',
               'Desarrollé, mantuve y publiqué el plugin de pagos para WooCommerce, incluyendo la resolución de observaciones de la revisión oficial del WordPress Plugin Directory.',
-              'Creé Yunex, un asistente de la integración Yuno–VTEX que combina conocimiento técnico, código y logs de Datadog para investigar incidentes, responder consultas técnicas y revisar cambios.',
-              'Desarrollé monitoreo posterior al despliegue y actualizaciones automáticas de la base de conocimiento con skills y rutinas programadas en Claude, con notificaciones diarias en Slack. Utilicé Claude Code y equipos de agentes para investigar, planificar, implementar y documentar.',
+              'Creé Yunex para compartir conocimiento de la integración, apoyar investigaciones de incidentes y automatizar propuestas de actualización del conocimiento y reportes posteriores al despliegue. Conoce la contribución más abajo.',
+              'Utilicé Claude Code y equipos de agentes para investigar, planificar, implementar y documentar.',
               'Construí herramientas reutilizables para visualizar flujos de pago y generar documentación, amplié la documentación pública de los plugins y el conocimiento interno, y validé cambios con pruebas, revisión de código y verificaciones en staging y producción.',
             ],
           },
@@ -94,6 +96,18 @@ export const es: PortfolioContent = {
         ],
       },
     ],
+  },
+  contributions: {
+    eyebrow: 'De un problema a una capacidad compartida',
+    title: 'Contribuciones, en detalle.',
+    introduction:
+      'El contexto, las decisiones y el valor para el equipo detrás de aportes de los que me he hecho responsable.',
+    impactLabel: 'Valor para el equipo',
+    capabilitiesLabel: 'Lo que hizo posible la solución',
+    detailsLabel: 'Contexto, decisiones y validación',
+    moreLabel: 'Más contribuciones',
+    referencesLabel: 'Material de apoyo',
+    entries: contributionsEs,
   },
   about: {
     eyebrow: 'La persona detrás del trabajo',

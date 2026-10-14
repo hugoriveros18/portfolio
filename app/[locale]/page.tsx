@@ -3,8 +3,9 @@ import { notFound } from 'next/navigation'
 import { isLocale } from '@/lib/i18n'
 import { getContent } from '@/content'
 import { Hero } from '@/components/sections/Hero'
-import { Experience } from '@/components/sections/Experience'
 import { About } from '@/components/sections/About'
+import { Experience } from '@/components/sections/Experience'
+import { Contributions } from '@/components/sections/Contributions'
 import { Contact } from '@/components/sections/Contact'
 import { profile } from '@/lib/profile'
 
@@ -40,8 +41,9 @@ export default async function Portfolio({ params }: Props) {
   return (
     <main id="main-content" className="container" tabIndex={-1}>
       <Hero text={text.hero} />
-      <Experience text={text.experience} />
       <About text={text.about} />
+      <Experience text={text.experience} />
+      <Contributions text={text.contributions} />
       <Contact locale={locale} text={text.contact} />
     </main>
   )

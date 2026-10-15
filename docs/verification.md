@@ -50,6 +50,12 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
   Native disclosures explain purchase lookup, the separate session identifier,
   Yuno-managed 3DS and development validation. They remain usable without JavaScript;
   changing language preserves the case anchor.
+- **Additional case → subscription payments:** open the fourth case from its
+  native disclosure and directly through `#contribution-vtex-subscriptions`.
+  Language changes preserve the anchor and reveal the case. The two-phase
+  comparison distinguishes initial payment-method preparation from server-side
+  MIT renewals; technical details explain detection and cycle 0 as the first
+  recurrence after checkout. Verify keyboard access and reading without JavaScript.
 - **Education → learning:** Platzi describes continuing self-directed learning
   with a start date and a localized present/current label.
 - **Control → appearance:** switching, reloading and navigating between languages
@@ -72,7 +78,8 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
 
 `tests/portfolio.spec.ts` covers default-language routing, localized profiles,
 actual downloads and byte checks, metadata/sharing images, theme persistence,
-language changes, contribution capabilities and detail reading, unavailable storage, JavaScript-disabled navigation, mobile
+language changes, contribution capabilities and detail reading, additional-case
+keyboard access and deep links, unavailable storage, JavaScript-disabled navigation, mobile
 navigation, keyboard access, reduced motion, responsive widths and invalid routes.
 The mobile-menu case is intentionally skipped in the desktop project and runs
 in the mobile project.

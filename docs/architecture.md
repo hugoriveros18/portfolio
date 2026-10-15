@@ -65,7 +65,12 @@ locks page scrolling. A compact caption header shares its row with an SVG close
 control; the control keeps a localized accessible label and a 44 px click target.
 Without JavaScript, image links still reach the original.
 The first three entries in the shared editorial order are featured;
-additional entries remain accessible through native disclosures. Context and
+additional entries remain accessible through native disclosures. Browser fragment
+navigation reveals an enclosing disclosure when targeting a case inside it,
+including direct visits without JavaScript. Additional-case disclosures use
+`suppressHydrationWarning` only on their outer `details` element because the
+browser may set `open` before React hydrates; native disclosure state remains
+browser-managed. Context and
 validation use native `details/summary` without client-side state. Neither case
 reading nor expanding detail requires JavaScript. Supporting documentation links
 are optional and open in a new tab, announced in the selected language.

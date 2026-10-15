@@ -105,7 +105,8 @@ export function Contributions({ text }: { text: ContributionsContent }) {
         <div className="additional-contributions">
           <h3>{text.moreLabel}</h3>
           {additional.map((entry) => (
-            <details key={entry.id}>
+            // Fragment navigation can open this native disclosure before hydration.
+            <details key={entry.id} suppressHydrationWarning>
               <summary>{entry.name} · {entry.company} — {entry.headline}</summary>
               <ContributionStory entry={entry} text={text} />
             </details>

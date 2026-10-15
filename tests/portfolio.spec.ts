@@ -97,6 +97,44 @@ for (const locale of ['en', 'es'] as const) {
     await expect(page.locator('#contribution-yunex')).toBeVisible()
   })
 
+  test(`${locale}: additional contributions support keyboard reading and localized deep links`, async ({
+    page,
+  }) => {
+    const errors: string[] = []
+    page.on('pageerror', (error) => errors.push(error.message))
+    page.on('console', (message) => {
+      if (message.type() === 'error') errors.push(message.text())
+    })
+    await page.goto(`/${locale}#contributions`)
+    const disclosure = page.locator('.additional-contributions > details').first()
+    const summary = disclosure.locator(':scope > summary')
+    const story = page.locator('#contribution-vtex-subscriptions')
+    await expect(disclosure).not.toHaveAttribute('open', '')
+    await expect(story).not.toBeVisible()
+    await summary.focus()
+    await page.keyboard.press('Enter')
+    await expect(story.getByRole('heading', { level: 3 })).toBeVisible()
+    const detection = story.locator('details[id$="-cycle-detection"]')
+    await detection.locator('summary').focus()
+    await page.keyboard.press('Enter')
+    await expect(detection.locator('.contribution-detail-copy')).toBeVisible()
+    await expect(detection).toContainText(locale === 'en' ? 'cycle 0' : 'ciclo 0')
+    await summary.focus()
+    await page.keyboard.press('Enter')
+    await expect(story).not.toBeVisible()
+
+    await page.goto(`/${locale}#contribution-vtex-subscriptions`)
+    await expect(disclosure).toHaveAttribute('open', '')
+    await expect(story.getByRole('heading', { level: 3 })).toBeVisible()
+    await page.getByRole('link', {
+      name: locale === 'en' ? 'Leer en español' : 'Read in English',
+    }).click()
+    await expect(page).toHaveURL(new RegExp(`/${locale === 'en' ? 'es' : 'en'}#contribution-vtex-subscriptions$`))
+    await expect(disclosure).toHaveAttribute('open', '')
+    await expect(story.getByRole('heading', { level: 3 })).toBeVisible()
+    expect(errors).toEqual([])
+  })
+
   test(`${locale}: the wallet contribution opens images in a modal and documentation in a new tab`, async ({
     page,
     context,
@@ -290,6 +328,13 @@ test('both languages remain readable and navigable without JavaScript', async ({
     await paymentFlow.locator('summary').click()
     await expect(paymentFlow.locator('.contribution-diagram')).toBeVisible()
     await expect(page.locator('#contribution-wallet-enhanced-experience .gallery-images img')).toHaveCount(3)
+    await page.goto(`/${locale}#contribution-vtex-subscriptions`)
+    const subscription = page.locator('#contribution-vtex-subscriptions')
+    await expect(subscription.getByRole('heading', { level: 3 })).toBeVisible()
+    const cycles = subscription.locator('details[id$="-cycle-detection"]')
+    await cycles.locator('summary').click()
+    await expect(cycles.locator('.contribution-detail-copy')).toBeVisible()
+    await expect(cycles).toContainText('subscription')
     await expect(page.locator('#about-heading')).toBeVisible()
     await expect(page.locator('#contact-heading')).toBeVisible()
     const menu = page.locator('.mobile-navigation')

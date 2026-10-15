@@ -44,6 +44,12 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
   and page scroll locking. Captions, controls and alternative text follow the
   selected language. Without JavaScript the image links still reach the originals.
   Yuno and VTEX documentation opens in new tabs, keeping the portfolio open.
+- **Multi-seller case → sequential flow:** the third featured contribution explains
+  shared antifraud context and server-side processing as two visible capabilities.
+  Its diagram describes one suborder at a time and cancellation if the first fails.
+  Native disclosures explain purchase lookup, the separate session identifier,
+  Yuno-managed 3DS and development validation. They remain usable without JavaScript;
+  changing language preserves the case anchor.
 - **Education → learning:** Platzi describes continuing self-directed learning
   with a start date and a localized present/current label.
 - **Control → appearance:** switching, reloading and navigating between languages

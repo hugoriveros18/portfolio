@@ -19,8 +19,9 @@ duplicate its rules in another template.
 
 Inspect `content/contributions/types.ts` and the relevant case notes. When
 preparing public content, also inspect the current bilingual records and shared
-renderer. Use Yunex as an example when helpful, rather than requiring future cases
-to involve AI, payment technology, Slack or the same number of capabilities.
+renderer and existing visual components. Use the relevant example: Yunex for a
+multi-capability tool, or the wallet case for a changed journey and cross-component
+integration. Neither defines required technologies or a fixed capability count.
 
 ## Gather and organize the contribution
 
@@ -31,6 +32,9 @@ to involve AI, payment technology, Slack or the same number of capabilities.
   the complete solution, key decisions, validation and team/business value.
   Check for maintenance, automation and operational work that a short description
   might miss. Do not reduce a multi-purpose contribution to its best-known feature.
+- When behavior changes, clarify the before/after sequence and ambiguous outcomes
+  using the workflow's intake guidance. Confirm ownership by component and separate
+  the initial delivery, later enhancements and reuse by others where relevant.
 - Update `docs/contributions/<id>.md` with confirmed facts, qualitative observations
   and unresolved details. Distinguish delivered capabilities, observed outcomes
   and intended benefits. Do not infer metrics, guarantees or exclusive ownership.
@@ -47,7 +51,10 @@ to involve AI, payment technology, Slack or the same number of capabilities.
 Follow the workflow's content contract and existing page order. Present the
 overview, ownership, value for the team and every substantial capability visibly;
 put deeper context, decisions, validation and examples in the shared disclosures.
-Use a diagram only when it clarifies the contribution.
+Separate background supplied for understanding from public copy; retain details
+that explain the problem, decisions or value. Choose comparisons, diagrams or
+screenshots according to what they clarify, following the workflow's visual
+criteria and reusing the current components and gallery behavior.
 
 Maintain the shared case identifier and editorial order, populate both language
 records, and align nested identifiers across English and Spanish. Optional

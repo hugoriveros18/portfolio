@@ -31,8 +31,10 @@ than requiring the owner to complete a long questionnaire at once.
 | Area | Information to establish |
 | --- | --- |
 | Context | The problem, affected users and what happened before the contribution. |
-| Ownership | What Hugo initiated, designed, implemented or coordinated; what the team or an existing platform supplied. |
+| Ownership | Who initiated the objective; what Hugo designed, implemented or coordinated in each relevant component; what the team or an existing platform supplied. |
+| Behavior | When a journey or workflow changed, its before/after sequence, actors, handoffs and the outcome reached at each important step. |
 | Complete scope | Every meaningful capability, audience, access channel and supporting workflow. Check automation, maintenance and operational work as well as user-facing features. |
+| Delivery and evolution | What shipped initially, what was added later, how adoption worked and what others reused or built on top. |
 | Decisions | Alternatives, constraints, selection criteria and important tradeoffs. |
 | Validation | How behavior was checked, how uncertainty or failure was handled and who reviewed or refined the work. |
 | Value | What changed for users, the team or the company; distinguish observed changes from intended benefits. Qualitative outcomes are valid. |
@@ -43,6 +45,19 @@ Do not require exact dates, numerical metrics or original screenshots to explain
 a completed contribution. Do not ask again for facts already provided. Keep
 unresolved details in working notes and omit unsupported public claims.
 
+For a changed journey, distinguish user actions from system operations and clarify
+what each step actually produces. Ask about ambiguous terms before using them in
+public copy: launching an interaction, generating a token and creating a payment
+were separate events in the wallet case. Preserve that distinction when simplifying
+the narrative. Request only the detail needed for an accurate explanation.
+
+For work across multiple components, establish ownership for each significant
+part rather than assuming that frontend ownership includes backend changes.
+Distinguish initiating the product objective from designing and implementing the
+solution. Keep later enhancements within the same case when appropriate, while
+making their sequence clear without requiring exact dates. Attribute reuse by
+other teams or merchants separately from Hugo's own implementation.
+
 ## Organize and review
 
 1. Create or update `docs/contributions/<id>.md` in English. Separate confirmed
@@ -52,8 +67,8 @@ unresolved details in working notes and omit unsupported public claims.
 3. Write a short overview and a team/business value statement. Describe delivered
    capabilities and observed benefits precisely; do not invent revenue, incident
    reductions, time savings, accuracy or token savings.
-4. Identify diagrams that clarify the actual solution. They are optional; prefer
-   text, HTML or SVG when appropriate. Do not create mock logs, fake screenshots
+4. Select supporting visuals using the criteria below. Prefer existing components
+   and text, HTML or SVG when appropriate. Do not create mock logs, fake screenshots
    or fabricated testimonials.
 5. Review the organized narrative with the owner before integrating a new case
    when the session calls for a content-review stage. Preserve authorization and
@@ -63,6 +78,34 @@ Public case copy can state the owner's firsthand professional account directly.
 Do not append a generic warning that screenshots, records or other evidence are
 unavailable. Add genuine supporting material when available. Retain factual limits
 in working notes, and keep the published wording within what the owner can support.
+
+Treat explanatory background and public narrative as separate editorial choices.
+Include a detail when it helps readers understand the problem, ownership, a
+decision or the resulting value. Keep incidental platform context and explanatory
+analogies in working notes when they do not serve that purpose. Simplification
+must preserve the technical meaning and delivery sequence.
+
+## Choose supporting visuals
+
+| Reader's question | Suitable presentation |
+| --- | --- |
+| What changed for the user or team? | Before/after paths showing the meaningful interaction or workflow change. |
+| How do the parts cooperate? | A stage/node diagram, inside technical detail when the overview does not need it. |
+| What did the delivered interface look like? | Selected real screenshots with localized captions and alternative text. |
+| Is another visual needed? | Use text alone when a visual would repeat the explanation without adding clarity. |
+
+Choose complementary material rather than explaining the same point repeatedly.
+Yunex illustrates distinct capabilities and operational workflows; the wallet case
+combines an interaction comparison, a deeper integration sequence and real UI
+examples. These are references for judgment, not mandatory templates.
+
+Inspect available images before choosing them: check legibility, intrinsic
+resolution and how much detail remains visible on desktop and mobile. Reuse
+`ContributionComparison`, `ContributionDiagram`, `ContributionGallery` and
+`ContributionImageLightbox` where suitable. Preserve the gallery's caption header,
+SVG close control, accessible interactions and original-image fallback. Apply the
+existing per-image width option when enlargement reduces clarity; add a new
+presentation only when the current components cannot explain the case effectively.
 
 ## Add or update a case
 
@@ -112,6 +155,10 @@ Run lint, type checking, a production build and relevant browser flows as descri
 in README. Review English and Spanish in light/dark appearance, desktop/mobile,
 and with JavaScript disabled. Check navigation, disclosure keyboard access, stable
 anchors, optional material, company attribution and the full capability inventory.
+Check that visible summaries, technical detail and both translations describe
+the same behavior, component ownership and delivery phases. When a gallery is
+present, review image legibility, modal controls, focus restoration and localized
+labels; check that supporting documentation opens separately from the portfolio.
 When the list grows past three entries, check access to the additional cases.
 
 ## Case material
@@ -120,6 +167,7 @@ When the list grows past three entries, check access to the additional cases.
 | --- | --- | --- |
 | Yunex | [Working notes](yunex.md) | Integrated in both languages. |
 | Direct wallet checkout on VTEX | [Source notes](wallet-enhanced-experience.md) | Integrated in both languages, including the flow comparison, technical detail and original screenshots. |
+| Multi-seller card payments on VTEX | [Source notes](vtex-split-orders.md) | Integrated in both languages with the sequential flow, shared antifraud context, connector ownership and Yuno-managed 3DS. |
 
 ## Repository skill
 

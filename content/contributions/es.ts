@@ -372,6 +372,101 @@ const contributions: Record<ContributionId, ProfessionalContribution> = {
       },
     ],
   },
+  'vtex-subscriptions': {
+    name: 'VTEX Subscriptions',
+    company: companies.yuno.name,
+    headline: 'Pagos recurrentes más allá de la primera compra.',
+    summary:
+      'Implementé el soporte de VTEX Subscriptions en el Conector de Pagos de Yuno. La primera compra con tarjeta preparaba el método de pago en el PSP para su uso posterior; las siguientes órdenes se identificaban y procesaban desde el servidor como pagos iniciados por el comercio (MIT), sin requerir la presencia del comprador ni que VTEX enviara el CVV.',
+    ownership: 'Conector de Pagos · Preparación del pago inicial · Procesamiento de recurrencias',
+    impact:
+      'La implementación resolvió los fallos de pago de suscripciones de un merchant que había migrado a Yuno y estaba viendo canceladas sus órdenes recurrentes. También amplió las capacidades del plugin para comercios actuales y potenciales que ofrecieran compras recurrentes.',
+    capabilities: [
+      {
+        id: 'initial-preparation',
+        title: 'Preparar la primera compra para las recurrencias',
+        description:
+          'La compra inicial utilizaba el flujo normal del checkout y el Payment App mientras la integración indicaba a Yuno y al PSP que almacenaran el método de pago para los siguientes cobros iniciados por el comercio.',
+      },
+      {
+        id: 'recurring-processing',
+        title: 'Identificar y procesar los ciclos recurrentes',
+        description:
+          'El contexto de suscripción y la información del ciclo enviados por VTEX dirigían las órdenes posteriores a un flujo de pago desde el servidor. La preparación del método permitía esos cobros sin una nueva interacción en el navegador ni CVV.',
+      },
+    ],
+    comparison: {
+      caption: 'Dos fases · ciclo de pagos de una suscripción',
+      paths: [
+        {
+          id: 'initial-purchase',
+          title: 'Compra inicial · comprador presente',
+          steps: [
+            'Elegir los productos de suscripción y la periodicidad',
+            'Completar el pago con tarjeta mediante el checkout y el Payment App',
+            'Preparar el método de pago en el PSP para futuros cobros MIT',
+          ],
+        },
+        {
+          id: 'recurring-cycle',
+          title: 'Siguientes ciclos · comprador ausente',
+          emphasized: true,
+          steps: [
+            'VTEX genera una orden recurrente',
+            'El conector identifica el ciclo de suscripción',
+            'Crear un pago MIT desde el servidor con los datos de la tarjeta, sin CVV',
+          ],
+        },
+      ],
+      description:
+        'VTEX programa las siguientes órdenes con la periodicidad elegida. La preparación del método en el PSP durante la primera compra permite los cobros recurrentes mediante Yuno.',
+    },
+    details: [
+      {
+        id: 'context',
+        title: 'Restablecer las compras recurrentes tras la migración de un merchant',
+        paragraphs: [
+          'Un merchant que ya utilizaba VTEX Subscriptions migró a Yuno y encontró que las órdenes posteriores de suscripción no se procesaban correctamente y eran canceladas. Resolverlo se convirtió en un requerimiento urgente de integración.',
+          'La compra inicial funcionaba con el flujo existente de pagos con tarjeta. Los siguientes ciclos llegaban sin una sesión activa del comprador en el navegador y VTEX omitía el CVV de la tarjeta. Implementé el soporte del conector para preparar el primer pago para su uso posterior y procesar las recurrencias directamente desde el servidor.',
+        ],
+      },
+      {
+        id: 'cycle-detection',
+        title: 'Identificar un ciclo de suscripción',
+        paragraphs: [
+          'Los datos de autorización de VTEX incluían interaction con el valor “subscription” e información sobre el número de ciclo. En este flujo, el ciclo 0 identificaba la primera orden recurrente posterior a la compra inicial; los siguientes ciclos incrementaban ese número.',
+          'La ausencia de CVV era una señal adicional dentro del flujo de suscripciones de VTEX. Estos indicadores permitían al conector distinguir el procesamiento recurrente del pago inicial en el checkout.',
+        ],
+      },
+      {
+        id: 'stored-credentials',
+        title: 'Preparar y utilizar el método de pago para cobros MIT',
+        paragraphs: [
+          'Durante la primera compra, la integración indicaba a Yuno y al PSP que almacenaran el método de pago para futuras transacciones iniciadas por el comercio. La referencia quedaba almacenada en el PSP.',
+          'En las órdenes posteriores, VTEX seguía enviando la información de la tarjeta sin CVV. Con el método preparado para este uso, el PSP podía procesar el pago MIT mediante Yuno sin requerir una nueva sesión del comprador ni otro paso de validación antifraude en el navegador dentro de esta integración.',
+          'Mi trabajo conectó la preparación del pago inicial y el procesamiento de las órdenes recurrentes en el Conector de Pagos. VTEX aportaba la programación de las suscripciones y los datos de autorización; Yuno y el PSP aportaban el procesamiento con credenciales almacenadas.',
+        ],
+      },
+      {
+        id: 'validation',
+        title: 'Probar los siguientes ciclos sin esperar a la fecha programada',
+        paragraphs: [
+          'Habilité Subscriptions en la cuenta de desarrollo de Yuno en VTEX, creé planes y los asocié a productos. En la tienda de prueba seleccioné productos con suscripción y su periodicidad y completé la compra inicial.',
+          'Para validar los ciclos posteriores sin esperar a sus fechas programadas, generé las órdenes recurrentes mediante las APIs de VTEX y comprobé que sus pagos se crearan correctamente desde el servidor.',
+        ],
+      },
+    ],
+    references: [
+      {
+        label: 'Yuno · Soporte de suscripciones y pagos recurrentes en VTEX',
+        href: 'https://docs.y.uno/docs/plugins/vtex/faqs#does-yuno-support-vtex-subscriptions-recurring-payments',
+      },
+      {
+        label: 'VTEX · Cómo funcionan las suscripciones',
+        href: 'https://help.vtex.com/docs/tutorials/how-subscriptions-work',
+      },
+    ],
+  },
 }
 
 export const contributionsEs = contributionIds.map((id) => ({ id, ...contributions[id] }))

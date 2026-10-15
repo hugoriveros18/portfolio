@@ -104,6 +104,12 @@ the shared purchase lookup, antifraud session context, first-suborder cancellati
 Yuno-managed 3DS, development validation and marketplace outcome. Keep the session
 identifier distinct from the purchase reference and preserve connector attribution.
 
+The [VTEX subscription case](contributions/vtex-subscriptions.md) is the fourth
+entry under the additional-contributions disclosure. Its two-phase comparison
+shows initial PSP preparation and later server-side MIT payments. Preserve cycle 0
+as the first recurrence after the initial purchase, and keep the VTEX subscription
+context, PSP stored-method handling and connector implementation distinct.
+
 The [Yunex contribution notes](contributions/yunex.md) organize the owner's
 firsthand account, decisions, validation, evidence limits and conceptual diagrams.
 These working notes are not rendered by the website. Supporting artifacts are

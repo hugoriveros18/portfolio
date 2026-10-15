@@ -372,6 +372,101 @@ const contributions: Record<ContributionId, ProfessionalContribution> = {
       },
     ],
   },
+  'vtex-subscriptions': {
+    name: 'VTEX Subscriptions',
+    company: companies.yuno.name,
+    headline: 'Subscription payments beyond the first purchase.',
+    summary:
+      'I implemented VTEX Subscriptions support in Yuno’s Payment Connector. The first card purchase prepared the payment method at the PSP for later use; subsequent orders were recognized and processed server-side as merchant-initiated payments (MIT), without requiring the shopper to be present or VTEX to send a CVV.',
+    ownership: 'Payment Connector · Initial-payment preparation · Recurring-payment processing',
+    impact:
+      'The delivery resolved subscription-payment failures for a merchant that had moved to Yuno and was seeing recurring orders cancelled. It also expanded the plugin’s capabilities for existing and prospective merchants offering recurring purchases.',
+    capabilities: [
+      {
+        id: 'initial-preparation',
+        title: 'Prepare the first purchase for renewals',
+        description:
+          'The initial purchase used the normal checkout and Payment App flow while the integration instructed Yuno and the PSP to retain the payment method for subsequent merchant-initiated charges.',
+      },
+      {
+        id: 'recurring-processing',
+        title: 'Recognize and process recurring cycles',
+        description:
+          'VTEX’s subscription context and cycle information directed later orders to a server-side payment path. The stored-method setup enabled those charges without a new browser interaction or CVV.',
+      },
+    ],
+    comparison: {
+      caption: 'Two phases · subscription payment lifecycle',
+      paths: [
+        {
+          id: 'initial-purchase',
+          title: 'Initial purchase · shopper present',
+          steps: [
+            'Choose subscription products and frequency',
+            'Complete the card payment through checkout and the Payment App',
+            'Prepare the payment method at the PSP for future MIT charges',
+          ],
+        },
+        {
+          id: 'recurring-cycle',
+          title: 'Later cycles · shopper absent',
+          emphasized: true,
+          steps: [
+            'VTEX generates a recurring order',
+            'The connector recognizes the subscription cycle',
+            'Create a server-side MIT payment with card data, without CVV',
+          ],
+        },
+      ],
+      description:
+        'VTEX schedules later orders at the chosen frequency. The PSP setup from the initial purchase enables recurring charges through Yuno.',
+    },
+    details: [
+      {
+        id: 'context',
+        title: 'Restoring recurring purchases after a merchant migration',
+        paragraphs: [
+          'A merchant already using VTEX Subscriptions moved to Yuno and found that subsequent subscription orders were not processing correctly and were being cancelled. Resolving the issue became an urgent integration requirement.',
+          'The initial purchase worked through the existing card-payment flow. Later cycles arrived without an active shopper browser session, and VTEX omitted the card’s CVV. I implemented the connector support needed to prepare the first payment for future use and process renewals directly on the server.',
+        ],
+      },
+      {
+        id: 'cycle-detection',
+        title: 'Identifying a subscription cycle',
+        paragraphs: [
+          'VTEX’s authorization data included interaction with the value “subscription” and information about the cycle number. In this flow, cycle 0 identified the first recurring order after the initial purchase, with subsequent cycles incrementing that number.',
+          'The absence of CVV was an additional signal within the VTEX subscription flow. These indicators allowed the connector to distinguish the recurring-payment path from the initial checkout payment.',
+        ],
+      },
+      {
+        id: 'stored-credentials',
+        title: 'Preparing and using the payment method for MIT charges',
+        paragraphs: [
+          'During the first purchase, the integration instructed Yuno and the PSP to retain the payment method for later merchant-initiated transactions. The reference was held at the PSP.',
+          'For later orders, VTEX continued sending card information without CVV. With the stored-method setup, the PSP could process the MIT payment through Yuno without requiring another shopper browser session or browser-based antifraud step in this integration.',
+          'My work connected initial-payment preparation and recurring-order processing in the Payment Connector. VTEX supplied the subscription scheduling and authorization metadata; Yuno and the PSP supplied stored-credential processing.',
+        ],
+      },
+      {
+        id: 'validation',
+        title: 'Testing later cycles without waiting for the schedule',
+        paragraphs: [
+          'I enabled Subscriptions in Yuno’s VTEX development account, created plans and associated them with products. In the test store, I selected subscription products and recurrence options and completed the initial purchase.',
+          'To validate subsequent cycles without waiting for their scheduled dates, I triggered recurring orders through VTEX APIs and checked that their payments were created correctly on the server.',
+        ],
+      },
+    ],
+    references: [
+      {
+        label: 'Yuno · VTEX subscription and recurring-payment support',
+        href: 'https://docs.y.uno/docs/plugins/vtex/faqs#does-yuno-support-vtex-subscriptions-recurring-payments',
+      },
+      {
+        label: 'VTEX · How subscriptions work',
+        href: 'https://help.vtex.com/docs/tutorials/how-subscriptions-work',
+      },
+    ],
+  },
 }
 
 export const contributionsEn = contributionIds.map((id) => ({ id, ...contributions[id] }))

@@ -97,6 +97,172 @@ const contributions: Record<ContributionId, ProfessionalContribution> = {
       },
     ],
   },
+  'wallet-enhanced-experience': {
+    name: 'Enhanced wallet checkout',
+    company: companies.yuno.name,
+    headline: 'Wallet payments, directly in checkout.',
+    summary:
+      'I designed and implemented the checkout extension and Payment Connector changes that brought Apple Pay, Google Pay and Samsung Pay directly into VTEX’s payment step. Shoppers could open their wallet without an intermediate Payment App screen, and merchants chose when to enable the experience. I later extended it with installments.',
+    ownership: 'Technical design · Checkout application · Payment Connector',
+    impact:
+      'Shoppers gained a more direct wallet experience. Yuno could offer merchants an additional integration option, which was positively received and adopted by some stores. Supporting connector capabilities also enabled reuse in merchant-controlled frontends and mobile applications.',
+    capabilities: [
+      {
+        id: 'direct-checkout',
+        title: 'Direct entry, optional adoption',
+        description:
+          'The selected wallet’s button appeared inside checkout, replacing the generic pay action for that flow. Merchants enabled it through configuration, while stores keeping their existing setup continued using the earlier experience.',
+      },
+      {
+        id: 'installments',
+        title: 'Installments as the next step',
+        description:
+          'After delivering direct wallet buttons, I added the changes needed to support installment payments. The checkout could show available plans and financing details alongside the wallet payment action.',
+      },
+      {
+        id: 'connector',
+        title: 'Reusable payment integration',
+        description:
+          'I connected wallet tokenization to VTEX authorization through the Payment Connector. The exposed capabilities also supported merchants implementing their own checkout or mobile interfaces.',
+      },
+    ],
+    comparison: {
+      caption: 'Shopper journey · conceptual comparison',
+      paths: [
+        {
+          id: 'previous',
+          title: 'Previous experience',
+          steps: [
+            'Select a wallet',
+            'Press VTEX’s generic pay button',
+            'Open the intermediate Payment App',
+            'Press the wallet’s pay button',
+            'Confirm inside the wallet',
+          ],
+        },
+        {
+          id: 'enhanced',
+          title: 'Enhanced experience',
+          emphasized: true,
+          steps: [
+            'Select a wallet',
+            'Press its button inside checkout',
+            'Confirm inside the wallet',
+          ],
+        },
+      ],
+      description:
+        'The change removes the intermediate screen and an additional payment-launch action. Confirmation inside the wallet remains part of the flow.',
+    },
+    gallery: {
+      title: 'The experience in checkout',
+      description: 'Delivered interfaces showing direct wallet entry and installment selection.',
+      images: [
+        {
+          id: 'google-pay',
+          src: '/images/contributions/wallet-checkout/google-pay-1.avif',
+          width: 684,
+          height: 323,
+          modalMaxWidth: 718,
+          alt: 'Google Pay selected in VTEX, with its payment button embedded in the payment-method area. Original interface in Portuguese.',
+          caption: 'Google Pay: open the wallet from the checkout payment step.',
+        },
+        {
+          id: 'apple-pay',
+          src: '/images/contributions/wallet-checkout/apple-pay-3.avif',
+          width: 1364,
+          height: 990,
+          alt: 'Apple Pay checkout showing a four-installment plan, financing details and the Apple Pay button. Original interface in Portuguese.',
+          caption: 'Apple Pay: installment selection and financing details.',
+        },
+        {
+          id: 'samsung-pay',
+          src: '/images/contributions/wallet-checkout/samsung-pay-1.avif',
+          width: 693,
+          height: 714,
+          alt: 'Samsung Pay checkout with an installment selector, financing details and its payment button. Original interface in Portuguese.',
+          caption: 'Samsung Pay: the enhanced experience with installments.',
+        },
+      ],
+    },
+    details: [
+      {
+        id: 'context',
+        title: 'The problem and my contribution',
+        paragraphs: [
+          'Product wanted to improve a fragmented wallet experience: shoppers pressed VTEX’s generic pay button, waited for Yuno’s Payment App and then pressed another button to open the wallet.',
+          'VTEX controlled the checkout core and payment sequence. Drawing on checkout customizations I had implemented at ITGlobers, I identified a viable approach using VTEX’s checkout-script extension mechanism.',
+          'I designed and built the injected application and supporting Payment Connector changes and endpoints. The application detected wallet selection, hid the generic VTEX button and rendered the wallet’s button within its payment-method area.',
+        ],
+      },
+      {
+        id: 'payment-flow',
+        title: 'How wallet interaction connects to payment creation',
+        paragraphs: [
+          'Completing the wallet interaction generated a One Time Token (OTT) through Yuno’s SDK. At that stage the payment had not been created. The application sent the token to the Payment Connector, which stored it in VBase.',
+          'The application then initiated VTEX authorization. When VTEX called the connector, it retrieved the OTT and used it to create the payment in Yuno and return the resulting status. Rejected payments kept the shopper at the payment step; successful payments proceeded to Order Placed.',
+        ],
+        diagram: {
+          caption: 'Technical flow · tokenization before payment creation',
+          stages: [
+            {
+              id: 'tokenize',
+              nodes: [{ title: 'Wallet interaction → OTT', description: 'Yuno’s SDK generates the token; no payment exists yet.' }],
+            },
+            {
+              id: 'store',
+              nodes: [{ title: 'Application → Payment Connector', description: 'The connector stores the OTT in VBase.' }],
+            },
+            {
+              id: 'authorize',
+              nodes: [{ title: 'VTEX authorization → Payment Connector', description: 'The connector retrieves the OTT.' }],
+            },
+            {
+              id: 'create-payment',
+              emphasized: true,
+              nodes: [{ title: 'Create payment in Yuno', description: 'Return its status to VTEX and continue checkout.' }],
+            },
+          ],
+          description:
+            'Wallet interaction happens earlier in checkout, while payment creation remains part of the connector’s response to VTEX authorization.',
+        },
+      },
+      {
+        id: 'evolution',
+        title: 'Compatibility and the installment extension',
+        paragraphs: [
+          'Each merchant could opt in through a small checkout configuration. The previous Payment App flow continued to work for stores that kept their existing setup, making adoption a choice rather than a forced migration.',
+          'The initial delivery focused on direct wallet buttons. In a subsequent phase, I implemented the changes required for installment payments. Both phases formed part of the same contribution.',
+        ],
+      },
+      {
+        id: 'validation',
+        title: 'Validation and merchant adoption',
+        paragraphs: [
+          'I tested the different wallets in Yuno’s VTEX development account, covering approved and rejected payments and error scenarios. During development, I added and inspected Datadog logs to trace the data flow and identify failures at different steps.',
+          'Merchants welcomed the additional integration option, and some migrated to it. The improvement was visible in the interaction itself: shoppers reached their wallet directly from the checkout payment step.',
+        ],
+      },
+      {
+        id: 'headless',
+        title: 'Beyond the native VTEX checkout',
+        paragraphs: [
+          'The connector changes and endpoints also enabled merchants to reuse the integration in headless frontends and mobile applications communicating with VTEX through its APIs.',
+          'Those merchants controlled their own interface and implementation instead of injecting the native-checkout script. My contribution was the supporting integration capability; the merchant teams built their own applications and UI.',
+        ],
+      },
+    ],
+    references: [
+      {
+        label: 'Yuno · Wallet enhanced experience',
+        href: 'https://docs.y.uno/docs/plugins/vtex/apple-pay-google-pay-enhanced-experience',
+      },
+      {
+        label: 'VTEX · Payment App integration model',
+        href: 'https://developers.vtex.com/docs/guides/payments-integration-payment-app',
+      },
+    ],
+  },
 }
 
 export const contributionsEn = contributionIds.map((id) => ({ id, ...contributions[id] }))

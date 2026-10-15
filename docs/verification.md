@@ -36,6 +36,14 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
   The outcome describes team value. Context, decisions, evaluation and the incident
   example expand with native controls and remain usable without JavaScript.
   Case anchors remain valid when switching languages.
+- **Wallet case → visual evidence:** the direct-wallet case compares the shopper
+  journeys, explains later installment support and exposes the OTT/VBase sequence
+  inside a native disclosure. Three original AVIF screenshots load through image
+  optimization and open at full size in a modal on the same page. Check Escape,
+  the close button, backdrop dismissal, keyboard containment, focus restoration
+  and page scroll locking. Captions, controls and alternative text follow the
+  selected language. Without JavaScript the image links still reach the originals.
+  Yuno and VTEX documentation opens in new tabs, keeping the portfolio open.
 - **Education → learning:** Platzi describes continuing self-directed learning
   with a start date and a localized present/current label.
 - **Control → appearance:** switching, reloading and navigating between languages
@@ -67,6 +75,15 @@ Use browser inspection for editorial details such as attribution, wording and
 visual density. Check documentation links and confirm instructions describe the
 current files. Dependency audit guidance and active compatibility constraints are
 in `tooling.md`.
+
+## Browser extensions and hydration
+
+If a hydration warning identifies an extra `cz-shortcut-listen="true"` attribute
+on `body`, check ColorZilla's access to the local site. This extension-injected
+attribute is documented in the [Next.js issue tracker](https://github.com/vercel/next.js/issues/72031).
+Disable the extension for localhost and reload, or reproduce in a clean browser
+profile. Keep application hydration diagnostics enabled rather than suppressing
+all mismatches on `body`.
 
 ## Limits
 

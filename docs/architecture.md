@@ -56,10 +56,19 @@ JavaScript observing scroll. Full content dictionaries are not sent to the clien
 the header receives only its labels.
 
 Contributions are rendered from typed records, with optional generic stage/node
-diagrams. The first three entries in the shared editorial order are featured;
+diagrams, before/after path comparisons and screenshot galleries. Technical
+diagrams can sit inside detail disclosures. Galleries use `next/image` for
+thumbnails. A small `ContributionImageLightbox` client boundary opens each unchanged
+original in a native modal dialog, with Escape, a close control, backdrop dismissal
+and focus restoration. The background is inert while the dialog is open and CSS
+locks page scrolling. A compact caption header shares its row with an SVG close
+control; the control keeps a localized accessible label and a 44 px click target.
+Without JavaScript, image links still reach the original.
+The first three entries in the shared editorial order are featured;
 additional entries remain accessible through native disclosures. Context and
 validation use native `details/summary` without client-side state. Neither case
-reading nor expanding detail requires JavaScript. Supporting links are optional.
+reading nor expanding detail requires JavaScript. Supporting documentation links
+are optional and open in a new tab, announced in the selected language.
 
 `Header` is a client component so it can close mobile navigation with Escape or
 after following a section, and preserve the fragment when switching languages.

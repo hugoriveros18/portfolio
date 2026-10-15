@@ -22,6 +22,10 @@ Turbopack powers both `next dev` and `next build`. Lint runs independently throu
 Tailwind uses `@tailwindcss/postcss` and `@import "tailwindcss"`; semantic CSS
 variables define the visual system in `app/globals.css`.
 
+`next.config.ts` sets `agentRules: false` so the development server does not edit
+`AGENTS.md`. The repository maintains its own instructions, including the reference
+to version-matched Next.js documentation bundled in `node_modules/next/dist/docs/`.
+
 ## Compatibility constraints
 
 Keep Next.js and `eslint-config-next` aligned. Update React, React DOM and their

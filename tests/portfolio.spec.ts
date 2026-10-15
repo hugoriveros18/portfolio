@@ -97,6 +97,108 @@ for (const locale of ['en', 'es'] as const) {
     await expect(page.locator('#contribution-yunex')).toBeVisible()
   })
 
+  test(`${locale}: the wallet contribution opens images in a modal and documentation in a new tab`, async ({
+    page,
+    context,
+    request,
+  }) => {
+    await page.goto(`/${locale}#contribution-wallet-enhanced-experience`)
+    const contribution = page.locator('#contribution-wallet-enhanced-experience')
+    await expect(contribution).toBeVisible()
+    await expect(contribution.getByRole('heading', {
+      name: locale === 'en' ? 'Previous experience' : 'Experiencia anterior',
+    })).toBeVisible()
+    await expect(contribution.getByRole('heading', {
+      name: locale === 'en' ? 'Enhanced experience' : 'Experiencia mejorada',
+    })).toBeVisible()
+    await expect(contribution.getByRole('heading', {
+      name: locale === 'en' ? 'Installments as the next step' : 'Cuotas como siguiente etapa',
+    })).toBeVisible()
+
+    const images = contribution.locator('.gallery-images img')
+    await expect(images).toHaveCount(3)
+    for (const img of await images.all()) {
+      await img.scrollIntoViewIfNeeded()
+      await expect.poll(() => img.evaluate((node) => {
+        const image = node as HTMLImageElement
+        return image.complete && image.naturalWidth > 0
+      })).toBe(true)
+      await expect(img).toHaveAttribute('alt', /.+/)
+    }
+    const original = contribution.locator('.gallery-image-link').first()
+    const src = await original.getAttribute('href')
+    const imageResponse = await request.get(src!)
+    expect(imageResponse.ok()).toBe(true)
+    expect(imageResponse.headers()['content-type']).toContain('image/avif')
+    const originalUrl = page.url()
+    const tabCount = context.pages().length
+    await original.click()
+    const modal = page.getByRole('dialog')
+    const close = modal.getByRole('button', {
+      name: locale === 'en' ? 'Close image' : 'Cerrar imagen',
+    })
+    await expect(modal).toBeVisible()
+    await expect(close).toBeFocused()
+    await expect(modal.getByRole('img')).toHaveAttribute('src', src!)
+    await expect.poll(() => modal.getByRole('img').evaluate((node) => (node as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
+    expect(context.pages()).toHaveLength(tabCount)
+    await expect(page).toHaveURL(originalUrl)
+    expect(await page.locator('html').evaluate((node) => getComputedStyle(node).overflow)).toBe('hidden')
+    await page.keyboard.press('Shift+Tab')
+    await page.keyboard.press('Tab')
+    await expect(close).toBeFocused()
+    await page.keyboard.press('Escape')
+    await expect(modal).toHaveCount(0)
+    await expect(original).toBeFocused()
+    expect(await page.locator('html').evaluate((node) => getComputedStyle(node).overflow)).not.toBe('hidden')
+
+    await original.click()
+    await close.click()
+    await expect(modal).toHaveCount(0)
+    await expect(original).toBeFocused()
+    const secondImage = contribution.locator('.gallery-image-link').nth(1)
+    await secondImage.click()
+    await expect(modal).toBeVisible()
+    const bounds = await modal.boundingBox()
+    await page.mouse.click(2, bounds!.y + bounds!.height / 2)
+    await expect(modal).toHaveCount(0)
+    await expect(secondImage).toBeFocused()
+
+    const technical = contribution.locator('details[id$="-payment-flow"]')
+    await technical.locator('summary').focus()
+    await page.keyboard.press('Enter')
+    await expect(technical.locator('.contribution-diagram')).toBeVisible()
+    await expect(technical).toContainText('OTT')
+    await expect(technical).toContainText('VBase')
+    const references = contribution.locator('.contribution-references a')
+    await expect(references.first()).toHaveAttribute(
+      'href',
+      'https://docs.y.uno/docs/plugins/vtex/apple-pay-google-pay-enhanced-experience',
+    )
+    for (const reference of await references.all()) {
+      await expect(reference).toHaveAttribute('target', '_blank')
+      await expect(reference).toHaveAttribute('rel', 'noopener noreferrer')
+      const href = await reference.getAttribute('href')
+      await context.route(href!, (route) => route.fulfill({
+        status: 200,
+        contentType: 'text/html',
+        body: '<title>Documentation preview</title>',
+      }))
+      const opening = context.waitForEvent('page')
+      await reference.click()
+      const documentation = await opening
+      await documentation.waitForLoadState()
+      await expect(documentation).toHaveURL(href!)
+      await expect(page).toHaveURL(originalUrl)
+      await documentation.close()
+    }
+    await page.getByRole('link', {
+      name: locale === 'en' ? 'Leer en español' : 'Read in English',
+    }).click()
+    await expect(page).toHaveURL(new RegExp(`/${locale === 'en' ? 'es' : 'en'}#contribution-wallet-enhanced-experience$`))
+    await expect(page.locator('#contribution-wallet-enhanced-experience')).toBeVisible()
+  })
+
   test(`${locale}: metadata and sharing image match the selected language`, async ({
     page,
     request,
@@ -184,6 +286,10 @@ test('both languages remain readable and navigable without JavaScript', async ({
     await incident.locator('summary').click()
     await expect(incident.locator('.contribution-detail-copy')).toBeVisible()
     await expect(incident).toContainText('VTEX')
+    const paymentFlow = page.locator('#contribution-wallet-enhanced-experience-payment-flow')
+    await paymentFlow.locator('summary').click()
+    await expect(paymentFlow.locator('.contribution-diagram')).toBeVisible()
+    await expect(page.locator('#contribution-wallet-enhanced-experience .gallery-images img')).toHaveCount(3)
     await expect(page.locator('#about-heading')).toBeVisible()
     await expect(page.locator('#contact-heading')).toBeVisible()
     const menu = page.locator('.mobile-navigation')

@@ -55,7 +55,7 @@ export const es: PortfolioContent = {
               'Desarrollé y mantuve SDKs, experiencias de checkout e integraciones de pagos, trabajando en las interfaces y la lógica de integración junto a equipos de Producto, Diseño y Backend.',
             contributions: [
               'Amplié el plugin de VTEX para soportar órdenes con múltiples vendedores, pagos recurrentes y cobros adicionales por cambios en el total después del checkout.',
-              'Desarrollé una experiencia de Apple Pay y Google Pay que abre el flujo nativo de la wallet directamente desde el checkout de VTEX, eliminando una pantalla intermedia.',
+              'Desarrollé la extensión de checkout y los cambios del conector para pagos directos con Apple Pay, Google Pay y Samsung Pay en VTEX, y posteriormente añadí cuotas. Conoce la contribución más abajo.',
               'Reforcé el manejo de errores del conector e incorporé un límite de respuesta de 20 segundos para mitigar fallos que contribuyen a activar el modo de contingencia de VTEX.',
               'Desarrollé, mantuve y publiqué el plugin de pagos para WooCommerce, incluyendo la resolución de observaciones de la revisión oficial del WordPress Plugin Directory.',
               'Creé Yunex para compartir conocimiento de la integración, apoyar investigaciones de incidentes y automatizar propuestas de actualización del conocimiento y reportes posteriores al despliegue. Conoce la contribución más abajo.',
@@ -107,6 +107,9 @@ export const es: PortfolioContent = {
     detailsLabel: 'Contexto, decisiones y validación',
     moreLabel: 'Más contribuciones',
     referencesLabel: 'Material de apoyo',
+    imageAction: 'Ampliar imagen',
+    imageClose: 'Cerrar imagen',
+    externalLinkLabel: 'se abre en una pestaña nueva',
     entries: contributionsEs,
   },
   about: {

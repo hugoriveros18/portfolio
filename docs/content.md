@@ -92,6 +92,12 @@ The [contribution workflow](contributions/README.md) defines intake, editorial
 rules, bilingual data entry, presentation and verification for every case.
 Public records live in `content/contributions/en.ts` and `es.ts`.
 
+The wallet contribution includes optional before/after paths, a technical diagram
+inside a disclosure and original AVIF checkout screenshots under
+`public/images/contributions/wallet-checkout/`. Keep their dimensions and localized
+captions/alternative text aligned with the typed gallery records. Screenshots
+preserve the original Portuguese UI; the surrounding explanation is localized.
+
 The [Yunex contribution notes](contributions/yunex.md) organize the owner's
 firsthand account, decisions, validation, evidence limits and conceptual diagrams.
 These working notes are not rendered by the website. Supporting artifacts are

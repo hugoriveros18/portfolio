@@ -4,6 +4,8 @@ type IconName =
   | 'arrow-up-right'
   | 'arrow-right'
   | 'arrow-down'
+  | 'expand'
+  | 'close'
   | 'download'
   | 'sun'
   | 'moon'
@@ -13,6 +15,8 @@ type IconName =
   | 'mail'
 
 const paths: Record<IconName, React.ReactNode> = {
+  close: <path d="m6 6 12 12M18 6 6 18" />,
+  expand: <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" />,
   'arrow-up-right': <path d="M6 18 18 6M6 6h12v12" />,
   'arrow-right': <path d="M4 12h16m-6-6 6 6-6 6" />,
   'arrow-down': <path d="M12 4v16m-6-6 6 6 6-6" />,

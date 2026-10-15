@@ -79,8 +79,20 @@ in working notes, and keep the published wording within what the owner can suppo
    - `details` contains expandable context, decisions, validation or examples.
    - `diagram`, when useful, describes generic stages and nodes; it is not tied
      to Yunex, an AI assistant, Slack or a particular industry.
+   - `comparison`, when useful, describes labelled paths with ordered steps,
+     such as a before/after shopper journey. Keep detailed payment mechanics
+     separate from the overview when they require more context.
+   - `gallery` contains optional original screenshots with intrinsic dimensions,
+     localized captions and alternative text. Preserve the supplied images and
+     provide full-size access through the shared modal rather than requiring
+     visitors to read thumbnails. Keep native image links as a no-JavaScript fallback.
+     Set an image's optional `modalMaxWidth` (CSS pixels, including the dialog
+     frame) when its resolution requires a smaller presentation on wide screens.
+   - A detail entry may include its own `diagram`, rendered inside the native
+     disclosure for technical depth without lengthening the initial overview.
    - `references` is optional and contains only real, suitable links. Omitting
-     it produces no empty supporting-material area or absence notice.
+     it produces no empty supporting-material area or absence notice. Supporting
+     documentation opens in a new tab with a localized accessible indication.
 4. Keep capability IDs, detail IDs and diagram-stage IDs aligned across languages.
    The case anchor is `#contribution-<id>`; the section anchor is `#contributions`.
 5. The shared `Contributions` component renders the records. Adding an ordinary
@@ -101,6 +113,13 @@ in README. Review English and Spanish in light/dark appearance, desktop/mobile,
 and with JavaScript disabled. Check navigation, disclosure keyboard access, stable
 anchors, optional material, company attribution and the full capability inventory.
 When the list grows past three entries, check access to the additional cases.
+
+## Case material
+
+| Case | Source notes | Public status |
+| --- | --- | --- |
+| Yunex | [Working notes](yunex.md) | Integrated in both languages. |
+| Direct wallet checkout on VTEX | [Source notes](wallet-enhanced-experience.md) | Integrated in both languages, including the flow comparison, technical detail and original screenshots. |
 
 ## Repository skill
 

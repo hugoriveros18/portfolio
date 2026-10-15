@@ -1,5 +1,7 @@
 import type { ContributionsContent } from '@/content/contributions/types'
 import { ContributionDiagram } from '@/components/ui/ContributionDiagram'
+import { ContributionComparison } from '@/components/ui/ContributionComparison'
+import { ContributionGallery } from '@/components/ui/ContributionGallery'
 import { SectionIntro } from '@/components/ui/SectionIntro'
 
 const featuredLimit = 3
@@ -18,7 +20,7 @@ function ContributionStory({
       id={`contribution-${entry.id}`}
       aria-labelledby={`contribution-${entry.id}-heading`}
     >
-      <div className={`contribution-feature${entry.diagram ? ' has-diagram' : ''}`}>
+      <div className={`contribution-feature${entry.diagram || entry.comparison ? ' has-diagram' : ''}`}>
         <div className="contribution-overview">
           <p className="eyebrow">{entry.name} · {entry.company}</p>
           <h3 id={`contribution-${entry.id}-heading`}>{entry.headline}</h3>
@@ -29,7 +31,11 @@ function ContributionStory({
             <p>{entry.impact}</p>
           </div>
         </div>
-        {entry.diagram ? <ContributionDiagram diagram={entry.diagram} /> : null}
+        {entry.comparison ? (
+          <ContributionComparison comparison={entry.comparison} />
+        ) : entry.diagram ? (
+          <ContributionDiagram diagram={entry.diagram} />
+        ) : null}
       </div>
       <div className="contribution-capabilities">
         <p className="eyebrow">{text.capabilitiesLabel}</p>
@@ -42,6 +48,9 @@ function ContributionStory({
           ))}
         </ul>
       </div>
+      {entry.gallery ? (
+        <ContributionGallery gallery={entry.gallery} imageAction={text.imageAction} imageClose={text.imageClose} />
+      ) : null}
       {entry.details.length > 0 ? (
         <div className="contribution-details">
           <p className="eyebrow">{text.detailsLabel}</p>
@@ -50,6 +59,7 @@ function ContributionStory({
               <summary>{detail.title}</summary>
               <div className="contribution-detail-copy">
                 {detail.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                {detail.diagram ? <ContributionDiagram diagram={detail.diagram} /> : null}
               </div>
             </details>
           ))}
@@ -61,7 +71,10 @@ function ContributionStory({
           <ul>
             {entry.references.map((reference) => (
               <li key={reference.href}>
-                <a href={reference.href}>{reference.label}</a>
+                <a href={reference.href} target="_blank" rel="noopener noreferrer">
+                  {reference.label}
+                  <span className="sr-only"> ({text.externalLinkLabel})</span>
+                </a>
               </li>
             ))}
           </ul>

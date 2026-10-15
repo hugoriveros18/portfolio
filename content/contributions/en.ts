@@ -263,6 +263,115 @@ const contributions: Record<ContributionId, ProfessionalContribution> = {
       },
     ],
   },
+  'vtex-split-orders': {
+    name: 'Multi-seller card payments',
+    company: companies.yuno.name,
+    headline: 'Card payments across multiple sellers.',
+    summary:
+      'I designed and implemented Payment Connector support for card purchases split into seller suborders in VTEX. The connector reused shared antifraud session context to process subsequent payments on the server when the Payment App could not be reopened.',
+    ownership: 'Technical design · Payment Connector implementation · Integration testing',
+    impact:
+      'This delivery unblocked a major Brazilian marketplace’s migration of payment traffic to Yuno. It also removed an integration gap that could prevent other merchants operating with multiple sellers from choosing Yuno.',
+    capabilities: [
+      {
+        id: 'shared-context',
+        title: 'One purchase, shared antifraud context',
+        description:
+          'The connector linked seller suborders through their shared purchase reference and retrieved the existing Yuno record. This kept the browser-collected device context available for subsequent payments.',
+      },
+      {
+        id: 'server-processing',
+        title: 'Subsequent payments on the server',
+        description:
+          'After the first suborder succeeded, the connector could create the remaining payments as VTEX authorized them one at a time, without needing to open the Payment App again.',
+      },
+    ],
+    diagram: {
+      caption: 'Conceptual flow · sequential suborders',
+      stages: [
+        {
+          id: 'first-suborder',
+          nodes: [{
+            title: 'First suborder · browser',
+            description: 'Payment App + SDK: device context and 3DS when required',
+          }],
+        },
+        {
+          id: 'context-lookup',
+          nodes: [{
+            title: 'After success · recover context',
+            description: 'Find the prior Yuno record using the shared purchase reference',
+          }],
+        },
+        {
+          id: 'server-payment',
+          emphasized: true,
+          nodes: [{
+            title: 'Next suborder · server',
+            description: 'Reuse the antifraud session context to create its payment',
+          }],
+        },
+        {
+          id: 'remaining-suborders',
+          nodes: [{
+            title: 'Continue one suborder at a time',
+            description: 'Repeat the server path for the remaining seller suborders',
+          }],
+        },
+      ],
+      description:
+        'If the first suborder fails, VTEX cancels the purchase and stops the sequence. Otherwise, subsequent suborders are authorized and processed separately, one after another.',
+    },
+    details: [
+      {
+        id: 'context',
+        title: 'The marketplace requirement and integration constraint',
+        paragraphs: [
+          'A major Brazilian marketplace needed card payments across multiple sellers before moving its transaction traffic to Yuno. VTEX split those purchases into suborders and sent a separate authorization for each one.',
+          'The existing integration relied on the Payment App and SDK to collect browser context for antifraud checks and handle 3DS when required. Only the first suborder could use that path; later authorizations arrived in seller accounts where the Payment App could not be reopened. Those subsequent suborders could not be processed and were cancelled.',
+          'I identified the missing context handoff and implemented the connector changes in full, enabling subsequent payments to be created server-side using the antifraud session associated with the purchase.',
+        ],
+      },
+      {
+        id: 'session-correlation',
+        title: 'Linking suborders to the browser session',
+        paragraphs: [
+          'Suborders shared a base purchase reference and used suffixes such as -01 and -02. Before processing an order, the connector checked Yuno for an associated record. For subsequent suborders, it found the information from the same purchase and reused its antifraud session context.',
+          'The session identifier lets antifraud services associate each payment with device data collected in the shopper’s browser. Yuno’s documentation describes using the cart’s orderFormId consistently in the browser and connector. This session identifier and the shared purchase reference serve different purposes: device-context correlation and order lookup.',
+        ],
+      },
+      {
+        id: 'authorization',
+        title: 'Sequential authorization and 3DS',
+        paragraphs: [
+          'VTEX processed the suborders sequentially. If the first suborder failed, VTEX cancelled the whole purchase. Once it succeeded, later suborders could use the existing purchase context while each payment was processed separately.',
+          'When required, 3DS ran on the first suborder. Yuno internally handled the related payments using the same card within that purchase, so the shopper did not repeat the authentication for each seller. My implementation provided the connector-side context reuse for this flow.',
+        ],
+      },
+      {
+        id: 'validation',
+        title: 'Validating a multi-seller purchase',
+        paragraphs: [
+          'I configured a Yuno VTEX development store with its own products and products from a test seller in another development account, reproducing the multi-seller scenario.',
+          'I checked that the suborders shared the expected antifraud session and that the PSP could process their payments without declining them because that context was missing.',
+        ],
+      },
+    ],
+    references: [
+      {
+        label: 'Yuno · Split orders with multiple sellers',
+        href: 'https://docs.y.uno/docs/plugins/vtex/advanced-features#split-orders-multiple-sellers',
+      },
+      {
+        label: 'Yuno · Antifraud session and device fingerprints',
+        href: 'https://docs.y.uno/docs/plugins/vtex/advanced-features#antifraud-session-device-fingerprints',
+      },
+      {
+        label: 'VTEX · Payment App integration model',
+        href: 'https://developers.vtex.com/docs/guides/payments-integration-payment-app',
+      },
+    ],
+  },
 }
 
 export const contributionsEn = contributionIds.map((id) => ({ id, ...contributions[id] }))

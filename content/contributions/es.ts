@@ -263,6 +263,115 @@ const contributions: Record<ContributionId, ProfessionalContribution> = {
       },
     ],
   },
+  'vtex-split-orders': {
+    name: 'Pagos con múltiples vendedores',
+    company: companies.yuno.name,
+    headline: 'Pagos con tarjeta para múltiples vendedores.',
+    summary:
+      'Diseñé e implementé el soporte del Conector de Pagos para compras con tarjeta divididas en subórdenes por vendedor dentro de VTEX. El conector reutilizaba el contexto de la sesión antifraude compartida para procesar los pagos posteriores en el servidor cuando no era posible volver a abrir el Payment App.',
+    ownership: 'Diseño técnico · Implementación del Conector de Pagos · Pruebas de integración',
+    impact:
+      'Esta implementación desbloqueó la migración del tráfico de pagos de un gran marketplace brasileño a Yuno. También resolvió una limitación de integración que podía impedir que otros comercios con múltiples vendedores eligieran Yuno.',
+    capabilities: [
+      {
+        id: 'shared-context',
+        title: 'Una compra, un contexto antifraude compartido',
+        description:
+          'El conector vinculaba las subórdenes mediante la referencia común de la compra y recuperaba el registro existente en Yuno. Así mantenía disponible el contexto del dispositivo recogido en el navegador para los pagos posteriores.',
+      },
+      {
+        id: 'server-processing',
+        title: 'Pagos posteriores desde el servidor',
+        description:
+          'Una vez aprobada la primera suborden, el conector podía crear los pagos restantes a medida que VTEX los autorizaba uno a uno, sin necesidad de volver a abrir el Payment App.',
+      },
+    ],
+    diagram: {
+      caption: 'Flujo conceptual · subórdenes secuenciales',
+      stages: [
+        {
+          id: 'first-suborder',
+          nodes: [{
+            title: 'Primera suborden · navegador',
+            description: 'Payment App + SDK: contexto del dispositivo y 3DS cuando corresponde',
+          }],
+        },
+        {
+          id: 'context-lookup',
+          nodes: [{
+            title: 'Tras la aprobación · recuperar el contexto',
+            description: 'Consultar el registro previo en Yuno con la referencia común de la compra',
+          }],
+        },
+        {
+          id: 'server-payment',
+          emphasized: true,
+          nodes: [{
+            title: 'Siguiente suborden · servidor',
+            description: 'Reutilizar el contexto de la sesión antifraude para crear su pago',
+          }],
+        },
+        {
+          id: 'remaining-suborders',
+          nodes: [{
+            title: 'Continuar una suborden a la vez',
+            description: 'Repetir el flujo del servidor para las subórdenes de los vendedores restantes',
+          }],
+        },
+      ],
+      description:
+        'Si la primera suborden falla, VTEX cancela la compra y detiene la secuencia. Si se aprueba, las siguientes subórdenes se autorizan y procesan por separado, una después de otra.',
+    },
+    details: [
+      {
+        id: 'context',
+        title: 'El requerimiento del marketplace y la limitación de integración',
+        paragraphs: [
+          'Un gran marketplace brasileño necesitaba procesar pagos con tarjeta para múltiples vendedores antes de trasladar su tráfico de transacciones a Yuno. VTEX dividía esas compras en subórdenes y enviaba una autorización independiente para cada una.',
+          'La integración existente dependía del Payment App y el SDK para recoger el contexto del navegador necesario para las validaciones antifraude y ejecutar 3DS cuando correspondía. Solo la primera suborden podía usar ese flujo; las autorizaciones posteriores llegaban a las cuentas de los sellers, donde no era posible volver a abrir el Payment App. Esas subórdenes no se podían procesar y eran canceladas.',
+          'Identifiqué el contexto que faltaba compartir e implementé todos los cambios necesarios en el conector para crear los pagos posteriores desde el servidor utilizando la sesión antifraude asociada a la compra.',
+        ],
+      },
+      {
+        id: 'session-correlation',
+        title: 'Vincular las subórdenes con la sesión del navegador',
+        paragraphs: [
+          'Las subórdenes compartían una referencia base de la compra y se diferenciaban con sufijos como -01 y -02. Antes de procesar una orden, el conector consultaba si existía un registro asociado en Yuno. Para las subórdenes posteriores encontraba la información de esa misma compra y reutilizaba el contexto de su sesión antifraude.',
+          'El identificador de sesión permite que los servicios antifraude relacionen cada pago con los datos del dispositivo recogidos en el navegador del comprador. La documentación de Yuno describe el uso del orderFormId del carrito tanto en el navegador como en el conector. Este identificador de sesión y la referencia común de la compra cumplen funciones distintas: relacionar el contexto del dispositivo y consultar las órdenes.',
+        ],
+      },
+      {
+        id: 'authorization',
+        title: 'Autorización secuencial y 3DS',
+        paragraphs: [
+          'VTEX procesaba las subórdenes de forma secuencial. Si la primera fallaba, cancelaba toda la compra. Una vez aprobada, las siguientes podían utilizar el contexto existente de la compra mientras cada pago se procesaba por separado.',
+          'Cuando correspondía, 3DS se ejecutaba en la primera suborden. Yuno gestionaba internamente los pagos relacionados que utilizaban la misma tarjeta dentro de esa compra, por lo que el comprador no repetía la autenticación para cada vendedor. Mi implementación aportó la reutilización del contexto desde el conector para este flujo.',
+        ],
+      },
+      {
+        id: 'validation',
+        title: 'Validar una compra con múltiples vendedores',
+        paragraphs: [
+          'Configuré una tienda de desarrollo de Yuno en VTEX con productos propios y productos de un seller de prueba en otra cuenta de desarrollo, reproduciendo el escenario de múltiples vendedores.',
+          'Comprobé que las subórdenes compartieran la sesión antifraude esperada y que el PSP pudiera procesar sus pagos sin rechazarlos por la ausencia de ese contexto.',
+        ],
+      },
+    ],
+    references: [
+      {
+        label: 'Yuno · Subórdenes con múltiples vendedores',
+        href: 'https://docs.y.uno/docs/plugins/vtex/advanced-features#split-orders-multiple-sellers',
+      },
+      {
+        label: 'Yuno · Sesión antifraude e identificación del dispositivo',
+        href: 'https://docs.y.uno/docs/plugins/vtex/advanced-features#antifraud-session-device-fingerprints',
+      },
+      {
+        label: 'VTEX · Modelo de integración con Payment App',
+        href: 'https://developers.vtex.com/docs/guides/payments-integration-payment-app',
+      },
+    ],
+  },
 }
 
 export const contributionsEs = contributionIds.map((id) => ({ id, ...contributions[id] }))

@@ -54,7 +54,7 @@ export const es: PortfolioContent = {
             summary:
               'Desarrollé y mantuve SDKs, experiencias de checkout e integraciones de pagos, trabajando en las interfaces y la lógica de integración junto a equipos de Producto, Diseño y Backend.',
             contributions: [
-              'Amplié el plugin de VTEX para soportar órdenes con múltiples vendedores, pagos recurrentes y cobros adicionales por cambios en el total después del checkout.',
+              'Habilité pagos con tarjeta entre subórdenes de múltiples vendedores en VTEX mediante un contexto antifraude compartido y procesamiento desde el servidor. También amplié el plugin para pagos recurrentes y cobros adicionales por cambios en el total después del checkout.',
               'Desarrollé la extensión de checkout y los cambios del conector para pagos directos con Apple Pay, Google Pay y Samsung Pay en VTEX, y posteriormente añadí cuotas. Conoce la contribución más abajo.',
               'Reforcé el manejo de errores del conector e incorporé un límite de respuesta de 20 segundos para mitigar fallos que contribuyen a activar el modo de contingencia de VTEX.',
               'Desarrollé, mantuve y publiqué el plugin de pagos para WooCommerce, incluyendo la resolución de observaciones de la revisión oficial del WordPress Plugin Directory.',

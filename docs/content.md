@@ -98,6 +98,12 @@ inside a disclosure and original AVIF checkout screenshots under
 captions/alternative text aligned with the typed gallery records. Screenshots
 preserve the original Portuguese UI; the surrounding explanation is localized.
 
+The multi-seller card-payment contribution uses a sequential diagram and two
+visible capabilities. Its [source notes](contributions/vtex-split-orders.md) cover
+the shared purchase lookup, antifraud session context, first-suborder cancellation,
+Yuno-managed 3DS, development validation and marketplace outcome. Keep the session
+identifier distinct from the purchase reference and preserve connector attribution.
+
 The [Yunex contribution notes](contributions/yunex.md) organize the owner's
 firsthand account, decisions, validation, evidence limits and conceptual diagrams.
 These working notes are not rendered by the website. Supporting artifacts are

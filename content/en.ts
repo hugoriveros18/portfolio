@@ -54,7 +54,7 @@ export const en: PortfolioContent = {
             summary:
               'Developed and maintained SDKs, checkout experiences and payment integrations, working across user interfaces and integration logic with Product, Design and Backend teams.',
             contributions: [
-              'Extended the VTEX plugin to support multi-seller orders, recurring payments and additional charges when order totals change after checkout.',
+              'Enabled card payments across VTEX seller suborders through shared antifraud context and server-side processing. Also extended the plugin for recurring payments and additional charges when order totals change after checkout.',
               'Built the checkout extension and connector changes for direct Apple Pay, Google Pay and Samsung Pay payments on VTEX, later adding installment support. Explore the contribution below.',
               'Strengthened connector error handling and introduced a 20-second response deadline to mitigate failures that contribute to VTEX Contingency Mode activation.',
               'Developed, maintained and published the WooCommerce payment plugin, including addressing feedback from the WordPress Plugin Directory review.',

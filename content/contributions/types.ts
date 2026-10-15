@@ -1,5 +1,5 @@
 // Keep the same identifiers and editorial order in both languages.
-export const contributionIds = ['yunex', 'wallet-enhanced-experience'] as const
+export const contributionIds = ['yunex', 'wallet-enhanced-experience', 'vtex-split-orders'] as const
 export type ContributionId = (typeof contributionIds)[number]
 
 export interface ContributionDiagram {

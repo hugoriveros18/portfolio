@@ -20,9 +20,6 @@ export function About({ text }: { text: PortfolioContent['about'] }) {
           ))}
         </div>
         <aside className="approach-card" aria-labelledby="ai-heading">
-          <span className="approach-mark" aria-hidden="true">
-            ↗
-          </span>
           <h3 id="ai-heading">{text.aiTitle}</h3>
           {text.aiParagraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>

@@ -467,6 +467,94 @@ const contributions: Record<ContributionId, ProfessionalContribution> = {
       },
     ],
   },
+  'jumbo-checkout-modularization': {
+    name: 'Jumbo checkout',
+    company: companies.itglobers.name,
+    headline: 'A maintainable checkout for Jumbo’s development team.',
+    summary:
+      'At ITGlobers, I migrated Jumbo’s VTEX checkout customizations into section-based modules with React, TypeScript and Sass. A Webpack build preserved VTEX’s required delivery format while giving the team a source structure that was easier to extend and debug.',
+    ownership: 'Mid-level Frontend Developer · Complete migration · Jumbo team support on existing behavior',
+    impact:
+      'About six months after delivery, the client estimated that checkout development time had fallen by approximately 40%. The team reported easier development and maintenance, less reluctance to make changes and a smoother checkout with faster perceived loading.',
+    capabilities: [
+      {
+        id: 'section-architecture',
+        title: 'Organize around checkout sections',
+        description:
+          'I mapped the existing customizations, removed unused code and separated cart, profile, shipping, payment, order summary and global behavior, with reusable logic and shared styles.',
+      },
+      {
+        id: 'build-workflow',
+        title: 'Keep delivery compatible with VTEX',
+        description:
+          'The configured Webpack toolchain transformed React, TypeScript and Sass sources into the JavaScript and CSS assets VTEX expected, with minification and a watch workflow linked to a development workspace.',
+      },
+      {
+        id: 'image-optimization',
+        title: 'Optimize checkout images',
+        description:
+          'I converted suitable images to WebP as part of the loading-performance work, alongside the broader cleanup of obsolete customizations.',
+      },
+    ],
+    diagram: {
+      caption: 'Modular source · compatible delivery',
+      stages: [
+        {
+          id: 'source',
+          nodes: [
+            { title: 'Checkout sections', description: 'React and TypeScript modules' },
+            { title: 'Shared foundations', description: 'Reusable logic and Sass styles' },
+          ],
+        },
+        {
+          id: 'build',
+          emphasized: true,
+          nodes: [{ title: 'Webpack build', description: 'Configured transformations and minification' }],
+        },
+        {
+          id: 'delivery',
+          nodes: [{ title: 'VTEX checkout', description: 'Compatible JavaScript and CSS assets' }],
+        },
+      ],
+      description:
+        'I organized the checkout customizations into modules and configured the build to generate the assets required by VTEX.',
+    },
+    details: [
+      {
+        id: 'context',
+        title: 'When checkout maintenance became a bottleneck',
+        paragraphs: [
+          'Jumbo, part of Cencosud in Colombia, had accumulated more than 8,000 lines of JavaScript and 6,000 lines of CSS in its checkout customization files. Understanding behavior, tracing bugs and adding features had become increasingly difficult, requiring more development resources.',
+          'I was assigned the complete migration during my Mid-level Frontend Developer role at ITGlobers. Jumbo’s team explained the existing code and answered questions about behavior as I worked through the checkout.',
+          'The delivery constraint was VTEX’s expected JavaScript and CSS assets. Keeping that format did not require maintaining all source code in the same large files.',
+        ],
+      },
+      {
+        id: 'decisions',
+        title: 'Choosing a workflow the team could maintain',
+        paragraphs: [
+          'We considered reorganizing vanilla JavaScript and CSS, which would require less initial setup, or adopting React, TypeScript and Sass. The team chose the latter because familiar tools and a better long-term development experience were the main priorities, despite the extra configuration and required knowledge.',
+          'Webpack fit the need to control the output for an existing host platform and combine the chosen source types through configured transformations. Its build ecosystem supported JavaScript and CSS minification and the development watch workflow.',
+        ],
+      },
+      {
+        id: 'migration',
+        title: 'Migrating customizations section by section',
+        paragraphs: [
+          'I reviewed the existing functionality and styles, identified unused code and migrated the customizations incrementally by checkout section. Shared logic and styles were separated from section-specific behavior.',
+          'The implementation connected those modules to the native checkout lifecycle: initial DOM loading, VTEX order-form updates and URL hash changes. The development workflow combined build watching with VTEX workspace linking so changes could be reviewed in the checkout environment.',
+        ],
+      },
+      {
+        id: 'outcomes',
+        title: 'Client and team feedback after delivery',
+        paragraphs: [
+          'About six months after completion, the client estimated a reduction of approximately 40% in checkout development time, describing more efficient use of its development resources.',
+          'Jumbo’s team also described the code as easier to work with and reported less resistance to making checkout changes. They perceived smoother interaction and faster loading. The central outcome was a more maintainable foundation for continued development.',
+        ],
+      },
+    ],
+  },
 }
 
 export const contributionsEn = contributionIds.map((id) => ({ id, ...contributions[id] }))

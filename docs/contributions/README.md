@@ -169,6 +169,7 @@ When the list grows past three entries, check access to the additional cases.
 | Direct wallet checkout on VTEX | [Source notes](wallet-enhanced-experience.md) | Integrated in both languages, including the flow comparison, technical detail and original screenshots. |
 | Multi-seller card payments on VTEX | [Source notes](vtex-split-orders.md) | Integrated in both languages with the sequential flow, shared antifraud context, connector ownership and Yuno-managed 3DS. |
 | VTEX subscription payments | [Source notes](vtex-subscriptions.md) | Integrated in both languages as the fourth, expandable case with initial-payment preparation, cycle detection and server-side MIT renewals. |
+| Jumbo checkout modularization | [Source notes](jumbo-checkout-modularization.md) | Integrated in both languages as the fifth, expandable case with Mid-level migration ownership, a source-to-build diagram and attributed client/team feedback. |
 
 ## Repository skill
 

@@ -467,6 +467,94 @@ const contributions: Record<ContributionId, ProfessionalContribution> = {
       },
     ],
   },
+  'jumbo-checkout-modularization': {
+    name: 'Checkout de Jumbo',
+    company: companies.itglobers.name,
+    headline: 'Un checkout más fácil de mantener para el equipo de Jumbo.',
+    summary:
+      'En ITGlobers, migré las personalizaciones del checkout de Jumbo en VTEX a módulos por sección con React, TypeScript y Sass. Un proceso de compilación con Webpack conservó el formato de entrega requerido por VTEX y dejó al equipo una estructura de código más fácil de ampliar y depurar.',
+    ownership: 'Mid-level Frontend Developer · Migración completa · Apoyo del equipo de Jumbo sobre el comportamiento existente',
+    impact:
+      'Aproximadamente seis meses después de la entrega, el cliente estimó una reducción del 40% en los tiempos de desarrollo del checkout. El equipo reportó mayor facilidad para desarrollar y mantener el código, menos resistencia a realizar cambios y un checkout que se percibía más fluido y rápido al cargar.',
+    capabilities: [
+      {
+        id: 'section-architecture',
+        title: 'Organizar por secciones del checkout',
+        description:
+          'Identifiqué las personalizaciones existentes, eliminé código sin uso y separé carrito, perfil, envío, pago, resumen de orden y comportamiento global, con lógica reutilizable y estilos compartidos.',
+      },
+      {
+        id: 'build-workflow',
+        title: 'Mantener la compatibilidad con VTEX',
+        description:
+          'La configuración de Webpack transformaba los archivos de React, TypeScript y Sass en los recursos JavaScript y CSS que esperaba VTEX, con minificación y un flujo de recompilación vinculado a un workspace de desarrollo.',
+      },
+      {
+        id: 'image-optimization',
+        title: 'Optimizar las imágenes del checkout',
+        description:
+          'Convertí las imágenes adecuadas a WebP como parte del trabajo sobre el rendimiento de carga, junto con la limpieza general de personalizaciones obsoletas.',
+      },
+    ],
+    diagram: {
+      caption: 'Código modular · entrega compatible',
+      stages: [
+        {
+          id: 'source',
+          nodes: [
+            { title: 'Secciones del checkout', description: 'Módulos de React y TypeScript' },
+            { title: 'Base compartida', description: 'Lógica reutilizable y estilos Sass' },
+          ],
+        },
+        {
+          id: 'build',
+          emphasized: true,
+          nodes: [{ title: 'Compilación con Webpack', description: 'Transformaciones configuradas y minificación' }],
+        },
+        {
+          id: 'delivery',
+          nodes: [{ title: 'Checkout de VTEX', description: 'Recursos JavaScript y CSS compatibles' }],
+        },
+      ],
+      description:
+        'Organicé las personalizaciones del checkout en módulos y configuré la compilación para generar los recursos requeridos por VTEX.',
+    },
+    details: [
+      {
+        id: 'context',
+        title: 'Cuando mantener el checkout se volvió un cuello de botella',
+        paragraphs: [
+          'Jumbo, parte de Cencosud en Colombia, había acumulado más de 8.000 líneas de JavaScript y 6.000 de CSS en sus archivos de personalización del checkout. Entender el comportamiento, encontrar errores y agregar funcionalidades se había vuelto cada vez más difícil y requería más recursos de desarrollo.',
+          'Me asignaron la migración completa durante mi rol de Mid-level Frontend Developer en ITGlobers. El equipo de Jumbo me explicó el código existente y resolvió consultas sobre su comportamiento mientras avanzaba por el checkout.',
+          'La restricción de entrega eran los recursos JavaScript y CSS que esperaba VTEX. Conservar ese formato no obligaba a mantener todo el código fuente en los mismos archivos extensos.',
+        ],
+      },
+      {
+        id: 'decisions',
+        title: 'Elegir un flujo que el equipo pudiera mantener',
+        paragraphs: [
+          'Consideramos reorganizar JavaScript y CSS sin frameworks, con una configuración inicial más sencilla, o adoptar React, TypeScript y Sass. El equipo eligió la segunda opción porque las herramientas conocidas y una mejor experiencia de desarrollo a largo plazo eran las prioridades, aun con la configuración y los conocimientos adicionales que requería.',
+          'Webpack encajaba con la necesidad de controlar la salida para una plataforma existente y combinar los tipos de archivos elegidos mediante transformaciones configuradas. Su ecosistema permitía integrar la minificación de JavaScript y CSS y el flujo de recompilación durante el desarrollo.',
+        ],
+      },
+      {
+        id: 'migration',
+        title: 'Migrar las personalizaciones sección por sección',
+        paragraphs: [
+          'Revisé las funcionalidades y los estilos existentes, identifiqué código sin uso y migré las personalizaciones gradualmente por sección del checkout. Separé la lógica y los estilos compartidos del comportamiento específico de cada sección.',
+          'La implementación conectaba los módulos con el ciclo de vida del checkout nativo: carga inicial del DOM, actualizaciones del order form de VTEX y cambios del hash en la URL. El flujo de desarrollo combinaba la recompilación automática con la vinculación a un workspace de VTEX para revisar los cambios en el entorno del checkout.',
+        ],
+      },
+      {
+        id: 'outcomes',
+        title: 'Comentarios del cliente y del equipo tras la entrega',
+        paragraphs: [
+          'Aproximadamente seis meses después de finalizar, el cliente estimó una reducción del 40% en los tiempos de desarrollo del checkout y describió un uso más eficiente de sus recursos de desarrollo.',
+          'El equipo de Jumbo también describió mayor facilidad para trabajar con el código y menos resistencia a realizar cambios en el checkout. Percibían una interacción más fluida y una carga más rápida. El resultado central fue una base más mantenible para continuar desarrollando.',
+        ],
+      },
+    ],
+  },
 }
 
 export const contributionsEs = contributionIds.map((id) => ({ id, ...contributions[id] }))

@@ -4,6 +4,7 @@ export const contributionIds = [
   'wallet-enhanced-experience',
   'vtex-split-orders',
   'vtex-subscriptions',
+  'jumbo-checkout-modularization',
 ] as const
 export type ContributionId = (typeof contributionIds)[number]
 

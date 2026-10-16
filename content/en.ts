@@ -77,6 +77,7 @@ export const en: PortfolioContent = {
             contributions: [
               'Built complete VTEX storefronts, including home, product listing, product detail, checkout, order confirmation and login pages.',
               'Implemented reusable components and responsive layouts with design and development teams to maintain a consistent user experience.',
+              'Migrated Jumbo’s checkout customizations into maintainable modules with React, TypeScript, Sass and a VTEX-compatible Webpack build. Explore the contribution below.',
               'Developed custom applications and integrations with React, TypeScript, VTEX IO and GraphQL, focusing on maintainability and performance.',
               'Optimized resource loading and interface responsiveness, and resolved layout shifts caused by late rendering.',
               'Contributed to development estimation and planning with multidisciplinary teams.',

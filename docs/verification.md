@@ -56,6 +56,13 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
   comparison distinguishes initial payment-method preparation from server-side
   MIT renewals; technical details explain detection and cycle 0 as the first
   recurrence after checkout. Verify keyboard access and reading without JavaScript.
+- **Additional case → Jumbo checkout:** the fifth case is independently expandable
+  through its keyboard control or `#contribution-jumbo-checkout-modularization`.
+  Switching languages preserves the case anchor. Both localized direct URLs
+  reveal the case without JavaScript. Review the source/build diagram and native details.
+  The experience reference belongs to the Mid-level ITGlobers role. Keep the
+  client's development-time estimate and the team's qualitative feedback distinct
+  from measured runtime performance.
 - **Education → learning:** Platzi describes continuing self-directed learning
   with a start date and a localized present/current label.
 - **Control → appearance:** switching, reloading and navigating between languages

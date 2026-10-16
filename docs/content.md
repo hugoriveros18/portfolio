@@ -22,7 +22,7 @@ takes precedence when supplied documents disagree.
 | Entry | Dates | Scope |
 | --- | --- | --- |
 | Yuno · Frontend Software Engineer | Feb 2026–Oct 2026 | SDKs, checkout/payment integrations, native wallets, connector reliability, WooCommerce publication, Yunex, operational automation, AI-assisted engineering and delivery validation. |
-| ITGlobers · Mid-level Frontend Developer | Apr 2025–Feb 2026 | Complete storefronts, reusable responsive components, custom applications/integrations, performance, estimation and planning. |
+| ITGlobers · Mid-level Frontend Developer | Apr 2025–Feb 2026 | Complete storefronts, reusable responsive components, Jumbo checkout modularization, custom applications/integrations, performance, estimation and planning. |
 | ITGlobers · Frontend Developer | Oct 2022–Apr 2025 | Development and maintenance of interfaces, feature improvements, project requirements and multidisciplinary collaboration. |
 | Platzi | Jan 2022–Present | Continuing, self-directed software development learning. |
 
@@ -109,6 +109,14 @@ entry under the additional-contributions disclosure. Its two-phase comparison
 shows initial PSP preparation and later server-side MIT payments. Preserve cycle 0
 as the first recurrence after the initial purchase, and keep the VTEX subscription
 context, PSP stored-method handling and connector implementation distinct.
+
+The [Jumbo checkout case](contributions/jumbo-checkout-modularization.md) is the
+fifth entry, also under additional contributions. Its diagram separates modular
+source organization from VTEX-compatible build output. Attribute the approximate
+40% development-time reduction to the client's estimate about six months after
+delivery. Attribute perceived loading and fluidity to team feedback; do not infer
+code splitting or measured LCP/FID gains. Keep complete migration ownership under
+the Mid-level ITGlobers role, with the team's support on existing behavior.
 
 The [Yunex contribution notes](contributions/yunex.md) organize the owner's
 firsthand account, decisions, validation, evidence limits and conceptual diagrams.

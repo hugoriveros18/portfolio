@@ -77,6 +77,7 @@ export const es: PortfolioContent = {
             contributions: [
               'Construí tiendas completas en VTEX, incluyendo páginas de inicio, listados y detalle de producto, checkout, confirmación de orden e inicio de sesión.',
               'Implementé componentes reutilizables y diseños adaptables junto a los equipos de diseño y desarrollo para mantener una experiencia consistente.',
+              'Migré las personalizaciones del checkout de Jumbo a módulos mantenibles con React, TypeScript, Sass y una compilación con Webpack compatible con VTEX. Explora la contribución más abajo.',
               'Construí aplicaciones e integraciones con React, TypeScript, VTEX IO y GraphQL, con atención a la mantenibilidad y el rendimiento.',
               'Optimicé la carga de recursos y la respuesta de las interfaces, y corregí desplazamientos de contenido causados por renderizados tardíos.',
               'Participé en la estimación y planificación del desarrollo con equipos multidisciplinarios.',

@@ -90,6 +90,9 @@ during the visit. Without JavaScript, CSS follows the system color scheme.
 
 - Graphite/terracotta palette with semantic CSS color variables.
 - Onest throughout, using size and weight to establish hierarchy.
+- The noninteractive AI approach card starts with its heading. Additional-case
+  controls use larger, medium-weight text in the primary color; nested technical
+  details use smaller terracotta labels. Native disclosure markers retain the accent.
 - Sticky header, mobile navigation at 800 px and a single-column layout at 600 px.
   There are no device-detection resize listeners.
 - A 350 ms entry transform that never hides the content.

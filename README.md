@@ -1,7 +1,9 @@
 # Hugo Riveros · Professional portfolio
 
-Hugo Felipe Riveros Fajardo's professional portfolio. Hugo is a Frontend Software
-Engineer based in Bogotá, Colombia, actively looking for new opportunities.
+Hugo Felipe Riveros Fajardo's professional portfolio. Hugo is a Fullstack Software
+Engineer based in Bogotá, Colombia, open to Fullstack and Frontend opportunities.
+His experience spans web applications, Node.js backend services, payment
+integrations and AI-assisted engineering.
 The site presents his experience, approach to engineering, capabilities, education
 and contact information.
 

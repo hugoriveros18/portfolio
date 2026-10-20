@@ -26,8 +26,11 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
   `Accept-Language` header. `/es` produces `html lang="es"`, Spanish copy/metadata
   and the Spanish CV.
 - **Language → content:** the experience shows the correct roles and dates, and
-  contact expresses availability. Yuno includes product integrations, Yunex,
-  operational automation and delivery practices. The hero stays technology-free.
+  contact expresses availability for both Fullstack and Frontend roles. The hero
+  and localized metadata use the Fullstack professional title. Yuno retains its
+  official Frontend Software Engineer title and includes Node.js backend services,
+  payment integrations, production operations, Yunex and daily Claude Code use.
+  Codex remains current exploration outside the Yuno role. The hero stays technology-free.
 - **Role → contribution:** complete storefront delivery and reusable components
   belong to the ITGlobers Mid-level role. The Frontend Developer entry describes
   development, maintenance and feature improvements.

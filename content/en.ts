@@ -4,9 +4,9 @@ import { contributionsEn } from './contributions/en'
 
 export const en: PortfolioContent = {
   metadata: {
-    title: 'Hugo Riveros | Frontend Software Engineer',
+    title: 'Hugo Riveros | Fullstack Software Engineer',
     description:
-      'Frontend Software Engineer based in Bogotá, Colombia. Web applications, system integrations and thoughtful user experiences. Open to new opportunities.',
+      'Fullstack Software Engineer based in Bogotá, Colombia. Web applications, backend services and system integrations. Open to Fullstack and Frontend opportunities.',
   },
   navigation: {
     label: 'Main navigation',
@@ -25,10 +25,10 @@ export const en: PortfolioContent = {
   hero: {
     location: 'Bogotá, Colombia',
     availability: 'Open to new opportunities',
-    role: 'Frontend Software Engineer',
+    role: 'Fullstack Software Engineer',
     headline: ['Thoughtful interfaces.', 'Reliable connections.'],
     introduction:
-      "I'm Hugo Riveros. I build web applications and connect systems to create clear, reliable experiences.",
+      "I'm Hugo Riveros. I build web applications, backend services and integrations to create clear, reliable experiences.",
     description:
       'I turn product needs into thoughtful solutions, with a focus on usability, performance and maintainability.',
     contact: "Let's talk",
@@ -41,7 +41,7 @@ export const en: PortfolioContent = {
     eyebrow: 'The work behind the words',
     title: 'Experience, in practice.',
     introduction:
-      'From online storefronts to payment technology, building interfaces and the integrations that make them work.',
+      'From online storefronts to payment technology, building applications, backend services and the integrations that connect them.',
     website: 'Visit company website',
     companies: [
       {
@@ -52,15 +52,15 @@ export const en: PortfolioContent = {
             ...roles.yuno,
             period: 'Feb 2026 — Oct 2026',
             summary:
-              'Developed and maintained SDKs, checkout experiences and payment integrations, working across user interfaces and integration logic with Product, Design and Backend teams.',
+              'Developed and maintained Yuno’s Node.js-based VTEX Payment Connector, alongside frontend applications, checkout experiences and SDK integrations, collaborating with Product, Design and Backend teams.',
             contributions: [
-              'Enabled card payments across VTEX seller suborders through shared antifraud context and server-side processing. Added subscription renewals as merchant-initiated payments and additional charges when order totals change after checkout.',
+              'Extended the connector’s payment-processing logic for multi-seller orders, subscription renewals and additional charges, adding API endpoints and working with integrations and data persistence as needed. Explore the contributions below.',
+              'Investigated production incidents through logs and implemented connector fixes. Optimized API interactions, modularized code and strengthened error handling, including a 20-second response deadline to mitigate failures that contribute to VTEX Contingency Mode activation.',
+              'Handled connector deployments and production monitoring, validating changes across development, staging and production. Built reusable payment-flow visualization and documentation tools, and expanded public plugin documentation and internal knowledge.',
               'Built the checkout extension and connector changes for direct Apple Pay, Google Pay and Samsung Pay payments on VTEX, later adding installment support. Explore the contribution below.',
-              'Strengthened connector error handling and introduced a 20-second response deadline to mitigate failures that contribute to VTEX Contingency Mode activation.',
               'Developed, maintained and published the WooCommerce payment plugin, including addressing feedback from the WordPress Plugin Directory review.',
               'Created Yunex to share integration knowledge, support incident investigations and automate knowledge-update proposals and post-deployment reports. Explore the contribution below.',
-              'Used Claude Code and agent teams for research, planning, implementation and documentation.',
-              'Built reusable tools for payment-flow visualization and documentation, expanded public plugin documentation and internal knowledge, and validated changes through testing, code review, and staging and production checks.',
+              'Used Claude Code daily for research, planning, implementation, debugging and documentation, developing reusable skills and agent workflows while retaining responsibility for technical decisions, code review and validation.',
             ],
           },
         ],
@@ -118,16 +118,26 @@ export const en: PortfolioContent = {
     title: 'Curiosity is a good starting point.',
     paragraphs: [
       'I moved into software development through a career change, technical training and self-directed learning. That path continues to shape how I approach unfamiliar problems: ask questions, understand the context and keep learning.',
-      'Since 2022, I’ve worked on e-commerce products and payment technology. I enjoy connecting the details of an interface with the business logic and systems behind it, and following a solution from investigation through delivery.',
+      'I have around four years of professional experience building web applications, backend services and system integrations in e-commerce and payment technology. I enjoy understanding how systems work, translating business requirements into reliable solutions and taking features from investigation through delivery.',
       'My earlier experience in hospitality and customer service brings another perspective: listen carefully, communicate clearly and pay attention to the details that affect people’s experience.',
     ],
     aiTitle: 'AI as part of the engineering process.',
     aiParagraphs: [
-      'I use AI for research, planning, implementation and documentation. My work with Claude Code and agent teams at Yuno included Yunex, an assistant for technical questions and incident investigations.',
-      'I build reusable skills and workflows, and I’m currently exploring Codex. I retain ownership of technical decisions, code review, testing and validation.',
+      'At Yuno, I used Claude Code daily for research, planning, implementation, debugging and documentation. I created Yunex to connect technical documentation, source code and observability data for incident investigations and knowledge sharing, with knowledge-update proposals and reporting workflows.',
+      'I build reusable skills and agent workflows, and I’m currently exploring Codex and agentic software engineering. I use these tools with engineering judgment and retain responsibility for technical decisions, code review, testing and validation.',
     ],
     skillsTitle: 'Tools & capabilities',
     skillGroups: [
+      {
+        title: 'Backend & integrations',
+        items: [
+          'Node.js',
+          'REST APIs',
+          'GraphQL',
+          'Payment connectors',
+          'SDK integrations',
+        ],
+      },
       {
         title: 'Frontend',
         items: [
@@ -141,36 +151,35 @@ export const en: PortfolioContent = {
         ],
       },
       {
-        title: 'Platforms & integrations',
+        title: 'Platforms',
         items: [
-          'Node.js',
           'VTEX IO',
           'FastStore',
-          'GraphQL',
-          'SDKs',
-          'Payment connectors',
+          'WooCommerce',
         ],
       },
       {
-        title: 'Quality & collaboration',
+        title: 'Testing & quality',
         items: [
           'Vitest',
           'Playwright',
           'Jest',
-          'Git & GitHub',
           'Code review',
-          'Datadog',
-          'Figma',
-          'Jira',
+          'Debugging',
+          'Production monitoring',
         ],
       },
       {
-        title: 'AI-assisted engineering',
+        title: 'AI & development tools',
         items: [
           'Claude Code',
-          'Reusable skills',
           'Agent workflows',
+          'Reusable skills',
           'Codex · exploring',
+          'Git & GitHub',
+          'Datadog',
+          'Figma',
+          'Jira',
         ],
       },
     ],
@@ -202,7 +211,7 @@ export const en: PortfolioContent = {
     eyebrow: 'A new chapter',
     title: 'Good work starts with a conversation.',
     description:
-      'I’m actively looking for my next Frontend Software Engineer role, across industries. If you’re building a team, have an opportunity in mind or simply want to exchange ideas, I’d be glad to hear from you.',
+      'I’m open to Fullstack Software Engineer and Frontend Software Engineer opportunities across industries and technology stacks. If you’re building a team, have an opportunity in mind or simply want to exchange ideas, I’d be glad to hear from you.',
     action: 'Get in touch',
     resume: 'Download CV in English',
     emailLabel: 'Or write to me directly',

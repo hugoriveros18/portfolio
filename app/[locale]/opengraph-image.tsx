@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { getContent } from '@/content'
 import { isLocale } from '@/lib/i18n'
 
-export const alt = 'Hugo Riveros — Frontend Software Engineer'
+export const alt = 'Hugo Riveros — Fullstack Software Engineer / Ingeniero de Software Fullstack'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 

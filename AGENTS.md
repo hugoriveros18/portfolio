@@ -16,7 +16,9 @@ contact details. English is the default public language; Spanish is also support
 - Preserve the editorial graphite/terracotta identity, light and dark appearance,
   Onest typography and the general, technology-free hero introduction.
 - Yuno ended in October 2026. The portfolio must communicate active availability
-  for new frontend opportunities across industries.
+  for Fullstack Software Engineer and Frontend Software Engineer opportunities
+  across industries. Position the profile as Fullstack Software Engineer while
+  preserving official historical job titles.
 - Follow the owner's latest clarification when supplied sources disagree. Complete
   storefront delivery and reusable responsive components belong to the Mid-level
   Frontend Developer role at ITGlobers. The earlier Frontend Developer role covers

@@ -4,9 +4,9 @@ import { contributionsEs } from './contributions/es'
 
 export const es: PortfolioContent = {
   metadata: {
-    title: 'Hugo Riveros | Ingeniero de software frontend',
+    title: 'Hugo Riveros | Ingeniero de Software Fullstack',
     description:
-      'Ingeniero de software frontend en Bogotá, Colombia. Aplicaciones web, integraciones y experiencias de usuario bien pensadas. Abierto a nuevas oportunidades.',
+      'Ingeniero de Software Fullstack en Bogotá, Colombia. Aplicaciones web, servicios backend e integraciones. Abierto a oportunidades Fullstack y Frontend.',
   },
   navigation: {
     label: 'Navegación principal',
@@ -25,10 +25,10 @@ export const es: PortfolioContent = {
   hero: {
     location: 'Bogotá, Colombia',
     availability: 'Abierto a nuevas oportunidades',
-    role: 'Ingeniero de software frontend',
+    role: 'Ingeniero de Software Fullstack',
     headline: ['Interfaces con propósito.', 'Conexiones confiables.'],
     introduction:
-      'Soy Hugo Riveros. Desarrollo aplicaciones web y conecto sistemas para crear experiencias claras y confiables.',
+      'Soy Hugo Riveros. Desarrollo aplicaciones web, servicios backend e integraciones para crear experiencias claras y confiables.',
     description:
       'Transformo las necesidades de un producto en soluciones bien pensadas, con atención a la usabilidad, el rendimiento y la mantenibilidad.',
     contact: 'Conversemos',
@@ -41,7 +41,7 @@ export const es: PortfolioContent = {
     eyebrow: 'La experiencia detrás de las palabras',
     title: 'Experiencia en la práctica.',
     introduction:
-      'De las tiendas online a la tecnología de pagos, construyendo interfaces y las integraciones que las hacen funcionar.',
+      'De las tiendas online a la tecnología de pagos, desarrollando aplicaciones, servicios backend e integraciones entre sistemas.',
     website: 'Visitar el sitio de la empresa',
     companies: [
       {
@@ -52,15 +52,15 @@ export const es: PortfolioContent = {
             ...roles.yuno,
             period: 'Feb 2026 — Oct 2026',
             summary:
-              'Desarrollé y mantuve SDKs, experiencias de checkout e integraciones de pagos, trabajando en las interfaces y la lógica de integración junto a equipos de Producto, Diseño y Backend.',
+              'Desarrollé y mantuve el Conector de Pagos de Yuno para VTEX, construido con Node.js, además de aplicaciones frontend, experiencias de checkout e integraciones de SDKs, en colaboración con Producto, Diseño y Backend.',
             contributions: [
-              'Habilité pagos con tarjeta entre subórdenes de múltiples vendedores en VTEX mediante un contexto antifraude compartido y procesamiento desde el servidor. Añadí recurrencias de suscripción como pagos iniciados por el comercio y cobros adicionales por cambios en el total después del checkout.',
+              'Amplié la lógica de procesamiento del conector para órdenes con múltiples vendedores, renovaciones de suscripciones y cobros adicionales, añadiendo endpoints y trabajando con integraciones de APIs y persistencia de datos según las necesidades. Explora las contribuciones más abajo.',
+              'Investigué incidentes de producción mediante logs e implementé correcciones en el conector. Optimicé interacciones con APIs, modularicé código y reforcé el manejo de errores, incluyendo un límite de respuesta de 20 segundos para mitigar fallos que contribuyen a activar el modo de contingencia de VTEX.',
+              'Me encargué de los despliegues del conector y su monitoreo en producción, validando cambios en desarrollo, staging y producción. Construí herramientas reutilizables de visualización de pagos y documentación, y amplié la documentación pública de los plugins y el conocimiento interno.',
               'Desarrollé la extensión de checkout y los cambios del conector para pagos directos con Apple Pay, Google Pay y Samsung Pay en VTEX, y posteriormente añadí cuotas. Conoce la contribución más abajo.',
-              'Reforcé el manejo de errores del conector e incorporé un límite de respuesta de 20 segundos para mitigar fallos que contribuyen a activar el modo de contingencia de VTEX.',
               'Desarrollé, mantuve y publiqué el plugin de pagos para WooCommerce, incluyendo la resolución de observaciones de la revisión oficial del WordPress Plugin Directory.',
               'Creé Yunex para compartir conocimiento de la integración, apoyar investigaciones de incidentes y automatizar propuestas de actualización del conocimiento y reportes posteriores al despliegue. Conoce la contribución más abajo.',
-              'Utilicé Claude Code y equipos de agentes para investigar, planificar, implementar y documentar.',
-              'Construí herramientas reutilizables para visualizar flujos de pago y generar documentación, amplié la documentación pública de los plugins y el conocimiento interno, y validé cambios con pruebas, revisión de código y verificaciones en staging y producción.',
+              'Utilicé Claude Code a diario para investigar, planificar, implementar, depurar y documentar. Desarrollé skills reutilizables y flujos con agentes, manteniendo la responsabilidad sobre las decisiones técnicas, la revisión de código y la validación.',
             ],
           },
         ],
@@ -118,16 +118,26 @@ export const es: PortfolioContent = {
     title: 'La curiosidad es un buen comienzo.',
     paragraphs: [
       'Llegué al desarrollo de software a través de un cambio de carrera, formación técnica y aprendizaje autodidacta. Ese camino sigue definiendo cómo abordo problemas nuevos: hacer preguntas, entender el contexto y seguir aprendiendo.',
-      'Desde 2022 he trabajado en productos de e-commerce y tecnología de pagos. Disfruto conectar los detalles de una interfaz con la lógica de negocio y los sistemas que la soportan, y acompañar una solución desde la investigación hasta la entrega.',
+      'Tengo cerca de cuatro años de experiencia profesional desarrollando aplicaciones web, servicios backend e integraciones en e-commerce y tecnología de pagos. Disfruto entender cómo funcionan los sistemas, traducir necesidades de negocio en soluciones confiables y hacerme cargo de funcionalidades desde la investigación hasta la entrega.',
       'Mi experiencia anterior en hotelería y atención al cliente aporta otra perspectiva: escuchar con atención, comunicar con claridad y cuidar los detalles que afectan la experiencia de las personas.',
     ],
     aiTitle: 'La IA como parte de la ingeniería.',
     aiParagraphs: [
-      'Utilizo IA para investigar, planificar, implementar y documentar. Mi trabajo con Claude Code y equipos de agentes en Yuno incluyó Yunex, un asistente para consultas técnicas e investigación de incidentes.',
-      'Construyo skills y flujos reutilizables, y actualmente exploro Codex. Mantengo la responsabilidad sobre las decisiones técnicas, la revisión de código, las pruebas y la validación.',
+      'En Yuno utilicé Claude Code a diario para investigar, planificar, implementar, depurar y documentar. Creé Yunex para conectar documentación técnica, código fuente y datos de observabilidad en investigaciones de incidentes y consultas compartidas, con propuestas de actualización del conocimiento y flujos de reportes.',
+      'Construyo skills reutilizables y flujos con agentes, y actualmente exploro Codex y la ingeniería de software con agentes. Uso estas herramientas con criterio y mantengo la responsabilidad sobre las decisiones técnicas, la revisión de código, las pruebas y la validación.',
     ],
     skillsTitle: 'Herramientas y capacidades',
     skillGroups: [
+      {
+        title: 'Backend e integraciones',
+        items: [
+          'Node.js',
+          'APIs REST',
+          'GraphQL',
+          'Conectores de pagos',
+          'Integraciones de SDKs',
+        ],
+      },
       {
         title: 'Frontend',
         items: [
@@ -141,36 +151,35 @@ export const es: PortfolioContent = {
         ],
       },
       {
-        title: 'Plataformas e integraciones',
+        title: 'Plataformas',
         items: [
-          'Node.js',
           'VTEX IO',
           'FastStore',
-          'GraphQL',
-          'SDKs',
-          'Conectores de pagos',
+          'WooCommerce',
         ],
       },
       {
-        title: 'Calidad y colaboración',
+        title: 'Pruebas y calidad',
         items: [
           'Vitest',
           'Playwright',
           'Jest',
-          'Git y GitHub',
           'Revisión de código',
-          'Datadog',
-          'Figma',
-          'Jira',
+          'Depuración',
+          'Monitoreo en producción',
         ],
       },
       {
-        title: 'Ingeniería asistida por IA',
+        title: 'IA y herramientas de desarrollo',
         items: [
           'Claude Code',
-          'Skills reutilizables',
           'Flujos con agentes',
+          'Skills reutilizables',
           'Codex · exploración',
+          'Git y GitHub',
+          'Datadog',
+          'Figma',
+          'Jira',
         ],
       },
     ],
@@ -202,7 +211,7 @@ export const es: PortfolioContent = {
     eyebrow: 'Un nuevo capítulo',
     title: 'Un buen proyecto empieza conversando.',
     description:
-      'Estoy buscando activamente mi próximo rol como Frontend Software Engineer, en distintos sectores. Si estás formando un equipo, tienes una oportunidad en mente o simplemente quieres intercambiar ideas, me encantará conversar.',
+      'Estoy abierto a oportunidades como Fullstack Software Engineer y Frontend Software Engineer, en distintos sectores y con diferentes tecnologías. Si estás formando un equipo, tienes una oportunidad en mente o simplemente quieres intercambiar ideas, me encantará conversar.',
     action: 'Hablemos',
     resume: 'Descargar CV en español',
     emailLabel: 'También puedes escribirme directamente',

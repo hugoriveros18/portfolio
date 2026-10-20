@@ -29,6 +29,20 @@ for (const locale of ['en', 'es'] as const) {
     await expect(page.getByRole('heading', { level: 1 })).toContainText(
       locale === 'en' ? 'Thoughtful interfaces.' : 'Interfaces con propósito.',
     )
+    await expect(page.locator('.hero-identity')).toContainText(
+      locale === 'en' ? 'Fullstack Software Engineer' : 'Ingeniero de Software Fullstack',
+    )
+    const yuno = page.locator('.experience-company').filter({ has: page.locator('#yuno-heading') })
+    await expect(yuno.getByRole('heading', { level: 4 })).toHaveText('Frontend Software Engineer')
+    await expect(yuno.locator('.role-summary')).toContainText('Node.js')
+    await expect(yuno).not.toContainText(/Express|Codex/)
+    const itglobers = page.locator('.experience-company').filter({ has: page.locator('#itglobers-heading') })
+    await expect(itglobers.getByRole('heading', { level: 4 })).toHaveText([
+      'Mid-level Frontend Developer', 'Frontend Developer',
+    ])
+    await expect(itglobers).not.toContainText(/backend|Node\.js/i)
+    await expect(page.locator('#contact')).toContainText('Fullstack Software Engineer')
+    await expect(page.locator('#contact')).toContainText('Frontend Software Engineer')
     await expect(page.locator('#experience')).toContainText('Yuno')
     await expect(page.locator('#experience')).toContainText('ITGlobers')
     await expect(page.locator('#experience')).toContainText('Oct 2026')
@@ -270,8 +284,8 @@ for (const locale of ['en', 'es'] as const) {
     await page.goto(`/${locale}`)
     await expect(page).toHaveTitle(
       locale === 'en'
-        ? 'Hugo Riveros | Frontend Software Engineer'
-        : 'Hugo Riveros | Ingeniero de software frontend',
+        ? 'Hugo Riveros | Fullstack Software Engineer'
+        : 'Hugo Riveros | Ingeniero de Software Fullstack',
     )
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       'href',
@@ -281,6 +295,16 @@ for (const locale of ['en', 'es'] as const) {
       'href',
       'https://hugoriverosdev.vercel.app/es',
     )
+    const title = locale === 'en'
+      ? 'Hugo Riveros | Fullstack Software Engineer'
+      : 'Hugo Riveros | Ingeniero de Software Fullstack'
+    for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) {
+      await expect(page.locator(selector)).toHaveAttribute('content', title)
+    }
+    for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) {
+      await expect(page.locator(selector)).toHaveAttribute('content', /Fullstack/)
+    }
+    await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute('content', /Fullstack Software Engineer/)
     const image = await page
       .locator('meta[property="og:image"]')
       .getAttribute('content')

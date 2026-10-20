@@ -5,6 +5,7 @@ export const companies = {
     name: 'Yuno',
     url: 'https://y.uno/',
     technologies: [
+      'Node.js',
       'TypeScript',
       'SDKs',
       'VTEX',

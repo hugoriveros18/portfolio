@@ -21,14 +21,23 @@ takes precedence when supplied documents disagree.
 
 | Entry | Dates | Scope |
 | --- | --- | --- |
-| Yuno · Frontend Software Engineer | Feb 2026–Oct 2026 | SDKs, checkout/payment integrations, native wallets, connector reliability, WooCommerce publication, Yunex, operational automation, AI-assisted engineering and delivery validation. |
+| Yuno · Frontend Software Engineer | Feb 2026–Oct 2026 | Node.js VTEX Payment Connector development and maintenance, payment logic and API endpoints, integrations and persistence, incident fixes, performance, deployments and monitoring; frontend applications, SDKs, checkout, native wallets, WooCommerce publication, Yunex and AI-assisted engineering. |
 | ITGlobers · Mid-level Frontend Developer | Apr 2025–Feb 2026 | Complete storefronts, reusable responsive components, Jumbo checkout modularization, custom applications/integrations, performance, estimation and planning. |
 | ITGlobers · Frontend Developer | Oct 2022–Apr 2025 | Development and maintenance of interfaces, feature improvements, project requirements and multidisciplinary collaboration. |
 | Platzi | Jan 2022–Present | Continuing, self-directed software development learning. |
 
-Yuno is a completed role. The contact section communicates active availability
-for frontend opportunities across industries. Platzi is ongoing learning rather
+The public profile is Fullstack Software Engineer / Ingeniero de Software Fullstack,
+with around four years of professional software development experience. Official
+historical job titles and dates remain unchanged. Yuno is a completed role. The
+contact section communicates availability for Fullstack and Frontend Software
+Engineer opportunities across industries and technology stacks. Platzi is ongoing learning rather
 than a completed degree: use `Jan 2022 — Present` / `Ene 2022 — Actualidad`.
+
+The Yuno connector uses Node.js; Express.js is unverified. Do not list VTEX VBase
+or VTEX services as standalone skills. Preserve specific storage details in the
+existing contribution cases. ITGlobers does not claim backend service development.
+Claude Code was used daily at Yuno, with reusable skills and agent workflows;
+Codex is current exploration, not a tool used professionally at Yuno.
 
 In Yuno, keep distinct contributions visible: product integrations, incident
 investigation, monitoring/knowledge automation, reusable engineering tools,
@@ -57,10 +66,13 @@ machine-translated at runtime.
 | English | `public/files/hugo-riveros-cv-en.pdf` | `hugo-riveros-cv-en.pdf` |
 | Spanish | `public/files/hugo-riveros-cv-es.pdf` | `hugo-riveros-cv-es.pdf` |
 
-The PDFs are the owner-supplied documents. Their ITGlobers responsibility grouping
-and Platzi dates do not fully match the confirmed website copy. Keep this
-consistency issue visible when preparing replacement PDFs; use the confirmed role
-scope above for the website.
+The PDFs are the owner-supplied Fullstack CVs in English and Spanish. Their
+positioning, Node.js backend scope, official roles, career dates, wallet coverage
+and ongoing Platzi learning align with the confirmed website content. They list
+Codex without an exploration qualifier; the website explicitly identifies it as
+current learning, separate from professional Claude Code use at Yuno. Education
+periods are more detailed on the website, and contribution cases expand on the
+CV summaries without changing their scope.
 
 Replace the corresponding PDF while keeping its filename when updating a CV.
 If renaming it, update `lib/profile.ts` and the download expectations in the tests.

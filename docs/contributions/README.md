@@ -17,10 +17,12 @@ tool must not be reduced to its most familiar feature. For Yunex, investigation,
 knowledge maintenance and deployment monitoring are three distinct capabilities.
 Technical implementation details can expand below those visible summaries.
 
-The first three cases in the shared editorial order receive the full presentation.
-Additional cases use named, expandable entries with the same underlying content.
-This limits initial page growth without removing access to completed cases. There
-are no empty cards, artificial metrics, carousels or filters for a single case.
+All cases have visible overviews in the shared editorial order. A compact index
+links to their stable anchors using company and case names; numbers identify only
+the main page sections. Technical details retain native disclosures. Diagrams use
+vertical stages, and two-capability lists fill the width with two equal columns.
+Supporting references appear vertically and open in new tabs. There are no empty
+cards, artificial metrics, carousels or filters.
 
 ## Intake
 
@@ -159,7 +161,7 @@ Check that visible summaries, technical detail and both translations describe
 the same behavior, component ownership and delivery phases. When a gallery is
 present, review image legibility, modal controls, focus restoration and localized
 labels; check that supporting documentation opens separately from the portfolio.
-When the list grows past three entries, check access to the additional cases.
+Check every index link and case anchor, including language switching.
 
 ## Case material
 
@@ -168,8 +170,8 @@ When the list grows past three entries, check access to the additional cases.
 | Yunex | [Working notes](yunex.md) | Integrated in both languages. |
 | Direct wallet checkout on VTEX | [Source notes](wallet-enhanced-experience.md) | Integrated in both languages, including the flow comparison, technical detail and original screenshots. |
 | Multi-seller card payments on VTEX | [Source notes](vtex-split-orders.md) | Integrated in both languages with the sequential flow, shared antifraud context, connector ownership and Yuno-managed 3DS. |
-| VTEX subscription payments | [Source notes](vtex-subscriptions.md) | Integrated in both languages as the fourth, expandable case with initial-payment preparation, cycle detection and server-side MIT renewals. |
-| Jumbo checkout modularization | [Source notes](jumbo-checkout-modularization.md) | Integrated in both languages as the fifth, expandable case with Mid-level migration ownership, a source-to-build diagram and attributed client/team feedback. |
+| VTEX subscription payments | [Source notes](vtex-subscriptions.md) | Integrated in both languages as the fourth case with initial-payment preparation, cycle detection and server-side MIT renewals. |
+| Jumbo checkout modularization | [Source notes](jumbo-checkout-modularization.md) | Integrated in both languages as the fifth case with Mid-level migration ownership, a source-to-build diagram and attributed client/team feedback. |
 
 ## Repository skill
 

@@ -12,8 +12,8 @@ and contact information.
 The portfolio supports **English and Spanish**, with English as the default,
 an editorial graphite/terracotta design, light and dark appearance, and a matching
 CV download for each language. Contributions have concise references in experience
-and a dedicated editorial section with optional diagrams and expandable context;
-the About section adds personal context, capabilities, education and languages.
+and a dedicated editorial section with a case index, visible overviews, optional
+diagrams and expandable context; the About section adds personal context, capabilities, education and languages.
 The reading order is Hero → About → Experience → Contributions → Contact.
 
 ## Local development
@@ -31,6 +31,10 @@ Open [English](http://localhost:3000/en) or [Spanish](http://localhost:3000/es).
 The root always redirects to `/en`. Switching languages preserves the current
 section; appearance persists across navigation and reloads. Without an explicit
 appearance preference, the site follows the operating system.
+
+Use `npm run dev` while editing: it updates the page as source files change.
+`npm start` serves the latest production build; rebuild and restart it after
+source changes. To use another local port, run `npm run dev -- --port 3101`.
 
 No environment variables, credentials or external services are needed to run the
 site. The first installation/build needs network access for dependencies and the
@@ -97,7 +101,8 @@ public/
   images/            original portrait
 tests/               browser user flows
 docs/                architecture, content, tooling and verification guidance
-.agents/skills/      repository-scoped contribution authoring skill
+.agents/skills/      project-local contribution authoring and UI review skills
+skills-lock.json     installed skill source metadata
 ```
 
 ## Updating information
@@ -120,6 +125,9 @@ The [repository skill](.agents/skills/add-contribution/SKILL.md) gathers missing
 context, organizes the complete case and follows the documented bilingual
 presentation standard. It respects content-review stages requested in the session.
 
+The project-local `web-design-guidelines` skill supports UI and accessibility
+reviews. See [tooling](docs/tooling.md#project-local-skills) for installation and scope.
+
 ## Documentation
 
 - [Agent instructions](AGENTS.md): the single entry point for project conventions
@@ -127,6 +135,7 @@ presentation standard. It respects content-review stages requested in the sessio
 - [Architecture](docs/architecture.md): routes, components, appearance and hosting.
 - [Content](docs/content.md): translations, CVs, photography and sources.
 - [Contributions](docs/contributions/README.md): adding cases, editorial standard and verification.
+- [Design](docs/design/README.md): visual hierarchy and interaction rules.
 - [Tooling](docs/tooling.md): dependencies, compatibility and maintenance.
 - [Verification](docs/verification.md): checks, expected behavior and coverage.
 

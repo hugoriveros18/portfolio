@@ -47,7 +47,8 @@ the same document order in both languages.
 | `lib/profile.ts` | Identity, contact, public address and CV paths by locale. |
 | `lib/theme.ts` | Storage key and pre-paint initialization script. |
 | `tests/portfolio.spec.ts` | Real browser user-flow verification. |
-| `.agents/skills/add-contribution/` | Repository skill that follows the documented contribution standard. |
+| `.agents/skills/` | Project-local contribution authoring and UI review instructions. |
+| `skills-lock.json` | Installed skill source metadata. |
 
 ## Server and client boundaries
 
@@ -64,13 +65,8 @@ and focus restoration. The background is inert while the dialog is open and CSS
 locks page scrolling. A compact caption header shares its row with an SVG close
 control; the control keeps a localized accessible label and a 44 px click target.
 Without JavaScript, image links still reach the original.
-The first three entries in the shared editorial order are featured;
-additional entries remain accessible through native disclosures. Browser fragment
-navigation reveals an enclosing disclosure when targeting a case inside it,
-including direct visits without JavaScript. Additional-case disclosures use
-`suppressHydrationWarning` only on their outer `details` element because the
-browser may set `open` before React hydrates; native disclosure state remains
-browser-managed. Context and
+All five entries have visible overviews and stable anchors. A compact index links
+directly to each case; numbering is reserved for the four main sections. Context and
 validation use native `details/summary` without client-side state. Neither case
 reading nor expanding detail requires JavaScript. Supporting documentation links
 are optional and open in a new tab, announced in the selected language.
@@ -90,9 +86,14 @@ during the visit. Without JavaScript, CSS follows the system color scheme.
 
 - Graphite/terracotta palette with semantic CSS color variables.
 - Onest throughout, using size and weight to establish hierarchy.
-- The noninteractive AI approach card starts with its heading. Additional-case
-  controls use larger, medium-weight text in the primary color; nested technical
-  details use smaller terracotta labels. Native disclosure markers retain the accent.
+- Numbered section introductions, an accent-soft AI approach card and grouped
+  capabilities establish the editorial hierarchy. Case cards use company/name
+  labels without competing numbering; hover uses color and borders, not underlining.
+- Case headings span the story width. Diagrams retain vertical stages and highlight
+  individual nodes. Two-capability cases use two equal columns. References form a
+  vertical list using the primary text color and underline, distinct from terracotta
+  disclosure controls; all external web links open in new tabs.
+- Contact has one email action alongside the localized CV and social links.
 - Sticky header, mobile navigation at 800 px and a single-column layout at 600 px.
   There are no device-detection resize listeners.
 - A 350 ms entry transform that never hides the content.

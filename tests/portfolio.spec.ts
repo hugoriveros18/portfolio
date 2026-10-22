@@ -111,68 +111,46 @@ for (const locale of ['en', 'es'] as const) {
     await expect(page.locator('#contribution-yunex')).toBeVisible()
   })
 
-  test(`${locale}: additional contributions support keyboard reading and localized deep links`, async ({
-    page,
-  }) => {
+  test(`${locale}: contribution index supports keyboard navigation and localized deep links`, async ({ page }) => {
     const errors: string[] = []
     page.on('pageerror', (error) => errors.push(error.message))
-    page.on('console', (message) => {
-      if (message.type() === 'error') errors.push(message.text())
-    })
     await page.goto(`/${locale}#contributions`)
-    const disclosure = page.locator('.additional-contributions > details').first()
-    const summary = disclosure.locator(':scope > summary')
-    const story = page.locator('#contribution-vtex-subscriptions')
-    await expect(disclosure).not.toHaveAttribute('open', '')
-    await expect(story).not.toBeVisible()
-    await summary.focus()
-    await page.keyboard.press('Enter')
-    await expect(story.getByRole('heading', { level: 3 })).toBeVisible()
-    const detection = story.locator('details[id$="-cycle-detection"]')
-    await detection.locator('summary').focus()
-    await page.keyboard.press('Enter')
-    await expect(detection.locator('.contribution-detail-copy')).toBeVisible()
-    await expect(detection).toContainText(locale === 'en' ? 'cycle 0' : 'ciclo 0')
-    await summary.focus()
-    await page.keyboard.press('Enter')
-    await expect(story).not.toBeVisible()
-
-    await page.goto(`/${locale}#contribution-vtex-subscriptions`)
-    await expect(disclosure).toHaveAttribute('open', '')
-    await expect(story.getByRole('heading', { level: 3 })).toBeVisible()
-    await page.getByRole('link', {
-      name: locale === 'en' ? 'Leer en español' : 'Read in English',
-    }).click()
-    await expect(page).toHaveURL(new RegExp(`/${locale === 'en' ? 'es' : 'en'}#contribution-vtex-subscriptions$`))
-    await expect(disclosure).toHaveAttribute('open', '')
-    await expect(story.getByRole('heading', { level: 3 })).toBeVisible()
-    const jumbo = page.locator('#contribution-jumbo-checkout-modularization')
-    const jumboDisclosure = page.locator('.additional-contributions > details').filter({ has: jumbo })
-    await expect(jumboDisclosure).not.toHaveAttribute('open', '')
-    await jumboDisclosure.locator(':scope > summary').focus()
-    await page.keyboard.press('Enter')
-    await expect(jumbo.getByRole('heading', { level: 3 })).toBeVisible()
-    await expect(disclosure).toHaveAttribute('open', '')
-    await jumboDisclosure.locator(':scope > summary').focus()
-    await page.keyboard.press('Enter')
-    await expect(jumbo).not.toBeVisible()
-
-    await page.goto(`/${locale}#contribution-jumbo-checkout-modularization`)
-    await expect(jumboDisclosure).toHaveAttribute('open', '')
-    await expect(disclosure).not.toHaveAttribute('open', '')
-    await expect(jumbo.locator('.contribution-diagram')).toBeVisible()
-    const migration = jumbo.locator('details[id$="-migration"]')
-    await migration.locator('summary').focus()
-    await page.keyboard.press('Enter')
-    await expect(migration.locator('.contribution-detail-copy')).toBeVisible()
-    await page.getByRole('link', {
-      name: locale === 'en' ? 'Leer en español' : 'Read in English',
-    }).click()
-    await expect(page).toHaveURL(new RegExp(`/${locale === 'en' ? 'es' : 'en'}#contribution-jumbo-checkout-modularization$`))
-    await expect(jumboDisclosure).toHaveAttribute('open', '')
-    await expect(disclosure).not.toHaveAttribute('open', '')
-    await expect(jumbo.getByRole('heading', { level: 3 })).toBeVisible()
+    await expect(page.locator('.contribution-list > article')).toHaveCount(5)
+    const index = page.locator('.contribution-index')
+    await expect(index.getByRole('link')).toHaveCount(5)
+    for (const id of ['vtex-subscriptions', 'jumbo-checkout-modularization']) {
+      const link = index.locator(`a[href="#contribution-${id}"]`)
+      await link.focus()
+      await page.keyboard.press('Enter')
+      await expect(page).toHaveURL(new RegExp(`#contribution-${id}$`))
+      const story = page.locator(`#contribution-${id}`)
+      await expect(story.getByRole('heading', { level: 3 })).toBeVisible()
+      const detail = story.locator(id === 'vtex-subscriptions'
+        ? 'details[id$="-cycle-detection"]' : 'details[id$="-migration"]')
+      await detail.locator('summary').focus()
+      await page.keyboard.press('Enter')
+      await expect(detail.locator('.contribution-detail-copy')).toBeVisible()
+      await page.getByRole('link', {
+        name: locale === 'en' ? 'Leer en español' : 'Read in English',
+      }).click()
+      await expect(page).toHaveURL(new RegExp(`/${locale === 'en' ? 'es' : 'en'}#contribution-${id}$`))
+      await expect(story.getByRole('heading', { level: 3 })).toBeVisible()
+      await page.goto(`/${locale}#contributions`)
+    }
     expect(errors).toEqual([])
+  })
+
+  test(`${locale}: external links keep the portfolio open and contact has one email action`, async ({ page }) => {
+    await page.goto(`/${locale}`)
+    const links = page.locator('a[href^="https://"]')
+    expect(await links.count()).toBeGreaterThan(0)
+    for (const link of await links.all()) {
+      await expect(link).toHaveAttribute('target', '_blank')
+      await expect(link).toHaveAttribute('rel', 'noopener noreferrer')
+    }
+    await expect(page.locator('#contact a[href^="mailto:"]')).toHaveCount(1)
+    await page.evaluate(() => window.scrollTo(0, 2000))
+    await expect.poll(() => page.locator('.site-header').evaluate((node) => node.getBoundingClientRect().top)).toBe(0)
   })
 
   test(`${locale}: the wallet contribution opens images in a modal and documentation in a new tab`, async ({

@@ -163,15 +163,12 @@ flowchart TB
 
 ## Public presentation
 
-The case is the fourth entry, under the native additional-contributions
-disclosure. Its two-phase overview reuses `ContributionComparison` to distinguish
+The case is the fourth visible entry, linked from the contribution index. Its two-phase overview reuses `ContributionComparison` to distinguish
 the initial purchase and later cycles. Two capabilities cover preparation for
 future charges and recurring-order recognition with server-side processing.
 Technical disclosures explain detection, PSP responsibility and API-triggered
-validation. Source links open in separate tabs. Direct case anchors reveal the
-enclosing disclosure through native browser behavior, including without
-JavaScript. The language control preserves the case fragment when JavaScript is
-available, so the target language also opens the case.
+validation. Source links open in separate tabs. Direct case anchors reach the visible overview, including without JavaScript.
+The language control preserves the case fragment when JavaScript is available.
 
 Keep unspecified payload fields, retry behavior and provider risk internals out
 of public claims; those details are not needed to explain the contribution.

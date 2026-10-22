@@ -34,6 +34,12 @@ contact details. English is the default public language; Spanish is also support
   that remains readable without JavaScript. Avoid unnecessary dependencies.
 - Use npm and the committed lockfile. Run the relevant checks documented in
   README.md and review content/layout changes in both languages on desktop/mobile.
+- Install any added skills at project scope under `.agents/skills/`, never globally.
+  Keep `skills-lock.json` with the repository.
+- External web links open in a new tab with `rel="noopener noreferrer"`.
+- Reserve numbering for About, Experience, Contributions and Contact. Cases use
+  company/name labels, visible overviews and a direct-link index. Supporting links
+  use the primary text color and underline to distinguish them from terracotta disclosures.
 - Do not deploy or push unless the user requests it.
 
 ## Current documentation
@@ -43,6 +49,7 @@ contact details. English is the default public language; Spanish is also support
 - [Content maintenance](docs/content.md): sources, translations, CVs and photography.
 - [Contributions](docs/contributions/README.md): intake, content contract and publishing workflow.
 - [Add contribution skill](.agents/skills/add-contribution/SKILL.md): reusable contribution workflow for Codex.
+- [Design](docs/design/README.md): current visual and interaction decisions.
 - [Tooling](docs/tooling.md): dependencies, compatibility and maintenance.
 - [Verification](docs/verification.md): checks, expected behavior and coverage.
 
@@ -59,7 +66,8 @@ Version-matched Next.js documentation is available at
 - `public/`: the supplied photograph and matching CV PDFs.
 - `tests/`: Playwright user flows for desktop and emulated mobile.
 - `docs/`: current architecture, content, tooling and verification guidance.
-- `.agents/skills/add-contribution/`: repository-scoped skill for adding and refining cases.
+- `.agents/skills/`: project-local contribution authoring and design review skills.
+- `skills-lock.json`: installed skill source and version metadata.
 
 The site uses Next.js App Router, React, TypeScript, Tailwind CSS and Onest. It
 does not require a custom business API, database, authentication or CMS. The

@@ -10,6 +10,7 @@ export function Experience({ text }: { text: PortfolioContent['experience'] }) {
       aria-labelledby="experience-heading"
     >
       <SectionIntro
+        number="02"
         eyebrow={text.eyebrow}
         title={text.title}
         description={text.introduction}
@@ -35,6 +36,11 @@ export function Experience({ text }: { text: PortfolioContent['experience'] }) {
                 </a>
               </h3>
               <p>{company.context}</p>
+              <ul className="tags" aria-label={company.name}>
+                {company.technologies.map((technology) => (
+                  <li key={technology}>{technology}</li>
+                ))}
+              </ul>
             </div>
             <div className="company-work">
               <div
@@ -65,11 +71,6 @@ export function Experience({ text }: { text: PortfolioContent['experience'] }) {
                   </div>
                 ))}
               </div>
-              <ul className="tags" aria-label={company.name}>
-                {company.technologies.map((technology) => (
-                  <li key={technology}>{technology}</li>
-                ))}
-              </ul>
             </div>
           </article>
         ))}

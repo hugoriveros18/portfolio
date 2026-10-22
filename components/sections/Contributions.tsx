@@ -3,8 +3,8 @@ import { ContributionDiagram } from '@/components/ui/ContributionDiagram'
 import { ContributionComparison } from '@/components/ui/ContributionComparison'
 import { ContributionGallery } from '@/components/ui/ContributionGallery'
 import { SectionIntro } from '@/components/ui/SectionIntro'
+import { Icon } from '@/components/ui/Icon'
 
-const featuredLimit = 3
 type Contribution = ContributionsContent['entries'][number]
 
 function ContributionStory({
@@ -20,10 +20,12 @@ function ContributionStory({
       id={`contribution-${entry.id}`}
       aria-labelledby={`contribution-${entry.id}-heading`}
     >
+      <header className="contribution-heading">
+        <p className="eyebrow">{entry.company} / {entry.name}</p>
+        <h3 id={`contribution-${entry.id}-heading`}>{entry.headline}</h3>
+      </header>
       <div className={`contribution-feature${entry.diagram || entry.comparison ? ' has-diagram' : ''}`}>
         <div className="contribution-overview">
-          <p className="eyebrow">{entry.name} · {entry.company}</p>
-          <h3 id={`contribution-${entry.id}-heading`}>{entry.headline}</h3>
           <p className="contribution-summary">{entry.summary}</p>
           <p className="contribution-ownership">{entry.ownership}</p>
           <div className="contribution-impact">
@@ -73,6 +75,7 @@ function ContributionStory({
               <li key={reference.href}>
                 <a href={reference.href} target="_blank" rel="noopener noreferrer">
                   {reference.label}
+                  <Icon name="arrow-up-right" />
                   <span className="sr-only"> ({text.externalLinkLabel})</span>
                 </a>
               </li>
@@ -87,32 +90,27 @@ function ContributionStory({
 export function Contributions({ text }: { text: ContributionsContent }) {
   if (text.entries.length === 0) return null
 
-  const featured = text.entries.slice(0, featuredLimit)
-  const additional = text.entries.slice(featuredLimit)
-
   return (
     <section className="section professional-contributions" id="contributions" aria-labelledby="contributions-heading">
       <SectionIntro
+        number="03"
         eyebrow={text.eyebrow}
         title={text.title}
         description={text.introduction}
         id="contributions-heading"
       />
+      <nav className="contribution-index" aria-labelledby="contributions-heading">
+        {text.entries.map((entry) => (
+          <a href={`#contribution-${entry.id}`} key={entry.id}>
+            <span className="contribution-index-company">{entry.company}</span>
+            <span className="contribution-index-name">{entry.name}</span>
+            <Icon name="arrow-up-right" />
+          </a>
+        ))}
+      </nav>
       <div className="contribution-list">
-        {featured.map((entry) => <ContributionStory entry={entry} text={text} key={entry.id} />)}
+        {text.entries.map((entry) => <ContributionStory entry={entry} text={text} key={entry.id} />)}
       </div>
-      {additional.length > 0 ? (
-        <div className="additional-contributions">
-          <h3>{text.moreLabel}</h3>
-          {additional.map((entry) => (
-            // Fragment navigation can open this native disclosure before hydration.
-            <details key={entry.id} suppressHydrationWarning>
-              <summary>{entry.name} · {entry.company} — {entry.headline}</summary>
-              <ContributionStory entry={entry} text={text} />
-            </details>
-          ))}
-        </div>
-      ) : null}
     </section>
   )
 }

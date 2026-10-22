@@ -67,8 +67,8 @@ adding a normal case should not require a special route or component.
 Use the contribution workflow's relevant checks. Notes-only work needs editorial
 and documentation checks; UI or contract changes need the corresponding lint,
 type, build and browser validation. Check language parity, core capability
-coverage, attribution, team value and navigation. Check additional-case access
-when the list grows beyond the featured limit.
+coverage, attribution, team value and navigation. Check every case-index link and
+stable anchor, including direct visits and language changes.
 
 Report what changed, the validation performed and any remaining factual gaps.
 Follow repository rules for commits, pushes and deployment. When owner feedback

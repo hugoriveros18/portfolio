@@ -3,6 +3,7 @@ import type { PortfolioContent } from '@/content/types'
 import { profile } from '@/lib/profile'
 import { Icon } from '@/components/ui/Icon'
 import { SocialLinks } from '@/components/ui/SocialLinks'
+import { SectionIntro } from '@/components/ui/SectionIntro'
 
 export function Contact({
   locale,
@@ -17,9 +18,8 @@ export function Contact({
       id="contact"
       aria-labelledby="contact-heading"
     >
+      <SectionIntro number="04" eyebrow={text.eyebrow} title={text.title} id="contact-heading" />
       <div className="contact-copy">
-        <p className="eyebrow">{text.eyebrow}</p>
-        <h2 id="contact-heading">{text.title}</h2>
         <p className="contact-description">{text.description}</p>
         <div className="contact-actions">
           <a className="button button-primary" href={`mailto:${profile.email}`}>
@@ -31,15 +31,10 @@ export function Contact({
             <Icon name="download" />
           </a>
         </div>
-      </div>
-      <div className="contact-details">
-        <p className="detail-label">{text.emailLabel}</p>
-        <a className="email-link" href={`mailto:${profile.email}`}>
-          {profile.email}
-          <Icon name="arrow-up-right" />
-        </a>
-        <p className="detail-label social-label">{text.socialLabel}</p>
-        <SocialLinks label={text.socialLabel} />
+        <div className="contact-details">
+          <p className="detail-label social-label">{text.socialLabel}</p>
+          <SocialLinks label={text.socialLabel} />
+        </div>
       </div>
     </section>
   )

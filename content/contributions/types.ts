@@ -66,7 +66,6 @@ export interface ContributionsContent {
   impactLabel: string
   capabilitiesLabel: string
   detailsLabel: string
-  moreLabel: string
   referencesLabel: string
   imageAction: string
   imageClose: string

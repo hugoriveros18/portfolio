@@ -1,37 +1,49 @@
-# Contribution presentation
+# Portfolio design
 
-The selected design is option 2: a reusable editorial section after Experience
-and before Contact. About comes before Experience. The portfolio implementation lives in
-`components/sections/Contributions.tsx` and uses the bilingual records in
-`content/contributions/`. Follow the [contribution workflow](../contributions/README.md)
-for new cases and editorial refinements.
+The current design uses Onest, a graphite/terracotta palette and light/dark
+appearance. The reading order is Hero → About → Experience → Contributions → Contact.
+Public copy and professional facts remain in the typed bilingual dictionaries;
+the layout lives in `components/` and `app/globals.css`.
 
-`contribution-options.html` is a standalone, interactive comparison using the
-portfolio's Onest typography and graphite/terracotta palette. It is not a Next.js
-route and is not included in the deployed website. The embedded font keeps the
-preview independent of network access and generated build paths.
+## Hierarchy and layout
 
-Open the HTML directly, or serve it locally from the repository root:
+- The hero keeps a general introduction, a two-line headline on wide screens and
+  a large 4:5 portrait with subtly rounded corners. Preserve the original photograph
+  and responsive framing.
+- The sticky header keeps language, appearance, CV and native mobile navigation
+  controls, with the `hr.` wordmark.
+- About, Experience, Contributions and Contact are numbered 01–04. Numbers are
+  decorative and do not repeat inside capabilities, the case index or stories.
+- The AI approach and team-value panels use accent-soft surfaces and a terracotta
+  edge. Skill groups use headings, rules and tags without proficiency ratings.
+- All contribution overviews remain visible. A company/name index links to stable
+  case anchors; cards change border/background on hover without underlining.
+- Case headings span the story width. Vertical diagram stages give text enough
+  room, with the accent border and fill applied to the emphasized node itself.
+  Two-capability lists use two equal columns, then stack on mobile.
+- Contact has one email action, the localized CV and social links. Do not duplicate
+  the action with a large email address.
 
-```bash
-python3 -m http.server 3200 --bind 127.0.0.1 --directory docs/design
-```
+## Links and disclosure controls
 
-Visit `http://localhost:3200/contribution-options.html`. The preview defaults to
-English and option 2, and includes Spanish and light/dark controls. Its layout
-adapts to the browser width. Query parameters support reproducible views:
-`?variant=2&lang=es&theme=dark`.
+Technical details use native `details/summary`, styled with terracotta. Supporting
+documentation appears as a vertical list in the primary text color, with underline
+and an external-link icon, so links are distinct from expandable controls. All
+external web links open in a new tab with `rel="noopener noreferrer"`.
 
-| Option | Placement and reading flow | Tradeoff |
-| --- | --- | --- |
-| 1. Within experience | Yunex is a contribution within Yuno, with a visible summary and outcome and an expandable explanation. | Compact, but less prominent within employment history. |
-| 2. Featured editorial story (selected) | A section after Experience and before Contact shows the overview, ownership, team value, an optional conceptual diagram and the complete capability inventory. Context, decisions and validation are expandable. | Makes contributions visible without requiring another page. Reusable records and additional expandable cases support growth. |
-| 3. Independent case study | A homepage card links to a full article with section navigation, decisions, validation and outcome. The prototype simulates this navigation locally. | Supports deeper reading and future cases; requires navigation beyond the homepage summary. |
+Wallet screenshots use a compact three-column gallery, two columns on tablets and
+one on mobile. Images remain uncropped. Enlargement preserves the existing native
+modal: caption, icon-only close button with a localized accessible label, Escape,
+backdrop dismissal, keyboard containment, scroll locking and restored focus. Native
+image links remain a fallback without JavaScript.
 
-The three options use the same owner-supplied Yunex account. There are no invented
-metrics, testimonials, future project cards, screenshots or live agent demos.
-Diagrams reconstruct the described workflow and are labelled as conceptual.
+## Maintenance and review
 
-The comparison illustrates the three reading structures. The typed public records
-and production components are the maintained source for the selected design.
-Experience keeps a concise Yunex reference instead of duplicating the case.
+Follow the [contribution workflow](../contributions/README.md) for case updates.
+Review both languages, appearances and desktop/mobile layouts using the
+[verification guidance](../verification.md). Keep visible focus, keyboard access,
+reduced motion and readable server-rendered content.
+
+`contribution-options.html` is a standalone exploration artifact, outside the
+deployed site. The components, typed content and this guidance describe the
+maintained design; the exploration is not the implementation specification.

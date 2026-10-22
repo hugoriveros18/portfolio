@@ -117,13 +117,13 @@ Yuno-managed 3DS, development validation and marketplace outcome. Keep the sessi
 identifier distinct from the purchase reference and preserve connector attribution.
 
 The [VTEX subscription case](contributions/vtex-subscriptions.md) is the fourth
-entry under the additional-contributions disclosure. Its two-phase comparison
+entry with a visible overview and an index link. Its two-phase comparison
 shows initial PSP preparation and later server-side MIT payments. Preserve cycle 0
 as the first recurrence after the initial purchase, and keep the VTEX subscription
 context, PSP stored-method handling and connector implementation distinct.
 
 The [Jumbo checkout case](contributions/jumbo-checkout-modularization.md) is the
-fifth entry, also under additional contributions. Its diagram separates modular
+fifth entry with a visible overview and an index link. Its diagram separates modular
 source organization from VTEX-compatible build output. Attribute the approximate
 40% development-time reduction to the client's estimate about six months after
 delivery. Attribute perceived loading and fluidity to team feedback; do not infer

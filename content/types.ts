@@ -69,7 +69,6 @@ export interface PortfolioContent {
     description: string
     action: string
     resume: string
-    emailLabel: string
     socialLabel: string
   }
   footer: { location: string; note: string; backToTop: string }

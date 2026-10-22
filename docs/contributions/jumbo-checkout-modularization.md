@@ -2,7 +2,7 @@
 
 ## Status and sources
 
-Integrated in English and Spanish as the fifth case, under additional contributions,
+Integrated in English and Spanish as the fifth visible case, linked from the contribution index,
 with the stable ID `jumbo-checkout-modularization`. These notes are not rendered
 by the website. The owner supplied a firsthand account and a Notion implementation document.
 Hugo confirmed complete migration ownership during his Mid-level Frontend Developer
@@ -189,9 +189,9 @@ source material rather than public assets or references: connected Notion access
 does not establish anonymous visitor access. The code-native diagram explains
 the architecture without copying these screenshots.
 
-The case follows the existing four entries and uses the shared additional-case
-disclosure. Its reference belongs to the ITGlobers Mid-level experience entry.
-The three featured cases retain their order. Native disclosures expose context,
+The case follows the existing four entries and uses the shared story renderer.
+Its reference belongs to the ITGlobers Mid-level experience entry. Native
+disclosures expose context,
 technology decisions, migration/lifecycle integration and client/team feedback.
 
 ## Editorial boundaries

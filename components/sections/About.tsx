@@ -9,6 +9,7 @@ export function About({ text }: { text: PortfolioContent['about'] }) {
       aria-labelledby="about-heading"
     >
       <SectionIntro
+        number="01"
         eyebrow={text.eyebrow}
         title={text.title}
         id="about-heading"

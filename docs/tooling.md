@@ -70,3 +70,20 @@ upstream fix and validate the dependency set together.
 The first installation/build needs network access to package sources and the
 font supplied through `next/font/google`. Runtime content does not require a
 business API, database or credentials.
+
+## Project-local skills
+
+Skills used by this repository live under `.agents/skills/`:
+
+- `add-contribution`: the portfolio's contribution authoring workflow.
+- `web-design-guidelines`: Vercel's UI and accessibility review instructions.
+
+Keep added skills local to this project and commit `skills-lock.json` with their
+source metadata. Do not use `-g` or `--global` when installing skills. For example:
+
+```bash
+npx skills add vercel-labs/agent-skills --skill web-design-guidelines --agent codex -y
+```
+
+Skills are development instructions, not website runtime dependencies. Installing
+one does not add a public route or a package to the application bundle.

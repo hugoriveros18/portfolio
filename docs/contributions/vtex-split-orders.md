@@ -169,7 +169,7 @@ for the public presentation.
 
 ## Public presentation
 
-The case is the third featured contribution. Its overview includes connector
+The case is the third visible contribution. Its overview includes connector
 ownership and marketplace value; two visible capabilities explain shared context
 and server-side processing. The generic stage/node diagram presents the successful
 sequential path and states the first-suborder cancellation condition in its caption.

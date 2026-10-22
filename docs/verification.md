@@ -47,22 +47,22 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
   and page scroll locking. Captions, controls and alternative text follow the
   selected language. Without JavaScript the image links still reach the originals.
   Yuno and VTEX documentation opens in new tabs, keeping the portfolio open.
-- **Multi-seller case → sequential flow:** the third featured contribution explains
+- **Multi-seller case → sequential flow:** the third contribution explains
   shared antifraud context and server-side processing as two visible capabilities.
   Its diagram describes one suborder at a time and cancellation if the first fails.
   Native disclosures explain purchase lookup, the separate session identifier,
   Yuno-managed 3DS and development validation. They remain usable without JavaScript;
   changing language preserves the case anchor.
-- **Additional case → subscription payments:** open the fourth case from its
-  native disclosure and directly through `#contribution-vtex-subscriptions`.
-  Language changes preserve the anchor and reveal the case. The two-phase
+- **Case index → subscription payments:** visit the fourth case from the
+  index and directly through `#contribution-vtex-subscriptions`.
+  Language changes preserve the anchor and keep the overview visible. The two-phase
   comparison distinguishes initial payment-method preparation from server-side
   MIT renewals; technical details explain detection and cycle 0 as the first
   recurrence after checkout. Verify keyboard access and reading without JavaScript.
-- **Additional case → Jumbo checkout:** the fifth case is independently expandable
-  through its keyboard control or `#contribution-jumbo-checkout-modularization`.
+- **Case index → Jumbo checkout:** the fifth case is accessible through its
+  index link or `#contribution-jumbo-checkout-modularization`.
   Switching languages preserves the case anchor. Both localized direct URLs
-  reveal the case without JavaScript. Review the source/build diagram and native details.
+  reach the visible overview without JavaScript. Review the source/build diagram and native details.
   The experience reference belongs to the Mid-level ITGlobers role. Keep the
   client's development-time estimate and the team's qualitative feedback distinct
   from measured runtime performance.
@@ -75,6 +75,11 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
   Reading order is Hero → About → Experience → Contributions → Contact; desktop
   and mobile menus use About → Experience → Contributions → Contact. The hero's
   next-section link points to About in both languages.
+- **Visual hierarchy → reading:** only main sections are numbered. Case-index
+  cards use company/name labels and a border/background hover, without underline.
+  Supporting links use primary text and underline; expandable technical details
+  use terracotta. Verify this distinction in both appearances. Check vertical
+  diagrams, full-width two-capability lists and the compact wallet gallery.
 - **Link → document:** downloads use the selected language's PDF and filename.
   Served bytes match the repository file and use the correct PDF content type.
 - **Metadata → resource:** canonical URLs and language alternatives match the
@@ -88,8 +93,9 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
 
 `tests/portfolio.spec.ts` covers default-language routing, localized profiles,
 actual downloads and byte checks, metadata/sharing images, theme persistence,
-language changes, contribution capabilities and detail reading, additional-case
-keyboard access and deep links, unavailable storage, JavaScript-disabled navigation, mobile
+language changes, contribution capabilities and detail reading, case-index
+keyboard access and deep links, external-link targets, a single contact email action,
+sticky navigation, unavailable storage, JavaScript-disabled navigation, mobile
 navigation, keyboard access, reduced motion, responsive widths and invalid routes.
 The mobile-menu case is intentionally skipped in the desktop project and runs
 in the mobile project.

@@ -35,7 +35,7 @@ export function Header({
     <header className="site-header">
       <div className="container header-inner">
         <a className="wordmark" href="#top" aria-label="Hugo Riveros">
-          hugo<span>.</span>
+          hr<span>.</span>
         </a>
         <nav className="desktop-nav" aria-label={text.label}>
           {items.map((item) => (

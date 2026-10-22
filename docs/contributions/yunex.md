@@ -7,10 +7,10 @@ firsthand account; original code, screenshots, evaluation artifacts and usage
 analytics are unavailable following the end of his employment. The diagrams below
 are conceptual reconstructions from that account, not recovered system diagrams.
 
-The selected layout is the featured editorial story after Experience. Public copy
+The case is the first visible story in the editorial section after Experience. Public copy
 lives in `content/contributions/en.ts` and `es.ts`, following the shared
-[contribution workflow](README.md). The design study illustrates the presentation
-alternatives; maintained public content lives in the typed dictionaries.
+[contribution workflow](README.md). Current presentation rules live in [design guidance](../design/README.md);
+maintained public content lives in the typed dictionaries.
 
 Describe the rollout generically: Yunex was developed over a short initial period
 and used by colleagues during the final part of Hugo's tenure at Yuno. The owner

@@ -106,7 +106,6 @@ export const en: PortfolioContent = {
     impactLabel: 'Value for the team',
     capabilitiesLabel: 'What the solution made possible',
     detailsLabel: 'Context, decisions and validation',
-    moreLabel: 'More contributions',
     referencesLabel: 'Supporting material',
     imageAction: 'Enlarge image',
     imageClose: 'Close image',
@@ -214,7 +213,6 @@ export const en: PortfolioContent = {
       'I’m open to Fullstack Software Engineer and Frontend Software Engineer opportunities across industries and technology stacks. If you’re building a team, have an opportunity in mind or simply want to exchange ideas, I’d be glad to hear from you.',
     action: 'Get in touch',
     resume: 'Download CV in English',
-    emailLabel: 'Or write to me directly',
     socialLabel: 'Find me online',
   },
   footer: {

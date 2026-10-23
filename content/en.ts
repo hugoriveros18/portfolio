@@ -1,6 +1,7 @@
 import type { PortfolioContent } from './types'
 import { companies, roles } from './career'
 import { contributionsEn } from './contributions/en'
+import { projectsEn } from './projects/en'
 
 export const en: PortfolioContent = {
   metadata: {
@@ -12,6 +13,7 @@ export const en: PortfolioContent = {
     label: 'Main navigation',
     experience: 'Experience',
     contributions: 'Contributions',
+    projects: 'Projects',
     about: 'About',
     contact: 'Contact',
     resume: 'Download CV',
@@ -99,6 +101,8 @@ export const en: PortfolioContent = {
     ],
   },
   contributions: {
+    showMoreLabel: 'View all contributions',
+    showLessLabel: 'Show fewer contributions',
     eyebrow: 'From a problem to a shared capability',
     title: 'Contributions, in depth.',
     introduction:
@@ -111,6 +115,38 @@ export const en: PortfolioContent = {
     imageClose: 'Close image',
     externalLinkLabel: 'opens in a new tab',
     entries: contributionsEn,
+  },
+  projects: {
+    eyebrow: 'Personal projects',
+    title: 'Build. Question. Learn.',
+    introduction: 'Independent projects that put engineering ideas into practice, with room to examine the decisions and lessons behind them.',
+    focusLabel: 'The engineering question',
+    viewProjectLabel: 'View project',
+    backLabel: 'Back to projects',
+    indexLabel: 'In this project',
+    videoLabel: 'The demo in action',
+    showMoreLabel: 'View all projects',
+    showLessLabel: 'Show fewer projects',
+    contextLabel: 'Why build it?',
+    objectivesLabel: 'What I set out to explore',
+    solutionLabel: 'What I built',
+    engineeringLabel: 'Engineering in practice',
+    decisionsLabel: 'Decisions and tradeoffs',
+    alternativesLabel: 'Alternatives considered',
+    tradeoffsLabel: 'Tradeoffs',
+    participationLabel: 'My participation and AI assistance',
+    resultsLabel: 'Results and learning',
+    challengesLabel: 'Challenges encountered',
+    lessonsLabel: 'What I learned',
+    validationLabel: 'Validation and its scope',
+    resourcesLabel: 'Technical documentation',
+    repositoryLabel: 'GitHub',
+    demoLabel: 'Explore demo',
+    transcriptLabel: 'Read transcript',
+    imageAction: 'Enlarge image',
+    imageClose: 'Close image',
+    externalLinkLabel: 'opens in a new tab',
+    entries: projectsEn,
   },
   about: {
     eyebrow: 'The person behind the work',

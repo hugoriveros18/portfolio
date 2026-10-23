@@ -30,6 +30,11 @@ contact details. English is the default public language; Spanish is also support
   section. Follow `docs/contributions/README.md` when adding or refining a case.
   Cover its full capability scope and team/business value. Supporting artifacts
   are optional; do not add a generic public disclaimer when they are unavailable.
+- Use `add-personal-project` for personal-project additions or substantive updates;
+  follow `docs/projects/README.md`. Keep this flow independent from professional
+  contributions, preserve factual provenance and honor content-review approval.
+  Keep portfolio entries brief and full narratives in shared localized case pages.
+  Omit incidental media metadata and internal workflow bookkeeping from public copy.
 - Preserve keyboard navigation, visible focus, reduced-motion support and content
   that remains readable without JavaScript. Avoid unnecessary dependencies.
 - Use npm and the committed lockfile. Run the relevant checks documented in
@@ -37,8 +42,8 @@ contact details. English is the default public language; Spanish is also support
 - Install any added skills at project scope under `.agents/skills/`, never globally.
   Keep `skills-lock.json` with the repository.
 - External web links open in a new tab with `rel="noopener noreferrer"`.
-- Reserve numbering for About, Experience, Contributions and Contact. Cases use
-  company/name labels, visible overviews and a direct-link index. Supporting links
+- Reserve numbering for About, Experience, Projects, Contributions and Contact.
+  Professional cases use company/name labels, visible overviews and a direct-link index. Supporting links
   use the primary text color and underline to distinguish them from terracotta disclosures.
 - Do not deploy or push unless the user requests it.
 
@@ -49,6 +54,8 @@ contact details. English is the default public language; Spanish is also support
 - [Content maintenance](docs/content.md): sources, translations, CVs and photography.
 - [Contributions](docs/contributions/README.md): intake, content contract and publishing workflow.
 - [Add contribution skill](.agents/skills/add-contribution/SKILL.md): reusable contribution workflow for Codex.
+- [Personal projects](docs/projects/README.md): intake, content, media and validation.
+- [Add personal project skill](.agents/skills/add-personal-project/SKILL.md): reusable bilingual project workflow.
 - [Design](docs/design/README.md): current visual and interaction decisions.
 - [Tooling](docs/tooling.md): dependencies, compatibility and maintenance.
 - [Verification](docs/verification.md): checks, expected behavior and coverage.
@@ -58,7 +65,7 @@ Version-matched Next.js documentation is available at
 
 ## Current structure
 
-- `app/[locale]/`: localized HTML document, portfolio page and Open Graph image.
+- `app/[locale]/`: localized HTML document, portfolio, project case pages and Open Graph image.
 - `app/globals.css`: typography, semantic colors, responsive layout and motion.
 - `components/`: layout, section, appearance and shared interface components.
 - `content/`: typed English/Spanish copy and shared career facts.
@@ -66,12 +73,12 @@ Version-matched Next.js documentation is available at
 - `public/`: the supplied photograph and matching CV PDFs.
 - `tests/`: Playwright user flows for desktop and emulated mobile.
 - `docs/`: current architecture, content, tooling and verification guidance.
-- `.agents/skills/`: project-local contribution authoring and design review skills.
+- `.agents/skills/`: project-local contribution/project authoring and design review skills.
 - `skills-lock.json`: installed skill source and version metadata.
 
 The site uses Next.js App Router, React, TypeScript, Tailwind CSS and Onest. It
 does not require a custom business API, database, authentication or CMS. The
-visible section order is Hero → About → Experience → Contributions → Contact.
+visible section order is Hero → About → Experience → Projects → Contributions → Contact.
 Keep the hero's next-section link and both navigation menus aligned with that order.
 Maintain current state documentation; use Git for historical versions rather than keeping an
 inventory of superseded structures or a change log in these documents.

@@ -12,9 +12,12 @@ and contact information.
 The portfolio supports **English and Spanish**, with English as the default,
 an editorial graphite/terracotta design, light and dark appearance, and a matching
 CV download for each language. Contributions have concise references in experience
-and a dedicated editorial section with a case index, visible overviews, optional
-diagrams and expandable context; the About section adds personal context, capabilities, education and languages.
-The reading order is Hero → About → Experience → Contributions → Contact.
+and a dedicated editorial section with an index, three initially visible stories, optional
+diagrams and expandable context; remaining cases open under View all contributions.
+Personal projects explain motivation, engineering decisions, validation and learning
+with a brief portfolio overview and a dedicated bilingual case page; the About section adds personal context,
+capabilities, education and languages.
+The reading order is Hero → About → Experience → Projects → Contributions → Contact.
 
 ## Local development
 
@@ -28,6 +31,8 @@ npm run dev
 ```
 
 Open [English](http://localhost:3000/en) or [Spanish](http://localhost:3000/es).
+Personal-project entries link to their case pages, such as
+[/en/projects/order-returns-manager](http://localhost:3000/en/projects/order-returns-manager).
 The root always redirects to `/en`. Switching languages preserves the current
 section; appearance persists across navigation and reloads. Without an explicit
 appearance preference, the site follows the operating system.
@@ -61,6 +66,10 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
+If a constrained environment prevents Turbopack from opening its worker port,
+use the supported `npm run build -- --webpack` fallback. The default project
+configuration remains Turbopack. Google Fonts access is still needed for Onest.
+
 If browser system libraries are missing on Linux, run
 `npx playwright install --with-deps chromium`.
 
@@ -80,28 +89,32 @@ are written to Git-ignored directories.
 
 ```text
 app/
-  [locale]/          HTML document, page and Open Graph image per language
+  [locale]/          HTML document, portfolio and Open Graph image per language
+    projects/[projectId]/  Prerendered bilingual project case pages
   globals.css        visual system and responsive styles
   icon.svg           site identity
   robots.ts          indexing instructions
   sitemap.ts         public URLs and language alternatives
 components/
   layout/            header and footer
-  sections/          introduction, about, experience, contributions and contact
+  sections/          introduction, about, experience, contributions, personal projects and contact
   theme/             appearance control
   ui/                shared interface elements
 content/
   en.ts, es.ts       localized copy
   career.ts          shared professional facts
-  contributions/     shared case contract, order and bilingual case records
+  contributions/     shared professional case contract and bilingual records
+  projects/          independent personal-project contract and bilingual records
+  media.ts           shared image/gallery types
   types.ts           content contract
 lib/                 locale, profile and initial-theme helpers
 public/
   files/             English and Spanish CVs
-  images/            original portrait
+  images/            portrait and original contribution/project screenshots
+  videos/            supplied personal-project demonstrations
 tests/               browser user flows
 docs/                architecture, content, tooling and verification guidance
-.agents/skills/      project-local contribution authoring and UI review skills
+.agents/skills/      project-local case/project authoring and UI review skills
 skills-lock.json     installed skill source metadata
 ```
 
@@ -110,6 +123,7 @@ skills-lock.json     installed skill source metadata
 - Copy: `content/en.ts` and `content/es.ts`.
 - Companies, ISO dates and official role titles: `content/career.ts`.
 - Contributions: `content/contributions/`; follow `docs/contributions/README.md`.
+- Personal projects: `content/projects/`; follow `docs/projects/README.md`.
 - Contact details, social links, public domain and CV paths: `lib/profile.ts`.
 - CVs: `public/files/hugo-riveros-cv-en.pdf` and `hugo-riveros-cv-es.pdf`.
 - Portrait: `public/images/hugo-riveros.png`; CSS framing in `app/globals.css`.
@@ -125,6 +139,11 @@ The [repository skill](.agents/skills/add-contribution/SKILL.md) gathers missing
 context, organizes the complete case and follows the documented bilingual
 presentation standard. It respects content-review stages requested in the session.
 
+Use `$add-personal-project` to add or update a personal project from informal notes
+or a repository URL. The [local skill](.agents/skills/add-personal-project/SKILL.md)
+checks sources, prepares bilingual engineering narratives and respects review stages.
+See the [project workflow](docs/projects/README.md) for required/optional information.
+
 The project-local `web-design-guidelines` skill supports UI and accessibility
 reviews. See [tooling](docs/tooling.md#project-local-skills) for installation and scope.
 
@@ -135,6 +154,7 @@ reviews. See [tooling](docs/tooling.md#project-local-skills) for installation an
 - [Architecture](docs/architecture.md): routes, components, appearance and hosting.
 - [Content](docs/content.md): translations, CVs, photography and sources.
 - [Contributions](docs/contributions/README.md): adding cases, editorial standard and verification.
+- [Personal projects](docs/projects/README.md): project intake, content, media and verification.
 - [Design](docs/design/README.md): visual hierarchy and interaction rules.
 - [Tooling](docs/tooling.md): dependencies, compatibility and maintenance.
 - [Verification](docs/verification.md): checks, expected behavior and coverage.

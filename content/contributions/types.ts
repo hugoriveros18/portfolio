@@ -1,3 +1,5 @@
+import type { PortfolioGallery } from '../media'
+
 // Keep the same identifiers and editorial order in both languages.
 export const contributionIds = [
   'yunex',
@@ -43,23 +45,13 @@ export interface ProfessionalContribution {
     }[]
     description: string
   }
-  gallery?: {
-    title: string
-    description?: string
-    images: {
-      id: string
-      src: string
-      width: number
-      height: number
-      modalMaxWidth?: number
-      alt: string
-      caption: string
-    }[]
-  }
+  gallery?: PortfolioGallery
   references?: { label: string; href: string }[]
 }
 
 export interface ContributionsContent {
+  showMoreLabel: string
+  showLessLabel: string
   eyebrow: string
   title: string
   introduction: string

@@ -6,7 +6,9 @@ export const companies = {
     url: 'https://y.uno/',
     technologies: [
       'Node.js',
+      'React',
       'TypeScript',
+      'JavaScript',
       'SDKs',
       'VTEX',
       'WooCommerce',
@@ -18,7 +20,7 @@ export const companies = {
     id: 'itglobers',
     name: 'ITGlobers',
     url: 'https://www.itglobers.com/',
-    technologies: ['React', 'TypeScript', 'VTEX IO', 'GraphQL', 'CSS'],
+    technologies: ['React', 'TypeScript', 'JavaScript', 'VTEX IO', 'GraphQL', 'CSS'],
   },
 }
 

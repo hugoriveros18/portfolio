@@ -2,17 +2,15 @@
 
 import Image from 'next/image'
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react'
-import type { ProfessionalContribution } from '@/content/contributions/types'
+import type { PortfolioImage } from '@/content/media'
 import { Icon } from '@/components/ui/Icon'
 
-type GalleryImage = NonNullable<ProfessionalContribution['gallery']>['images'][number]
-
-export function ContributionImageLightbox({
+export function ImageLightbox({
   image,
   closeLabel,
   children,
 }: {
-  image: GalleryImage
+  image: PortfolioImage
   closeLabel: string
   children: ReactNode
 }) {

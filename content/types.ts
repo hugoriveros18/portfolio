@@ -1,4 +1,5 @@
 import type { ContributionsContent } from './contributions/types'
+import type { ProjectsContent } from './projects/types'
 
 export interface PortfolioContent {
   metadata: { title: string; description: string }
@@ -6,6 +7,7 @@ export interface PortfolioContent {
     label: string
     experience: string
     contributions: string
+    projects: string
     about: string
     contact: string
     resume: string
@@ -50,6 +52,7 @@ export interface PortfolioContent {
     }[]
   }
   contributions: ContributionsContent
+  projects: ProjectsContent
   about: {
     eyebrow: string
     title: string

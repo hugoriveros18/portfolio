@@ -18,7 +18,7 @@ export function Contact({
       id="contact"
       aria-labelledby="contact-heading"
     >
-      <SectionIntro number="04" eyebrow={text.eyebrow} title={text.title} id="contact-heading" />
+      <SectionIntro number="05" eyebrow={text.eyebrow} title={text.title} id="contact-heading" />
       <div className="contact-copy">
         <p className="contact-description">{text.description}</p>
         <div className="contact-actions">

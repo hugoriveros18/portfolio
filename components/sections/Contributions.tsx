@@ -1,9 +1,11 @@
 import type { ContributionsContent } from '@/content/contributions/types'
 import { ContributionDiagram } from '@/components/ui/ContributionDiagram'
 import { ContributionComparison } from '@/components/ui/ContributionComparison'
-import { ContributionGallery } from '@/components/ui/ContributionGallery'
+import { ImageGallery } from '@/components/ui/ImageGallery'
 import { SectionIntro } from '@/components/ui/SectionIntro'
 import { Icon } from '@/components/ui/Icon'
+import { DisclosureNavigation } from '@/components/ui/DisclosureNavigation'
+import { ProgressiveGroup } from '@/components/ui/ProgressiveGroup'
 
 type Contribution = ContributionsContent['entries'][number]
 
@@ -51,7 +53,7 @@ function ContributionStory({
         </ul>
       </div>
       {entry.gallery ? (
-        <ContributionGallery gallery={entry.gallery} imageAction={text.imageAction} imageClose={text.imageClose} />
+        <ImageGallery gallery={entry.gallery} imageAction={text.imageAction} imageClose={text.imageClose} />
       ) : null}
       {entry.details.length > 0 ? (
         <div className="contribution-details">
@@ -87,30 +89,42 @@ function ContributionStory({
   )
 }
 
+function ContributionIndex({ entries, label }: { entries: ContributionsContent['entries']; label: string }) {
+  return (
+    <nav className="contribution-index" aria-label={label}>
+      {entries.map((entry) => (
+        <a href={`#contribution-${entry.id}`} key={entry.id}>
+          <span className="contribution-index-company">{entry.company}</span>
+          <span className="contribution-index-name">{entry.name}</span>
+          <Icon name="arrow-up-right" />
+        </a>
+      ))}
+    </nav>
+  )
+}
+
 export function Contributions({ text }: { text: ContributionsContent }) {
   if (text.entries.length === 0) return null
+  const initial = text.entries.slice(0, 3)
+  const remaining = text.entries.slice(3)
 
   return (
     <section className="section professional-contributions" id="contributions" aria-labelledby="contributions-heading">
-      <SectionIntro
-        number="03"
-        eyebrow={text.eyebrow}
-        title={text.title}
-        description={text.introduction}
-        id="contributions-heading"
-      />
-      <nav className="contribution-index" aria-labelledby="contributions-heading">
-        {text.entries.map((entry) => (
-          <a href={`#contribution-${entry.id}`} key={entry.id}>
-            <span className="contribution-index-company">{entry.company}</span>
-            <span className="contribution-index-name">{entry.name}</span>
-            <Icon name="arrow-up-right" />
-          </a>
-        ))}
-      </nav>
-      <div className="contribution-list">
-        {text.entries.map((entry) => <ContributionStory entry={entry} text={text} key={entry.id} />)}
-      </div>
+      <SectionIntro number="04" eyebrow={text.eyebrow} title={text.title} description={text.introduction} id="contributions-heading" />
+      <DisclosureNavigation>
+        <ContributionIndex entries={initial} label={text.title} />
+        <div className="contribution-list">
+          {initial.map((entry) => <ContributionStory entry={entry} text={text} key={entry.id} />)}
+        </div>
+        {remaining.length ? (
+          <ProgressiveGroup id="more-contributions" showMoreLabel={text.showMoreLabel} showLessLabel={text.showLessLabel} count={remaining.length}>
+            <ContributionIndex entries={remaining} label={text.showMoreLabel} />
+            <div className="contribution-list">
+              {remaining.map((entry) => <ContributionStory entry={entry} text={text} key={entry.id} />)}
+            </div>
+          </ProgressiveGroup>
+        ) : null}
+      </DisclosureNavigation>
     </section>
   )
 }

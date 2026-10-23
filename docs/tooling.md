@@ -75,7 +75,9 @@ business API, database or credentials.
 
 Skills used by this repository live under `.agents/skills/`:
 
-- `add-contribution`: the portfolio's contribution authoring workflow.
+- `add-contribution`: the portfolio's professional contribution authoring workflow.
+- `add-personal-project`: repository analysis, bilingual personal-project narratives
+  and presentation verification.
 - `web-design-guidelines`: Vercel's UI and accessibility review instructions.
 
 Keep added skills local to this project and commit `skills-lock.json` with their
@@ -84,6 +86,10 @@ source metadata. Do not use `-g` or `--global` when installing skills. For examp
 ```bash
 npx skills add vercel-labs/agent-skills --skill web-design-guidelines --agent codex -y
 ```
+
+The two authoring skills are created in this repository, without fabricated
+external-source entries in `skills-lock.json`. Preserve the existing external
+installation metadata when maintaining them.
 
 Skills are development instructions, not website runtime dependencies. Installing
 one does not add a public route or a package to the application bundle.

@@ -6,8 +6,7 @@ Professional contributions explain completed work through its problem, individua
 ownership, solution, decisions, validation and value for the team or business.
 They are not limited to payment integrations or AI tools.
 
-The selected presentation is an editorial section after Experience and before
-Contact. The full page order is Hero → About → Experience → Contributions → Contact.
+The selected presentation is an editorial section after Projects and before Contact. The full page order is Hero → About → Experience → Projects → Contributions → Contact.
 Each case has a stable anchor, visible overview, ownership, team value and core
 capabilities. Optional diagrams explain the solution. Native disclosures contain
 the deeper context, decisions, validation and practical examples.
@@ -17,8 +16,12 @@ tool must not be reduced to its most familiar feature. For Yunex, investigation,
 knowledge maintenance and deployment monitoring are three distinct capabilities.
 Technical implementation details can expand below those visible summaries.
 
-All cases have visible overviews in the shared editorial order. A compact index
-links to their stable anchors using company and case names; numbers identify only
+The first three cases have visible overviews and index links in editorial order.
+A native View all contributions disclosure contains the remaining index and full
+stories. No case content is removed. The shared fragment controller reveals
+groups/details for direct visits and language changes; without JavaScript all
+grouped cases remain readable. Compact index links use company and case names; numbers
+identify only
 the main page sections. Technical details retain native disclosures. Diagrams use
 vertical stages, and two-capability lists fill the width with two equal columns.
 Supporting references appear vertically and open in new tabs. There are no empty
@@ -103,8 +106,8 @@ examples. These are references for judgment, not mandatory templates.
 
 Inspect available images before choosing them: check legibility, intrinsic
 resolution and how much detail remains visible on desktop and mobile. Reuse
-`ContributionComparison`, `ContributionDiagram`, `ContributionGallery` and
-`ContributionImageLightbox` where suitable. Preserve the gallery's caption header,
+`ContributionComparison`, `ContributionDiagram`, `ImageGallery` and
+`ImageLightbox` where suitable. Preserve the gallery's caption header,
 SVG close control, accessible interactions and original-image fallback. Apply the
 existing per-image width option when enlargement reduces clarity; add a new
 presentation only when the current components cannot explain the case effectively.

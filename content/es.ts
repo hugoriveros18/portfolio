@@ -1,6 +1,7 @@
 import type { PortfolioContent } from './types'
 import { companies, roles } from './career'
 import { contributionsEs } from './contributions/es'
+import { projectsEs } from './projects/es'
 
 export const es: PortfolioContent = {
   metadata: {
@@ -12,6 +13,7 @@ export const es: PortfolioContent = {
     label: 'Navegación principal',
     experience: 'Experiencia',
     contributions: 'Contribuciones',
+    projects: 'Proyectos',
     about: 'Sobre mí',
     contact: 'Contacto',
     resume: 'Descargar CV',
@@ -99,6 +101,8 @@ export const es: PortfolioContent = {
     ],
   },
   contributions: {
+    showMoreLabel: 'Ver todas las contribuciones',
+    showLessLabel: 'Mostrar menos contribuciones',
     eyebrow: 'De un problema a una capacidad compartida',
     title: 'Contribuciones, en detalle.',
     introduction:
@@ -111,6 +115,38 @@ export const es: PortfolioContent = {
     imageClose: 'Cerrar imagen',
     externalLinkLabel: 'se abre en una pestaña nueva',
     entries: contributionsEs,
+  },
+  projects: {
+    eyebrow: 'Proyectos personales',
+    title: 'Construir. Cuestionar. Aprender.',
+    introduction: 'Proyectos independientes para llevar ideas de ingeniería a la práctica y examinar las decisiones y aprendizajes que dejan.',
+    focusLabel: 'La pregunta de ingeniería',
+    viewProjectLabel: 'Ver proyecto',
+    backLabel: 'Volver a proyectos',
+    indexLabel: 'En este proyecto',
+    videoLabel: 'La demo en práctica',
+    showMoreLabel: 'Ver todos los proyectos',
+    showLessLabel: 'Mostrar menos proyectos',
+    contextLabel: '¿Por qué desarrollarlo?',
+    objectivesLabel: 'Lo que quería explorar',
+    solutionLabel: 'Qué construí',
+    engineeringLabel: 'Ingeniería en práctica',
+    decisionsLabel: 'Decisiones y compromisos',
+    alternativesLabel: 'Alternativas consideradas',
+    tradeoffsLabel: 'Compromisos',
+    participationLabel: 'Mi participación y asistencia de IA',
+    resultsLabel: 'Resultados y aprendizaje',
+    challengesLabel: 'Retos encontrados',
+    lessonsLabel: 'Qué aprendí',
+    validationLabel: 'Validación y su alcance',
+    resourcesLabel: 'Documentación técnica',
+    repositoryLabel: 'GitHub',
+    demoLabel: 'Explorar demo',
+    transcriptLabel: 'Leer transcripción',
+    imageAction: 'Ampliar imagen',
+    imageClose: 'Cerrar imagen',
+    externalLinkLabel: 'se abre en una pestaña nueva',
+    entries: projectsEs,
   },
   about: {
     eyebrow: 'La persona detrás del trabajo',

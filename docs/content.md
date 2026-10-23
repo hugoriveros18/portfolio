@@ -30,7 +30,8 @@ The public profile is Fullstack Software Engineer / Ingeniero de Software Fullst
 with around four years of professional software development experience. Official
 historical job titles and dates remain unchanged. Yuno is a completed role. The
 contact section communicates availability for Fullstack and Frontend Software
-Engineer opportunities across industries and technology stacks. Platzi is ongoing learning rather
+Engineer opportunities across industries and technology stacks. Platzi is ongoing
+learning rather
 than a completed degree: use `Jan 2022 — Present` / `Ene 2022 — Actualidad`.
 
 The Yuno connector uses Node.js; Express.js is unverified. Do not list VTEX VBase
@@ -94,8 +95,10 @@ appearance.
 ## Experience and case studies
 
 Contributions have concise references within experience and a dedicated editorial
-section with reusable stories, optional diagrams and expandable detail. The site
-does not expose separate case pages or a personal-project section. Publish a case or project only
+section with reusable stories, optional diagrams and expandable detail. Personal
+projects have an independent section before Contributions, with their
+own typed narrative and shared resource records. Personal projects use shared localized case routes; professional cases retain their portfolio anchors.
+Publish a case or project only
 when there is sufficient completed work and supporting information to explain its
 problem, context, individual contribution, collaboration, decisions, validation
 and outcome. Diagrams should explain an actual decision.
@@ -117,13 +120,15 @@ Yuno-managed 3DS, development validation and marketplace outcome. Keep the sessi
 identifier distinct from the purchase reference and preserve connector attribution.
 
 The [VTEX subscription case](contributions/vtex-subscriptions.md) is the fourth
-entry with a visible overview and an index link. Its two-phase comparison
+entry, inside the remaining-contributions group with its stable index link. Its
+two-phase comparison
 shows initial PSP preparation and later server-side MIT payments. Preserve cycle 0
 as the first recurrence after the initial purchase, and keep the VTEX subscription
 context, PSP stored-method handling and connector implementation distinct.
 
 The [Jumbo checkout case](contributions/jumbo-checkout-modularization.md) is the
-fifth entry with a visible overview and an index link. Its diagram separates modular
+fifth entry, inside the remaining-contributions group with its stable index link. Its
+diagram separates modular
 source organization from VTEX-compatible build output. Attribute the approximate
 40% development-time reduction to the client's estimate about six months after
 delivery. Attribute perceived loading and fluidity to team feedback; do not infer
@@ -136,6 +141,25 @@ These working notes are not rendered by the website. Supporting artifacts are
 optional: add suitable links when available and omit generic public notices about
 missing evidence. Keep every substantial capability visible and describe the value
 to users, the team or the business without inventing numerical results.
+
+## Personal projects
+
+Follow [the project workflow](projects/README.md) and `$add-personal-project`.
+`content/projects/types.ts` defines independent shared IDs/order and a narrative
+contract; `shared.ts` holds common URLs/technology names/image dimensions; `en.ts`
+and `es.ts` hold localized copy. The cover stays static; additional gallery images use the shared image modal.
+Keep project and nested IDs aligned between languages. Never infer motivation or
+personal/AI authorship from the repository; separate inspected facts, owner
+statements, editorial choices and unknowns in project notes.
+
+[Order Returns Manager](projects/order-returns-manager.md) is a personal SDD learning
+demo using Codex and GitHub Spec Kit. Preserve its fictional transaction boundary,
+all five lessons, isolation tradeoffs and separate validation scopes. The 99-case
+local baseline is not a production guarantee or a number to add to later runs.
+Its gallery shows return selection, administrative review, completed history and
+the state guide, using actual interface captures and localized captions/alt text.
+Source links pin the inspected revision. The supplied video is published near the beginning of the case page, with native
+controls and a localized content caption. Duration/file metadata stays internal.
 
 ## Verifying content
 

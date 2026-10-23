@@ -6,6 +6,7 @@ import { Hero } from '@/components/sections/Hero'
 import { About } from '@/components/sections/About'
 import { Experience } from '@/components/sections/Experience'
 import { Contributions } from '@/components/sections/Contributions'
+import { Projects } from '@/components/sections/Projects'
 import { Contact } from '@/components/sections/Contact'
 import { profile } from '@/lib/profile'
 
@@ -43,6 +44,7 @@ export default async function Portfolio({ params }: Props) {
       <Hero text={text.hero} />
       <About text={text.about} />
       <Experience text={text.experience} />
+      <Projects locale={locale} text={text.projects} />
       <Contributions text={text.contributions} />
       <Contact locale={locale} text={text.contact} />
     </main>

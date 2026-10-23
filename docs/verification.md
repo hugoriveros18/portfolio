@@ -16,6 +16,10 @@ npm run build
 npm run test:e2e
 ```
 
+If a constrained environment prevents Turbopack from opening its worker port,
+use the supported `npm run build -- --webpack` fallback. The default project
+configuration remains Turbopack. Google Fonts access is still needed for Onest.
+
 The browser suite runs against a production build. Build before testing source
 changes, and restart an existing production server before reusing it. Playwright
 can manage its own server at `127.0.0.1:3100`; setup instructions are in README.md.
@@ -53,8 +57,14 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
   Native disclosures explain purchase lookup, the separate session identifier,
   Yuno-managed 3DS and development validation. They remain usable without JavaScript;
   changing language preserves the case anchor.
-- **Case index → subscription payments:** visit the fourth case from the
-  index and directly through `#contribution-vtex-subscriptions`.
+- **Remaining contributions → disclosure:** initially only the first three
+  stories/index links are visible. View all contributions exposes the remaining
+  index and full stories in editorial order. Keyboard collapse retains focus on
+  the summary and does not change the fragment. Direct/nested fragments, language
+  changes and Back/Forward reveal required groups/details before scrolling.
+  Without JavaScript all five records are readable.
+- **Case index → subscription payments:** expand the remaining group and visit
+  the fourth case from its index or directly through `#contribution-vtex-subscriptions`.
   Language changes preserve the anchor and keep the overview visible. The two-phase
   comparison distinguishes initial payment-method preparation from server-side
   MIT renewals; technical details explain detection and cycle 0 as the first
@@ -66,14 +76,36 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
   The experience reference belongs to the Mid-level ITGlobers role. Keep the
   client's development-time estimate and the team's qualitative feedback distinct
   from measured runtime performance.
+- **Projects → case page:** View project reaches the localized static article.
+  The video is available inside the case. The short portfolio entry has no study
+  disclosure; the case groups motivation, solution, decisions, participation,
+  results/lessons and evidence with a topic index and return links. Unknown IDs
+  return 404, metadata/sitemap contain both localized case routes, and the language
+  switch preserves the case/topic. Header section links return to the portfolio.
+  Old homepage topic fragments reach the same section on the case page.
+- **Case → video:** the supplied MP4 supports range requests, manual native playback,
+  seeking, playsinline and preload none. No autoplay or public duration/file-metadata
+  badges. Its poster and explanatory caption load correctly in both languages.
+- **Case → resources:** final documentation links form one vertical list, preserving
+  primary text, underline, icons and external-link behavior. The initial 99-case
+  local baseline remains scoped; later interface and public checks are separate.
+- **Project images → modal:** the portfolio cover is static. Only additional images
+  enlarge through the shared native modal. Check original loading, Escape/close/
+  backdrop, keyboard containment, focus restoration, scroll lock and translated
+  labels. Order Returns Manager has four gallery images covering selection, review,
+  history and the state guide. Without JavaScript image links reach originals; full case reading,
+  index links, video controls and return navigation still work.
+- **Disclosure → affordance:** project and contribution summaries use pointer
+  cursors, directional arrows, hover surfaces and visible keyboard focus. Open
+  arrows point down; reduced motion disables their transitions.
 - **Education → learning:** Platzi describes continuing self-directed learning
   with a start date and a localized present/current label.
 - **Control → appearance:** switching, reloading and navigating between languages
   preserves the theme. The control also works with blocked storage.
 - **Navigation → section:** switching languages preserves the fragment. Following
   a section closes mobile navigation; Escape returns focus to its control.
-  Reading order is Hero → About → Experience → Contributions → Contact; desktop
-  and mobile menus use About → Experience → Contributions → Contact. The hero's
+  Reading order is Hero → About → Experience → Projects → Contributions → Contact; desktop
+  and mobile menus use About → Experience → Projects → Contributions → Contact. The hero's
   next-section link points to About in both languages.
 - **Visual hierarchy → reading:** only main sections are numbered. Case-index
   cards use company/name labels and a border/background hover, without underline.
@@ -94,7 +126,11 @@ can manage its own server at `127.0.0.1:3100`; setup instructions are in README.
 `tests/portfolio.spec.ts` covers default-language routing, localized profiles,
 actual downloads and byte checks, metadata/sharing images, theme persistence,
 language changes, contribution capabilities and detail reading, case-index
-keyboard access and deep links, external-link targets, a single contact email action,
+keyboard access and deep links, progressive contribution visibility/collapse focus,
+nested fragment revelation and history, localized project routes/metadata, native
+video playback and range requests, legacy project links, image modals and vertical
+documentation lists,
+external-link targets, a single contact email action,
 sticky navigation, unavailable storage, JavaScript-disabled navigation, mobile
 navigation, keyboard access, reduced motion, responsive widths and invalid routes.
 The mobile-menu case is intentionally skipped in the desktop project and runs
@@ -109,7 +145,8 @@ in `tooling.md`.
 
 If a hydration warning identifies an extra `cz-shortcut-listen="true"` attribute
 on `body`, check ColorZilla's access to the local site. This extension-injected
-attribute is documented in the [Next.js issue tracker](https://github.com/vercel/next.js/issues/72031).
+attribute is documented in the [Next.js issue
+tracker](https://github.com/vercel/next.js/issues/72031).
 Disable the extension for localhost and reload, or reproduce in a clean browser
 profile. Keep application hydration diagnostics enabled rather than suppressing
 all mismatches on `body`.

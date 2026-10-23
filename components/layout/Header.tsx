@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, type MouseEvent } from 'react'
+import { usePathname } from 'next/navigation'
 import type { Locale } from '@/lib/i18n'
 import { profile } from '@/lib/profile'
 import type { PortfolioContent } from '@/content/types'
@@ -16,11 +17,15 @@ export function Header({
 }) {
   const menu = useRef<HTMLDetailsElement>(null)
   const otherLocale = locale === 'en' ? 'es' : 'en'
+  const pathname = usePathname()
+  const home = pathname === `/${locale}` ? '' : `/${locale}`
+  const otherPath = `/${otherLocale}${pathname.slice(locale.length + 1)}`
   const items = [
-    { href: '#about', label: text.about },
-    { href: '#experience', label: text.experience },
-    { href: '#contributions', label: text.contributions },
-    { href: '#contact', label: text.contact },
+    { href: `${home}#about`, label: text.about },
+    { href: `${home}#experience`, label: text.experience },
+    { href: `${home}#projects`, label: text.projects },
+    { href: `${home}#contributions`, label: text.contributions },
+    { href: `${home}#contact`, label: text.contact },
   ]
 
   function closeMenu() {
@@ -28,13 +33,13 @@ export function Header({
   }
 
   function preserveSection(event: MouseEvent<HTMLAnchorElement>) {
-    event.currentTarget.href = `/${otherLocale}${window.location.hash}`
+    event.currentTarget.href = `${otherPath}${window.location.hash}`
   }
 
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <a className="wordmark" href="#top" aria-label="Hugo Riveros">
+        <a className="wordmark" href={`${home}#top`} aria-label="Hugo Riveros">
           hr<span>.</span>
         </a>
         <nav className="desktop-nav" aria-label={text.label}>
@@ -47,7 +52,7 @@ export function Header({
         <div className="header-actions">
           <a
             className="language-link"
-            href={`/${otherLocale}`}
+            href={otherPath}
             hrefLang={otherLocale}
             lang={otherLocale}
             aria-label={text.switchLanguage}

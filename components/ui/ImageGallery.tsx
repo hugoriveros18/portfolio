@@ -1,29 +1,30 @@
 import Image from 'next/image'
-import type { ProfessionalContribution } from '@/content/contributions/types'
+import type { PortfolioGallery } from '@/content/media'
 import { Icon } from '@/components/ui/Icon'
-import { ContributionImageLightbox } from '@/components/ui/ContributionImageLightbox'
+import { ImageLightbox } from '@/components/ui/ImageLightbox'
 
-type Gallery = NonNullable<ProfessionalContribution['gallery']>
-
-export function ContributionGallery({
+export function ImageGallery({
   gallery,
   imageAction,
   imageClose,
+  headingLevel = 'h4',
 }: {
-  gallery: Gallery
+  gallery: PortfolioGallery
   imageAction: string
   imageClose: string
+  headingLevel?: 'h3' | 'h4'
 }) {
   if (gallery.images.length === 0) return null
+  const Heading = headingLevel
 
   return (
     <div className="contribution-gallery">
-      <h4>{gallery.title}</h4>
+      <Heading>{gallery.title}</Heading>
       {gallery.description ? <p className="gallery-description">{gallery.description}</p> : null}
       <div className="gallery-images">
         {gallery.images.map((item) => (
           <figure key={item.id}>
-            <ContributionImageLightbox image={item} closeLabel={imageClose}>
+            <ImageLightbox image={item} closeLabel={imageClose}>
               <Image
                 src={item.src}
                 alt={item.alt}
@@ -35,7 +36,7 @@ export function ContributionGallery({
                 {imageAction}
                 <Icon name="expand" />
               </span>
-            </ContributionImageLightbox>
+            </ImageLightbox>
             <figcaption>{item.caption}</figcaption>
           </figure>
         ))}
